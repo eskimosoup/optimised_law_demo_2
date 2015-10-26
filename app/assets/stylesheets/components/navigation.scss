@@ -1,0 +1,69 @@
+.header-navigation {
+  padding: em(40px) 0 0;
+}
+
+.aside-navigation {
+  list-style: none;
+
+  li {
+    @include links($grey, $grey, $dark-grey, $black);
+    display: inline-block;
+
+    a {
+      display: block;
+      font-size: em(12px);
+      padding: em(10px, 12px) em(20px, 12px);
+      text-decoration: none;
+    }
+  }
+
+  li:last-of-type a {
+    background: $turquoise;
+    color: $white;
+    font-family: $font-merriweather;
+    padding: em(10px, 12px) em(40px, 12px);
+
+    &:hover {
+      background: lighten($turquoise, 5%);
+    }
+  }
+}
+
+.header-navigation-links {
+  list-style: none;
+
+  .home {
+    margin: em(19px) 0 0;
+  }
+
+  li {
+    display: inline-block;
+  }
+
+  a {
+    border-bottom-color: $white;
+    border-bottom-style: solid;
+    border-bottom-width: 4px;
+    color: $offset-black;
+    display: block;
+    font-family: $font-merriweather;
+    font-size: em(12px);
+    margin: 0 em(10px, 12px);
+    padding: em(20px, 12px);
+    text-decoration: none;
+
+    &:visited {
+      color: $offset-black;
+    }
+
+    &:hover {
+      border-bottom-color: $turquoise;
+      color: $offset-black;
+    }
+
+    &:active {
+      border-bottom-color: $turquoise;
+      color: $offset-black;
+    }
+  }
+}

@@ -1,3 +1,142 @@
-<div class="text-right">
-  test
+<div class="hero-banner">
+  <h1 class="hero-banner-text">
+    Together for life's ups and downs
+  </h1>
+
+  <div class="hero-banner-tagline">
+    How can we help?
+  </div>
+
+  <div class="hero-banner-widget">
+    <ul class="hero-banner-navigation">
+      <li>
+        <%= link_to 'Search', '#', class: 'hero-banner-link active', title: 'Search' %>
+      </li>
+
+      <li>
+        <%= link_to 'Expertise', '#', class: 'hero-banner-link', title: 'Expertise' %>
+      </li>
+
+      <li>
+        <%= link_to 'A-Z', '#', class: 'hero-banner-link', title: 'A-Z' %>
+      </li>
+    </ul>
+
+    <div class="hero-banner-search">
+      <%= form_tag '', method: :get do %>
+        <%= text_field_tag :search, nil, placeholder: 'Search here...', class: 'hero-banner-search-text' %>
+        <%= submit_tag 'Search' %>
+      <% end %>
+    </div>
+
+    <div class="hero-banner-expertise hide">
+      <div class="row">
+        <div class="medium-4 columns sectors">
+          <div class="hero-banner-expertise-title">
+            Sectors
+          </div>
+
+          <ul class="hero-banner-expertise-list">
+            <li>
+              <%= link_to 'Aviation', '#', class: 'hero-banner-expertise-link' %>
+              <%= link_to 'Healthcare', '#', class: 'hero-banner-expertise-link' %>
+              <%= link_to 'Hospitality', '#', class: 'hero-banner-expertise-link' %>
+            </li>
+          </ul>
+        </div>
+
+        <div class="medium-4 columns personal-services">
+          <div class="hero-banner-expertise-title">
+            Personal Services
+          </div>
+
+          <ul class="hero-banner-expertise-list">
+            <li>
+              <%= link_to 'Aviation', '#', class: 'hero-banner-expertise-link' %>
+              <%= link_to 'Healthcare', '#', class: 'hero-banner-expertise-link' %>
+              <%= link_to 'Hospitality', '#', class: 'hero-banner-expertise-link' %>
+            </li>
+          </ul>
+        </div>
+
+        <div class="medium-4 columns business-services">
+          <div class="hero-banner-expertise-title">
+            Business Services
+          </div>
+
+          <ul class="hero-banner-expertise-list">
+            <li>
+              <%= link_to 'Aviation', '#', class: 'hero-banner-expertise-link' %>
+              <%= link_to 'Healthcare', '#', class: 'hero-banner-expertise-link' %>
+              <%= link_to 'Hospitality', '#', class: 'hero-banner-expertise-link' %>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <div class="hero-banner-a-to-z hide">
+      <ul class="hero-banner-letter-list">
+        <li>
+          <%= link_to 'a', '#', class: 'active' %>
+        </li>
+        <li>
+          <%= link_to 'b', '#', class: 'inactive' %>
+        </li>
+        <li>
+          <%= link_to 'c', '#' %>
+        </li>
+        <li>
+          <%= link_to 'd', '#' %>
+        </li>
+        <li>
+          <%= link_to 'e', '#' %>
+        </li>
+      </ul>
+
+      <div class="row">
+        <div class="small-12 columns">
+          <div class="hero-banner-service-list">
+            <div class="row">
+              <div class="medium-4 columns sectors">
+                <div class="hero-banner-service-list-title">
+                  Sector
+                </div>
+
+                <ul class="hero-banner-service-list-services">
+                  <li>
+                    <%= link_to 'Aviation', '#', class: '#' %>
+                  </li>
+                </ul>
+              </div>
+
+              <div class="medium-4 columns personal-services">
+                <div class="hero-banner-service-list-title">
+                  Personal Services
+                </div>
+
+                <ul class="hero-banner-service-list-services">
+                  <li>
+                    <%= link_to 'Aviation', '#', class: '#' %>
+                  </li>
+                </ul>
+              </div>
+
+              <div class="medium-4 columns business-services">
+                <div class="hero-banner-service-list-title">
+                  Business Services
+                </div>
+
+                <ul class="hero-banner-service-list-services">
+                  <li>
+                    <%= link_to 'Aviation', '#', class: '#' %>
+                  </li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
 </div>
