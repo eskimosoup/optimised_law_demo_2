@@ -1,0 +1,63 @@
+<div class="pre-footer-section">
+  <div class="row">
+    <div class="medium-4 columns">
+      <div class="pre-footer-header">
+        Find us on:
+      </div>
+
+      <%= link_to global_site_settings['Twitter'], title: 'Twitter' do %>
+        <%= image_tag 'components/icons/twitter.png', alt: 'Twitter' %>
+      <% end %>
+
+      <%= link_to global_site_settings['Facebook'], title: 'Facebook' do %>
+        <%= image_tag 'components/icons/facebook.png', alt: 'Facebook' %>
+      <% end %>
+
+      <%= link_to global_site_settings['LinkedIn'], title: 'LinkedIn' do %>
+        <%= image_tag 'components/icons/linkedin.png', alt: 'LinkedIn' %>
+      <% end %>
+    </div>
+
+    <div class="medium-4 columns">
+      <div class="pre-footer-header">
+        Local to you
+      </div>
+
+      <%= link_to '#', title: 'Local to you' do %>
+        <%= image_tag 'components/icons/map-pin.png', alt: 'Local to you' %>
+      <% end %>
+    </div>
+
+    <div class="medium-4 columns">
+      <div class="pre-footer-header">
+        Talk to us
+      </div>
+
+      <%= link_to '#', title: 'Talk to us' do %>
+        <%= image_tag 'components/icons/talk-icon.png', alt: 'Talk to us' %>
+      <% end %>
+    </div>
+  </div>
+</div>
+
+<footer class="primary-footer">
+  <div class="row">
+    <div class="medium-12 columns">
+      <ul>
+        <li>
+          <%= nested_menu_items(menu_items: @footer_menu.menu_items) %>
+        </li>
+      </ul>
+      
+      <p>
+        May Williams LLP (registered in England and Wales OC123456) is authorised
+        and regulated by the Solicitors Regulation Authority (number 5222333).
+        Our registered office is No. 1 London Bridge, London, SE1 9BG.
+        The term ‘partner’ is used to refer to a member of the partnership or to an
+        employee of equivalent standing and qualifications. May Williams LLP
+        provides its services subject to its Terms of Business, a copy of which is
+        available on request.
+      </p>
+    </div>
+  </div>
+</footer>
