@@ -4,6 +4,8 @@ Rails.application.routes.draw do
     get code, to: 'errors#show', code: code
   end
 
+  get '/divorce', to: 'application#divorce'
+
   # This has to be the last route in your list
   match "*path", to: "errors#show", via: :all, code: 404 unless Rails.application.config.consider_all_requests_local
 
@@ -12,5 +14,5 @@ Rails.application.routes.draw do
 end
 
 Optimadmin::Engine.routes.draw do
-  
+
 end

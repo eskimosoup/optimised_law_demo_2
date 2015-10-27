@@ -40,3 +40,32 @@
     margin: em(15px, 11px) 0 0;
   }
 }
+
+.sticky-tab {
+  @include links($offset-black, $offset-black, $offset-black, $offset-black);
+  background-color: $offset-white;
+  box-shadow: rgba($shadow-offset-black, 0.2) 0 0 25px 0;
+  bottom: -1px;
+  font-weight: $open-sans-bold;
+  display: inline-block;
+  position: fixed;
+  right: 15px;
+  text-align: center;
+  z-index: 200;
+
+  a {
+    background-color: $offset-white;
+    display: block;
+    padding: em(19px);
+    text-decoration: none;
+
+    &:hover {
+      background: $turquoise;
+    }
+  }
+
+  .text {
+    line-height: 1.42;
+    margin: em(10px) 0;
+  }
+}

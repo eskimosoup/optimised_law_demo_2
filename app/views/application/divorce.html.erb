@@ -1,0 +1,295 @@
+<div class="internal-hero-banner divorce">
+  <h2 class="internal-hero-banner-title">
+    In the most difficult of times, you can rely on us
+  </h2>
+
+  <%= link_to 'Family: Supporting Services', '#', class: 'toggle-class supporting-services-toggle', data: { class: 'hide', container: '.supporting-services', return: 'false' } %>
+</div>
+
+<div class="supporting-services hide">
+  <div class="row">
+    <div class="medium-4 columns">
+      <ul class="supporting-services-list">
+        <li>
+          <%= link_to 'A service name', '#', class: 'supporting-services-link' %>
+        </li>
+        <li>
+          <%= link_to 'A service name', '#', class: 'supporting-services-link' %>
+        </li>
+      </ul>
+    </div>
+
+    <div class="medium-4 columns">
+      <ul class="supporting-services-list">
+        <li>
+          <%= link_to 'A service name', '#', class: 'supporting-services-link' %>
+        </li>
+        <li>
+          <%= link_to 'A service name', '#', class: 'supporting-services-link' %>
+        </li>
+      </ul>
+    </div>
+
+    <div class="medium-4 columns">
+      <ul class="supporting-services-list">
+        <li>
+          <%= link_to 'A service name', '#', class: 'supporting-services-link' %>
+        </li>
+        <li>
+          <%= link_to 'A service name', '#', class: 'supporting-services-link' %>
+        </li>
+      </ul>
+    </div>
+  </div>
+</div>
+
+<div class="service-content">
+  <div class="row">
+    <div class="medium-12 columns">
+      <ul class="breadcrumbs">
+        <li>
+          <%= link_to (image_tag 'components/navigation/small-home.png', alt: 'Home'), root_url, title: 'Home' %>
+        </li>
+        <li>
+          <%= link_to 'Personal', '#', title: 'Personal' %>
+        </li>
+        <li>
+          <%= link_to 'Family', '#', title: 'Family' %>
+        </li>
+        <li>
+          <%= link_to 'Divorce & Relationship Breakdown', '#', title: 'Divorce & Relationship Breakdown' %>
+        </li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="medium-7 columns">
+      <div class="internal-content">
+        <h1>Divorce &amp; Relationship Breakdown</h1>
+
+        <p class="paragraph-highlight">
+          If your relationship has broken down and you are facing a divorce or
+          separation, you may be feeling anxious, angry and confused.
+        </p>
+
+        <p>
+          Divorce or relationship breakdown can be a stressful and emotional time.
+          You have important decisions to make about your future, your children,
+          your finances and maybe even your business.
+        </p>
+
+        <p>
+          Our divorce and family law solicitors can help you decide what is
+          right – personally, legally and financially – for you and your family.
+          Independent legal guides recognise us as one of the UK’s leading
+          family law teams, so you can be sure you’re in safe hands.
+        </p>
+
+        <p>
+          We can help not only with divorce and separation, but also with other
+          family law issues such as pre-marital agreements, child abduction and
+          agreements for couples who live together outside of marriage.
+        </p>
+
+        <p>
+          Our lawyers are based throughout the country, with offices in
+          Birmingham, Bristol, Cambridge, Leeds, London, Manchester, Newcastle,
+          Sheffield and Southampton.
+        </p>
+      </div>
+    </div>
+
+    <div class="medium-5 columns">
+      <div class="callback-header">
+        <%= image_tag 'components/icons/telephone.png', alt: 'Telephone', class: 'telephone-icon' %>
+
+        <%= global_site_settings['Telephone'] %>
+      </div>
+
+      <div class="callback-form">
+        <h3>Request a call back</h3>
+
+        <p>
+          Simply complete the form below and one of our experts will get back to you.
+        </p>
+
+        <%= form_tag '' do %>
+          <%= text_field_tag :name, params[:name], placeholder: 'Your name', required: true %>
+          <%= text_field_tag :email_address, params[:email_address], placeholder: 'Email address', required: true %>
+          <%= text_field_tag :telephone_number, params[:telephone_number], placeholder: 'Telephone number', required: true %>
+          <%= select_tag :enquiry_type, options_for_select(['Pre-nup', 'Civil Partnership and Same Sex Marriages', 'Financial Settlement'], selected: params[:enquiry_type]), prompt: 'Select enquiry type', required: true %>
+          <div class="callback-form-required-fields">* All fields are required</div>
+          <%= submit_tag 'Submit', class: 'callback-form-submit right' %>
+        <% end %>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="service-resources">
+  <div class="row guides">
+    <div class="small-12 columns">
+      <h4 class="downoad-section">Download our Divorce &amp; Relationship Breakdown Guides</h4>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="medium-3 columns">
+      <%= link_to (image_tag 'placeholders/download.jpg', alt: 'Download'), '#', title: 'Download', class: 'download-button-image' %>
+      <%= link_to 'Download', '#', class: 'download-button' %>
+    </div>
+
+    <div class="medium-4 columns">
+      <div class="download-title">
+        Funding your divorce: What are the options?
+      </div>
+
+      <p>
+        There are various sources of funding available to both parties during
+        the divorce process and it is essential that you make a decision on
+        funding at the earliest opportunity.
+      </p>
+
+      <p>
+        Within this guide we have highlighted a few different funding
+        possibilities this should allow you to make informed decisions on
+        one that will work for you. With our fixed fee divorce packages
+        starting at just £350 + VAT, it might not be as much as you think.
+      </p>
+    </div>
+
+    <div class="medium-2 columns">
+      <div class="download-contents-title">
+        What you can expect from this guide
+      </div>
+    </div>
+
+    <div class="medium-3 columns">
+      <ul class="download-table-of-contents">
+        <li>
+          Your own resources
+        </li>
+        <li>
+          Maintenance during the court proceedings
+        </li>
+        <li>
+          From a third party source
+        </li>
+        <li>
+          Insurance
+        </li>
+        <li>
+          Litigation Loans
+        </li>
+        <li>
+          Pay at the conclusion of your case
+        </li>
+        <li>
+          Public Funding
+        </li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="row additional-guides">
+    <div class="medium-12 columns">
+      <div class="row">
+        <div class="medium-4 columns">
+          <div class="row collapse">
+            <div class="medium-5 columns">
+              <%= link_to '#', class: 'download-button-image', title: 'Download' do %>
+                <%= image_tag 'placeholders/download-small.jpg', alt: 'Download' %>
+              <% end %>
+            </div>
+
+            <div class="medium-7 columns">
+              <%= link_to '#', title: 'Download' do %>
+                <div class="additional-guides-download-title">
+                  Relationship Breakdown... A Step by Step Guide
+                </div>
+
+                <div class="download-button inline">
+                  Download
+                </div>
+              <% end %>
+            </div>
+        </div>
+      </div>
+
+      <div class="medium-4 columns">
+        <div class="row collapse">
+          <div class="medium-5 columns">
+            <%= link_to '#', class: 'download-button-image', title: 'Download' do %>
+              <%= image_tag 'placeholders/download-small.jpg', alt: 'Download' %>
+            <% end %>
+          </div>
+
+          <div class="medium-7 columns">
+            <%= link_to '#', title: 'Download' do %>
+              <div class="additional-guides-download-title">
+                How to Tell Your Children That You Are Separating
+              </div>
+
+              <div class="download-button inline">
+                Download
+              </div>
+            <% end %>
+          </div>
+        </div>
+      </div>
+
+      <div class="medium-4 columns">
+        <div class="row collapse">
+          <div class="medium-5 columns">
+            <%= link_to '#', class: 'download-button-image', title: 'Download' do %>
+              <%= image_tag 'placeholders/download-small.jpg', alt: 'Download' %>
+            <% end %>
+          </div>
+
+          <div class="medium-7 columns">
+            <%= link_to '#', title: 'Download' do %>
+              <div class="additional-guides-download-title">
+                Divorce and Separation, Settlement, Proceedings and the Benefits
+              </div>
+
+              <div class="download-button inline">
+                Download
+              </div>
+            <% end %>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  </div>
+
+
+
+  <div class="row video-focus">
+    <div class="medium-7 columns">
+      <h4>
+        How Our Divorce Lawyers Can Help You With Your Relationship Breakdown
+      </h4>
+
+      <p>
+        We understand that going through a divorce can be stressful and
+        upsetting. We will do all we can to make the process easier for you,
+        while at the same time making sure your best interests and financial
+        position are protected.
+      </p>
+
+      <p>
+        Watch our short video below featuring Peter, who worried about the
+        financial impact that divorce may have after his relationship broke
+        down as he looked for a fresh start.
+      </p>
+    </div>
+
+    <div class="medium-5 columns">
+      <%= link_to '#', class: 'video-thumbnail', title: 'Video' do %>
+        <%= image_tag 'placeholders/video.jpg', alt: 'Video' %>
+      <% end %>
+    </div>
+  </div>
+</div>

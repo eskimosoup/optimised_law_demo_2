@@ -17,3 +17,4 @@
 //= require vendor/foundation/libraries/modernizr
 //= require vendor/foundation/libraries/placeholder
 //= require vendor/foundation/foundation
+//= require components/toggle-class

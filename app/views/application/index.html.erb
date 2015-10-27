@@ -140,3 +140,45 @@
     </div>
   </div>
 </div>
+
+<div class="pre-footer-section">
+  <div class="row">
+    <div class="medium-4 columns">
+      <div class="pre-footer-header">
+        Find us on:
+      </div>
+
+      <%= link_to global_site_settings['Twitter'], title: 'Twitter' do %>
+        <%= image_tag 'components/icons/twitter.png', alt: 'Twitter' %>
+      <% end %>
+
+      <%= link_to global_site_settings['Facebook'], title: 'Facebook' do %>
+        <%= image_tag 'components/icons/facebook.png', alt: 'Facebook' %>
+      <% end %>
+
+      <%= link_to global_site_settings['LinkedIn'], title: 'LinkedIn' do %>
+        <%= image_tag 'components/icons/linkedin.png', alt: 'LinkedIn' %>
+      <% end %>
+    </div>
+
+    <div class="medium-4 columns">
+      <div class="pre-footer-header">
+        Local to you
+      </div>
+
+      <%= link_to '#', title: 'Local to you' do %>
+        <%= image_tag 'components/icons/map-pin.png', alt: 'Local to you' %>
+      <% end %>
+    </div>
+
+    <div class="medium-4 columns">
+      <div class="pre-footer-header">
+        Talk to us
+      </div>
+
+      <%= link_to '#', title: 'Talk to us' do %>
+        <%= image_tag 'components/icons/talk-icon.png', alt: 'Talk to us' %>
+      <% end %>
+    </div>
+  </div>
+</div>
