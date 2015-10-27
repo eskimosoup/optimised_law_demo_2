@@ -11,6 +11,7 @@
 }
 
 .callback-form {
+  @extend %clearfix;
   background: $offset-white;
   padding: em(19px) em(30px);
 
@@ -19,5 +20,59 @@
     font-size: em(18px);
     font-weight: $droid-serif-light;
     line-height: 1.6;
+  }
+
+  p {
+    font-size: em(12px);
+    line-height: 1.4;
+    margin: 0 0 em(18px, 12px);
+  }
+
+  input[type='text'],
+  select {
+    @include border-radius(12px);
+    background-color: $white;
+    border: 1px solid $inactive-offset-grey;
+    color: $shadow-offset-black;
+    line-height: 1.42;
+    margin-bottom: em(10px);
+    min-height: 38px;
+    padding: em(8px) em(12px);
+    vertical-align: middle;
+    width: 100%;
+  }
+
+  select {
+    background-image: linear-gradient($white 0, $light-white 100%);
+  }
+}
+
+.callback-form-required-fields {
+  color: $alternative-purple;
+  font-size: em(11px);
+  line-height: 1.3;
+  margin: em(15px, 11px) 0 em(11px, 11px);
+}
+
+// Please kindly ignore this!
+input[type='submit'].callback-form-submit {
+  @include border-radius(200px);
+  background: $purple;
+  border: 2px solid $white;
+  color: $white;
+  display: inline-block;
+  font-family: $font-droid-serif;
+  letter-spacing: 1px;
+  margin: 0 em(9px);
+  padding: em(9px) em(23px);
+  min-height: 42px;
+
+  &:hover {
+    background: $light-purple;
+  }
+
+  &:focus {
+    background: $deep-purple;
+    outline: 0;
   }
 }

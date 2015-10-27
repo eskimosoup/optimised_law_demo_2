@@ -1,0 +1,107 @@
+.service-resources {
+  background: $light-grey;
+  margin: em(10px) 0;
+  padding: 0 0 em(40px);
+
+  .guides {
+    border-top: 7px solid $purple;
+  }
+
+  h4 {
+    color: $deep-purple;
+    font-family: $font-droid-serif;
+    font-size: em(16px);
+    font-weight: 400;
+    margin: em(33px, 16px) 0 em(40px, 16px);
+  }
+
+  .download-section {
+    text-align: center;
+  }
+}
+
+.download-button-image {
+  border-left: 6px solid transparent;
+  display: block;
+
+  &:hover {
+    border-left-color: $turquoise;
+  }
+}
+
+.download-button {
+  @include border-radius(200px);
+  background: $purple image-url('components/icons/download-icon.png') 7px 50% no-repeat;
+  border: 2px solid $white;
+  color: $white;
+  display: inline-block;
+  font-family: $font-droid-serif;
+  font-size: em(12px);
+  letter-spacing: 1px;
+  margin: em(20px, 12px) 0 0;
+  padding: em(9px, 12px) em(23px, 12px) em(9px, 12px) em(43px, 12px);
+  text-decoration: none;
+
+  &.inline {
+    background-color: transparent;
+    background-position: 0 50%;
+    border: 0;
+
+    &:hover,
+    &:active {
+      background-color: transparent;
+      color: $turquoise;
+    }
+  }
+
+  &:link,
+  &:visited {
+    color: $white;
+  }
+
+  &:hover,
+  &:active {
+    background-color: $light-purple;
+  }
+}
+
+.download-title {
+  color: $purple;
+  font-size: em(19px);
+  font-weight: $open-sans-bold;
+  line-height: 1.36;
+}
+
+.download-contents-title {
+  color: $highlight-purple;
+  font-size: em(18px);
+  font-weight: $open-sans-semibold;
+}
+
+.download-table-of-contents {
+  border-left: 5px solid $purple;
+  list-style: none;
+  padding: 0 0 0 em(25px);
+
+  li {
+    font-size: em(13px);
+    line-height: 1.3;
+    margin: 0 0 em(10px, 13px);
+  }
+}
+
+.additional-guides {
+  @include links($white, $white, $white, $white);
+  margin: em(40px) auto 0;
+  padding: em(60px);
+  background-image: linear-gradient($purple 1%, $secondary-purple 98%);
+
+  a:link,
+  a:visited {
+    text-decoration: none;
+  }
+}
+
+.additional-guides-download-title {
+  font-size: em(13px);
+}
