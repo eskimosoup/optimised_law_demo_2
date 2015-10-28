@@ -11,10 +11,21 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20151026110001) do
+ActiveRecord::Schema.define(version: 20151028131139) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "departments", force: :cascade do |t|
+    t.string   "name"
+    t.string   "summary"
+    t.string   "image"
+    t.string   "slug"
+    t.string   "suggested_url"
+    t.boolean  "display",       default: true
+    t.datetime "created_at",                   null: false
+    t.datetime "updated_at",                   null: false
+  end
 
   create_table "friendly_id_slugs", force: :cascade do |t|
     t.string   "slug",                      null: false
@@ -113,4 +124,22 @@ ActiveRecord::Schema.define(version: 20151026110001) do
     t.string "environment"
   end
 
+  create_table "services", force: :cascade do |t|
+    t.integer  "department_id"
+    t.integer  "parent_id"
+    t.string   "name"
+    t.string   "image"
+    t.text     "summary"
+    t.text     "content"
+    t.string   "slug"
+    t.string   "suggested_url"
+    t.boolean  "display",       default: true
+    t.datetime "created_at",                   null: false
+    t.datetime "updated_at",                   null: false
+  end
+
+  add_index "services", ["department_id"], name: "index_services_on_department_id", using: :btree
+  add_index "services", ["parent_id"], name: "index_services_on_parent_id", using: :btree
+
+  add_foreign_key "services", "departments"
 end

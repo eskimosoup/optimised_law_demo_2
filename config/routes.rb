@@ -14,5 +14,29 @@ Rails.application.routes.draw do
 end
 
 Optimadmin::Engine.routes.draw do
+  resources :services, except: [:show] do
+    collection do
+      post 'order'
+    end
+    member do
+      get 'toggle'
+      get 'edit_images'
+      post 'update_image_default'
+      post 'update_image_fill'
+      post 'update_image_fit'
+    end
+  end
+  resources :departments, except: [:show] do
+    collection do
+      post 'order'
+    end
+    member do
+      get 'toggle'
+      get 'edit_images'
+      post 'update_image_default'
+      post 'update_image_fill'
+      post 'update_image_fit'
+    end
+  end
 
 end
