@@ -3,7 +3,7 @@ class CreateServices < ActiveRecord::Migration
     create_table :services do |t|
       t.belongs_to :department, index: true, foreign_key: true
       t.integer :parent_id, index: true
-      t.string :name
+      t.string :name, null: false
       t.string :image
       t.text :summary
       t.text :content

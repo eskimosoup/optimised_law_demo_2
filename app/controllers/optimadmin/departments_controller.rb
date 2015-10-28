@@ -48,7 +48,7 @@ module Optimadmin
     end
 
     def department_params
-      params.require(:department).permit(:name, :summary, :image, :slug, :suggested_url, :display)
+      params.require(:department).permit(:name, :summary, :image, :remove_image, :remote_image_url, :image_cache, :slug, :suggested_url, :display)
     end
   end
 end
