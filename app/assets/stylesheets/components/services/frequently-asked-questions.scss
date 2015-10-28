@@ -1,0 +1,40 @@
+.frequently-asked-question {
+  @include links($offset-black, $offset-black, $turquoise, $offset-black);
+  border-bottom: 3px solid $highlight-purple;
+  font-family: $font-droid-serif;
+  margin: 0 0 em(20px);
+  padding: 0 0 em(17px);
+}
+
+.question-mark {
+  @include border-radius(36px);
+  background: $light-grey;
+  color: $highlight-purple;
+  display: inline-block;
+  float: left;
+  font-weight: $droid-serif-bold;
+  margin: 0 em(15px) 0 0;
+  padding: em(11px);
+}
+
+.frequently-asked-question-link {
+  color: $purple;
+  display: inline-block;
+  margin: 0 0 em(13px);
+  padding: 0 0 em(14px);
+  text-align: left;
+  text-decoration: none;
+  width: 80%;
+}
+
+.frequently-asked-question-answer {
+  margin: 0 0 em(34px, 13px);
+  padding: 0 0 0 em(49px);
+
+  p {
+    color: $shadow-offset-black;
+    font-size: em(13px);
+    line-height: 1.69;
+    text-align: left;
+  }
+}

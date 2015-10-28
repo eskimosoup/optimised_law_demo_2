@@ -90,9 +90,11 @@
   }
 }
 
-.hero-banner-expertise .sectors {
-  background: $deep-purple;
-  padding: 0 em(10px);
+.hero-banner-expertise {
+  .sectors {
+    background: $deep-purple;
+    padding: 0 em(10px);
+  }
 
   .personal-services {
     background: $light-purple;

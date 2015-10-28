@@ -15,6 +15,11 @@
   background: $offset-white;
   padding: em(19px) em(30px);
 
+  &.transparent {
+    background: transparent;
+    padding: 0;
+  }
+
   h3 {
     font-family: $font-droid-serif;
     font-size: em(18px);
@@ -29,6 +34,7 @@
   }
 
   input[type='text'],
+  textarea,
   select {
     @include border-radius(12px);
     background-color: $white;
@@ -44,6 +50,15 @@
 
   select {
     background-image: linear-gradient($white 0, $light-white 100%);
+  }
+
+  .contact-method-select {
+    display: inline-block;
+    margin: em(11px) em(15px) em(19px);
+  }
+
+  .radio-button {
+    margin: 0 0 0 em(10px);
   }
 }
 

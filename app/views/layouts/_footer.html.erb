@@ -21,8 +21,10 @@
 </footer>
 
 <div class="sticky-tab">
-  <%= link_to '#', class: 'open-modal', title: 'Talk to us' do %>
+  <%= link_to '#', class: 'fade-toggle', title: 'Talk to us', data: { container: '.modal', return: 'false' } do %>
     <%= image_tag 'components/icons/talk-icon.png', alt: 'Talk to us' %>
     <div class="text">Talk to us</div>
   <% end %>
 </div>
+
+<%= render 'shared/talk_to_us' %>

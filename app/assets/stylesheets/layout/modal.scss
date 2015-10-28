@@ -1,0 +1,60 @@
+// http://codepen.io/gschier/pen/HCoqh
+
+.modal {
+  background: $white;
+  height: 100%;
+  left: 0;
+  position: fixed;
+  top: 0;
+  width: 100%;
+  z-index: 999;
+}
+
+.modal-content {
+  padding: em(110px) 0 0;
+}
+
+.close-modal {
+  @include border-radius(25px);
+  background: $secondary-purple;
+  display: inline-block;
+  padding: em(27px);
+  position: fixed;
+  right: 16px;
+  top: 15px;
+  z-index: 999;
+}
+
+.contact-us-title {
+  color: $deep-purple;
+  font-family: $font-droid-serif;
+  font-size: em(22px);
+  font-weight: $droid-serif-bold;
+  letter-spacing: 1px;
+  margin: em(37px, 22px) 0 em(78px, 22px);
+  padding: 0;
+  text-align: center;
+}
+
+.contact-us-prompt {
+  color: $highlight-purple;
+  font-weight: $open-sans-semibold;
+  margin: em(27px) 0 em(23px);
+}
+
+.offices-list {
+  list-style: none;
+
+  li {
+    border-bottom: 2px dotted $grey;
+    color: $secondary-purple;
+    font-size: em(13px);
+    font-weight: $open-sans-semibold;
+    margin: 0 0 em(17px);
+    padding: 0 0 em(5px, 13px);
+  }
+
+  .office-telephone {
+    color: $highlight-purple;
+  }
+}
