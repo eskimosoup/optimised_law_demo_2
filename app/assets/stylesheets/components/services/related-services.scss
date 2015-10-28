@@ -1,0 +1,39 @@
+.related-services {
+  background: $highlight-purple;
+  padding: em(60px) em(43px);
+  text-align: center;
+
+  h5 {
+    color: $white;
+    font-family: $font-droid-serif;
+    font-size: em(16px);
+    font-weight: 400;
+    margin: em(33px, 16px) 0 em(40px, 16px);
+  }
+}
+
+.related-services-list {
+  list-style: none;
+
+  li {
+    display: inline-block;
+  }
+}
+
+.related-service-link {
+  @include border-radius(200px);
+  background: $purple;
+  border: 2px solid $white;
+  color: $white;
+  display: inline-block;
+  font-family: $font-droid-serif;
+  letter-spacing: 1px;
+  margin: 0 em(9px);
+  padding: em(9px) em(23px);
+  text-align: center;
+  text-decoration: none;
+
+  &:hover {
+    background: $turquoise;
+  }
+}

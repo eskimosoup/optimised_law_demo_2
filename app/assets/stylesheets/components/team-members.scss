@@ -1,0 +1,36 @@
+.team-members {
+  margin: em(10px) 0 0;
+}
+
+
+.team-member {
+  @extend %clearfix;
+  @include links($offset-black, $offset-black, $offset-black, $offset-black);
+  background: $offset-white;
+  border-bottom: 2px solid transparent;
+  display: block;
+  margin: 0 0 em(15px);
+
+  &:hover {
+    border-bottom-color: $turquoise;
+  }
+
+  .team-member-link {
+    display: block;
+    font-size: em(13px);
+    padding: em(20px, 13px) em(18px, 13px) em(18px, 13px) em(81px, 13px);
+    text-decoration: none;
+  }
+
+  .team-member-name {
+    font-family: $font-droid-serif;
+    font-size: em(13px, 13px);
+    color: $deep-purple;
+    line-height: .9;
+    margin: 0;
+  }
+
+  .team-member-role {
+    font-size: em(12px, 13px);
+  }
+}

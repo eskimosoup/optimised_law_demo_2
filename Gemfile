@@ -57,6 +57,7 @@ group :test do
   gem 'capybara', '~> 2.5.0'
   gem 'launchy', '~> 2.4.3'
   gem 'selenium-webdriver'
+  gem 'poltergeist'
 end
 
 group :development do
@@ -67,6 +68,10 @@ group :development do
   gem 'flamegraph', '~> 0.1.0'
   gem 'stackprof', '~> 0.2.7'
   gem 'bullet', '~> 4.14.7'
+end
+
+source 'https://rails-assets.org' do
+  gem 'rails-assets-slick.js'
 end
 
 gem 'optimadmin', git: 'git@github.com:eskimosoup/Optimadmin.git', branch: 'master'

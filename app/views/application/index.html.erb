@@ -8,28 +8,28 @@
   </div>
 
   <div class="hero-banner-widget">
-    <ul class="hero-banner-navigation">
+    <ul class="content-navigation">
       <li>
-        <%= link_to 'Search', '#', class: 'hero-banner-link active', title: 'Search' %>
+        <%= link_to 'Search', '#hero-banner-search', class: 'content-navigation-link active', title: 'Search' %>
       </li>
 
       <li>
-        <%= link_to 'Expertise', '#', class: 'hero-banner-link', title: 'Expertise' %>
+        <%= link_to 'Expertise', '#hero-banner-expertise', class: 'content-navigation-link', title: 'Expertise' %>
       </li>
 
       <li>
-        <%= link_to 'A-Z', '#', class: 'hero-banner-link', title: 'A-Z' %>
+        <%= link_to 'A-Z', '#hero-banner-a-to-z', class: 'content-navigation-link', title: 'A-Z' %>
       </li>
     </ul>
 
-    <div class="hero-banner-search">
+    <div class="hero-banner-search content-navigation-content" id="hero-banner-search">
       <%= form_tag '', method: :get do %>
         <%= text_field_tag :search, nil, placeholder: 'Search here...', class: 'hero-banner-search-text' %>
         <%= submit_tag 'Search' %>
       <% end %>
     </div>
 
-    <div class="hero-banner-expertise hide">
+    <div class="hero-banner-expertise content-navigation-content hide" id="hero-banner-expertise">
       <div class="row">
         <div class="medium-4 columns sectors">
           <div class="hero-banner-expertise-title">
@@ -75,7 +75,7 @@
       </div>
     </div>
 
-    <div class="hero-banner-a-to-z hide">
+    <div class="hero-banner-a-to-z  content-navigation-content hide" id="hero-banner-a-to-z">
       <ul class="hero-banner-letter-list">
         <li>
           <%= link_to 'a', '#', class: 'active' %>
@@ -176,7 +176,7 @@
         Talk to us
       </div>
 
-      <%= link_to '#', title: 'Talk to us' do %>
+      <%= link_to '#', class: 'fade-toggle', title: 'Talk to us', data: { container: '.modal', return: 'false' } do %>
         <%= image_tag 'components/icons/talk-icon.png', alt: 'Talk to us' %>
       <% end %>
     </div>

@@ -16,3 +16,29 @@ $(document).on("click", ".toggle-class", function(e) {
     e.preventDefault();
   }
 });
+
+$(document).on("click", ".fade-toggle", function(e) {
+  var toggleContainer = $(this).attr('data-container');
+  var dataReturn      = $(this).attr('data-return');
+
+  $(toggleContainer).fadeToggle(250);
+
+  if (dataReturn === 'false') {
+    e.preventDefault();
+  }
+});
+
+var toggleContainer;
+$(document).on('click', '.content-navigation-link', function(e) {
+  toggleContainer = $(this).attr('href');
+  console.log(toggleContainer);
+  var dataReturn = $(this).attr('data-return');
+  $('.active').removeClass('active');
+  $(this).addClass('active');
+
+  $('.content-navigation-content:not(' + toggleContainer + ')').slideUp(500, function() {
+    $(toggleContainer).slideDown(250);
+  });
+
+  e.preventDefault();
+})

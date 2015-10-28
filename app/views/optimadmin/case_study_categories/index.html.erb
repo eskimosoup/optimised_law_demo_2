@@ -1,0 +1,40 @@
+<%= render 'optimadmin/shared/header/main_title', title: 'Manage Case Study Categories' %>
+
+<div class="main-content">
+  <div class="row module-header collapse">
+    <%= render 'optimadmin/shared/module/index/new_item', title: 'Case Study Category', object: CaseStudyCategory, path: new_case_study_category_path %>
+    <%= render 'optimadmin/shared/search_form' %>
+    <%= render 'optimadmin/shared/module/index/pagination' %>
+    <!--
+      <%= render 'optimadmin/shared/module/index/order', options: [['Username', 'username']] %>
+    -->
+    <%= render 'optimadmin/shared/module/index/recycle_bin', items: @case_study_categories.size, path: root_url %>
+  </div>
+
+  <div class="row collapse module-list-index header">
+
+
+
+      <% # ADD TWO TO THE TITLE LARGE COLUMN SIZE BELOW TO ACCOUNT FOR NO IMAGE %>
+
+
+
+      <%= list_item 'large-8 small-8' do %>
+        Name
+      <% end %>
+
+
+
+
+    <%= list_item { 'Display' } %>
+    <%= list_item { 'View' } %>
+    <%= list_item { 'Edit' } %>
+
+    <%= list_item('large-1 hide-for-medium-down text-center last'){ 'Delete' } %>
+  </div>
+
+  <!-- <div class='module-sortable' data-module="CaseStudyCategory"> -->
+  <%= render partial: 'case_study_category', collection: @case_study_categories, as: :case_study_category_presenter %>
+  <!-- </div> -->
+  <%= paginate @case_study_categories %>
+</div>

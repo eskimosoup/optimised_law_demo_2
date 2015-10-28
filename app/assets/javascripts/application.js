@@ -12,9 +12,18 @@
 //
 //= require jquery
 //= require jquery_ujs
+//= require slick.js/slick.js
 //= require vendor/foundation/libraries/fastclick
 //= require vendor/foundation/libraries/jquery.cookie
 //= require vendor/foundation/libraries/modernizr
 //= require vendor/foundation/libraries/placeholder
 //= require vendor/foundation/foundation
+//= require vendor/match-height
 //= require components/toggle-class
+
+function setHeight() {
+  $('.match-height').matchHeight({
+    byRow: true,
+    property: 'height'
+  });
+}
