@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20151028150442) do
+ActiveRecord::Schema.define(version: 20151028151636) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -76,6 +76,31 @@ ActiveRecord::Schema.define(version: 20151028150442) do
     t.datetime "created_at",                   null: false
     t.datetime "updated_at",                   null: false
   end
+
+  create_table "download_categories", force: :cascade do |t|
+    t.string   "name",                         null: false
+    t.string   "slug"
+    t.string   "suggested_url"
+    t.boolean  "display",       default: true
+    t.datetime "created_at",                   null: false
+    t.datetime "updated_at",                   null: false
+  end
+
+  create_table "downloads", force: :cascade do |t|
+    t.integer  "download_category_id"
+    t.string   "title",                               null: false
+    t.text     "summary"
+    t.text     "content"
+    t.string   "image"
+    t.string   "file",                                null: false
+    t.boolean  "display",              default: true
+    t.string   "slug"
+    t.string   "suggested_url"
+    t.datetime "created_at",                          null: false
+    t.datetime "updated_at",                          null: false
+  end
+
+  add_index "downloads", ["download_category_id"], name: "index_downloads_on_download_category_id", using: :btree
 
   create_table "friendly_id_slugs", force: :cascade do |t|
     t.string   "slug",                      null: false
@@ -228,6 +253,7 @@ ActiveRecord::Schema.define(version: 20151028150442) do
 
   add_foreign_key "articles", "article_categories"
   add_foreign_key "case_studies", "case_study_categories"
+  add_foreign_key "downloads", "download_categories"
   add_foreign_key "offices", "office_locations"
   add_foreign_key "services", "departments"
 end

@@ -24,6 +24,8 @@
       </div>
 
       <ul id="modules" class="content-category-list">
+<%= module_link(model: Download, path: downloads_path) %>
+<%= module_link(content: "Download Category", model: DownloadCategory, path: download_categories_path) %>
 <%= module_link(content: "Case Studies", model: CaseStudy, path: case_studies_path) %>
 <%= module_link(content: "Case Study Categories", model: CaseStudyCategory, path: case_study_categories_path) %>
 <%= module_link(model: Article, path: articles_path) %>
