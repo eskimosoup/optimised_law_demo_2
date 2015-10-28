@@ -1,3 +1,22 @@
+<%= content_for :head do %>
+  <script>
+    $(function() {
+
+
+      $('.testimonials-slider').on('init', function() {
+        setHeight();
+        console.log('test');
+      });
+
+      $('.testimonials-slider').slick({
+        infinite: true,
+        dots: true,
+        arrows: false
+      });
+    })
+  </script>
+<% end %>
+
 <div class="internal-hero-banner divorce">
   <h2 class="internal-hero-banner-title">
     In the most difficult of times, you can rely on us
@@ -264,8 +283,6 @@
   </div>
   </div>
 
-
-
   <div class="row video-focus">
     <div class="medium-7 columns">
       <h4>
@@ -287,9 +304,235 @@
     </div>
 
     <div class="medium-5 columns">
-      <%= link_to '#', class: 'video-thumbnail', title: 'Video' do %>
-        <%= image_tag 'placeholders/video.jpg', alt: 'Video' %>
-      <% end %>
+      <div class="video-wrap">
+        <div class="video-play-icon"></div>
+        <%= link_to '#', class: 'video-thumbnail', title: 'Video' do %>
+          <%= image_tag 'placeholders/video.jpg', alt: 'Video' %>
+        <% end %>
+      </div>
+    </div>
+  </div>
+
+  <div class="row updates">
+    <div class="row">
+      <div class="medium-12 text-center columns">
+        <h4
+          Insight / <strong>Family Law</strong>
+        </h4>
+
+        <ul class="content-navigation">
+          <li>
+            <%= link_to 'Updates', '#', class: 'content-navigation-link active', title: 'Search' %>
+          </li>
+
+          <li>
+            <%= link_to 'FAQs', '#', class: 'content-navigation-link', title: 'Expertise' %>
+          </li>
+
+          <li>
+            <%= link_to 'Case Studies', '#', class: 'content-navigation-link', title: 'A-Z' %>
+          </li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="articles">
+      <div class="row">
+        <div class="medium-6 columns">
+          <%= link_to '#', class: 'article-focus' do %>
+            <h5>
+              IVF Sector Urged To Improve Clerical Procedures After Criticism From Judge
+            </h5>
+          <% end %>
+
+          <div class="article-date">
+            <div class="article-date-number">
+              15
+            </div>
+            <div class="article-date-month">
+              Sept
+            </div>
+          </div>
+        </div>
+
+        <div class="medium-6 columns">
+          <div class="article-summary">
+            <%= link_to '#' do %>
+              <div class="article-date right">
+                <div class="article-date-number">
+                  15
+                </div>
+                <div class="article-date-month">
+                  Sept
+                </div>
+              </div>
+            <% end %>
+
+            <%= link_to '#', class: 'article-title' do %>
+              Ashley Madison Data Leak Could Widen Cracks In Relationships
+            <% end %>
+          </div>
+          <div class="article-summary">
+            <%= link_to '#' do %>
+              <div class="article-date right">
+                <div class="article-date-number">
+                  15
+                </div>
+                <div class="article-date-month">
+                  Sept
+                </div>
+              </div>
+            <% end %>
+
+            <%= link_to '#', class: 'article-title' do %>
+              Ashley Madison Data Leak Could Widen Cracks In Relationships
+            <% end %>
+          </div>
+          <div class="article-summary">
+            <%= link_to '#' do %>
+              <div class="article-date right">
+                <div class="article-date-number">
+                  15
+                </div>
+                <div class="article-date-month">
+                  Sept
+                </div>
+              </div>
+            <% end %>
+
+            <%= link_to '#', class: 'article-title' do %>
+              Ashley Madison Data Leak Could Widen Cracks In Relationships
+            <% end %>
+          </div>
+          <div class="article-summary">
+            <%= link_to '#' do %>
+              <div class="article-date right">
+                <div class="article-date-number">
+                  15
+                </div>
+                <div class="article-date-month">
+                  Sept
+                </div>
+              </div>
+            <% end %>
+
+            <%= link_to '#', class: 'article-title' do %>
+              Ashley Madison Data Leak Could Widen Cracks In Relationships
+            <% end %>
+          </div>
+
+          <%= link_to 'View all', '#', class: 'view-all right' %>
+        </div>
+      </div>
+    </div>
+
+    <div class="row collapse">
+      <div class="medium-6 columns  match-height">
+        <div class="specialist-areas standard-content-box">
+          <h4>
+            Specialist Areas Of Expertise
+          </h4>
+
+          <p>
+            Our family law team is one of the most respected and experienced in
+            the UK. We’ve helped thousands of people going through a divorce
+            and have developed particular expertise in a number of complex
+            areas.
+          </p>
+
+          <p>
+            We also have specialists in international family law, so we can
+            help if you or your ex-partner lives abroad or you jointly own
+            assets abroad, such as a second home or business. Find out more
+            about our international family law expertise
+          </p>
+        </div>
+      </div>
+
+      <div class="medium-6 columns  match-height">
+        <div class="testimonials text-center">
+          <div class="testimonials-slider">
+            <div class="testimonial">
+              <h4>
+                What Our Clients Are Saying...
+              </h4>
+
+              <p>
+                Alan's professionalism, patience and kindness never faltered.
+                He did not seek to antagonise but also did not allow me to be
+                wrong footed and always calmly rose to the occasion to achieve
+                the desired outcome. When things got really tough, it was a huge
+                relief to know the matter was in such capable hands.
+              </p>
+            </div>
+
+            <div class="testimonial hide">
+              <h4>
+                What The Experts Say About Our Family Law Experts
+              </h4>
+
+              <p>
+                We're regularly ranked highly in the leading independent guides to the legal profession, Chambers & Partners and the Legal 500.
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="medium-12 columns">
+        <div class="standard-content-box team-members">
+          <h4 class="text-center">
+            Our Experts In / <strong>Family Law</strong>
+          </h4>
+
+          <div class="row">
+            <div class="medium-4 columns">
+              <div class="team-member">
+                <%= link_to '#', class: 'left' do %>
+                  <%= image_tag 'http://placehold.it/72x72', alt: 'Team member' %>
+                <% end %>
+
+                <%= link_to '#', class: 'team-member-link' do %>
+                  <div class="team-member-name">
+                    Team member name
+                  </div>
+
+                  <div class="team-member-role">
+                    Role
+                  </div>
+                <% end %>
+              </div>
+            </div>
+          </div>
+
+
+          <%= link_to 'View all', '#', class: 'view-all right' %>
+        </div>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="medium-12 columns">
+        <div class="related-services">
+          <h5>
+            We can also help with...
+          </h5>
+
+          <ul class="related-services-list">
+            <li>
+              <%= link_to 'Buying or Selling a Home', '#', class: 'related-service-link' %>
+            </li>
+            <li>
+              <%= link_to 'Wills / Tax / Estate Planning', '#', class: 'related-service-link' %>
+            </li>
+            <li>
+              <%= link_to 'Elderly & Vulnerable Client', '#', class: 'related-service-link' %>
+            </li>
+          </ul>
+        </div>
+      </div>
     </div>
   </div>
 </div>

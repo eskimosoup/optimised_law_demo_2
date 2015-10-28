@@ -1,5 +1,28 @@
+.video-wrap {
+  position: relative;
+}
+
 .video-focus {
   background: $white;
   margin: em(20px) auto;
   padding: em(61px);
+}
+
+.video-play-icon {
+  background-image: linear-gradient(rgba($highlight-purple, .2), rgba($light-purple, .2) 98%),
+                    image-url('components/icons/play-icon.png');
+  background-position: 0 0, 50% 50%;
+  background-repeat: repeat, no-repeat;
+  background-size: auto, auto 50px;
+  border-bottom: 6px solid transparent;
+  height: 100%;
+  position: absolute;
+  width: 100%;
+
+
+  &:hover {
+    background-image: linear-gradient(rgba($highlight-purple, .86), rgba($light-purple, .2) 98%),
+                      image-url('components/icons/play-icon.png');
+    border-bottom-color: $turquoise;
+  }
 }
