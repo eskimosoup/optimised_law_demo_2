@@ -1,14 +1,14 @@
-<%= render 'optimadmin/shared/header/main_title', title: 'Manage Office Locations' %>
+<%= render 'optimadmin/shared/header/main_title', title: 'Manage Case Study Categories' %>
 
 <div class="main-content">
   <div class="row module-header collapse">
-    <%= render 'optimadmin/shared/module/index/new_item', title: 'Office Location', object: OfficeLocation, path: new_office_location_path %>
+    <%= render 'optimadmin/shared/module/index/new_item', title: 'Case Study Category', object: CaseStudyCategory, path: new_case_study_category_path %>
     <%= render 'optimadmin/shared/search_form' %>
     <%= render 'optimadmin/shared/module/index/pagination' %>
     <!--
       <%= render 'optimadmin/shared/module/index/order', options: [['Username', 'username']] %>
     -->
-    <%= render 'optimadmin/shared/module/index/recycle_bin', items: @office_locations.size, path: root_url %>
+    <%= render 'optimadmin/shared/module/index/recycle_bin', items: @case_study_categories.size, path: root_url %>
   </div>
 
   <div class="row collapse module-list-index header">
@@ -20,8 +20,7 @@
 
 
       <%= list_item 'large-8 small-8' do %>
-        <%= link_to octicon('chevron-down'), '#', class: 'helper-link index-list-expand-all', data: { this_class: 'octicon-chevron-up octicon-chevron-down' } %>
-        Title
+        Name
       <% end %>
 
 
@@ -34,8 +33,8 @@
     <%= list_item('large-1 hide-for-medium-down text-center last'){ 'Delete' } %>
   </div>
 
-  <!-- <div class='module-sortable' data-module="OfficeLocation"> -->
-  <%= render partial: 'office_location', collection: @office_locations, as: :office_location_presenter %>
+  <!-- <div class='module-sortable' data-module="CaseStudyCategory"> -->
+  <%= render partial: 'case_study_category', collection: @case_study_categories, as: :case_study_category_presenter %>
   <!-- </div> -->
-  <%= paginate @office_locations %>
+  <%= paginate @case_study_categories %>
 </div>

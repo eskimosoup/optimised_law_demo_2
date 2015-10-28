@@ -13,8 +13,6 @@ email "MyString"
 dx_number "MyString"
 image "MyString"
 details "<p>MyText</p>"
-slug "MyString"
-suggested_url "MyString"
 latitude 1.5
 longitude 1.5
 display true

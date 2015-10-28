@@ -1,15 +1,13 @@
-class Office < ActiveRecord::Base
+class CaseStudyCategory < ActiveRecord::Base
   extend FriendlyId
   friendly_id :slug_candidates, use: [:slugged, :history]
 
-  mount_uploader :image, OfficeUploader
-
-  belongs_to :office_location
-
-  validates :name, :office_location_id, :building_number, :street, :town, :postcode, :phone_number, presence: true
+  validates :name, presence: true
   validates :suggested_url, allow_blank: true, uniqueness: { case_sensitive: false, message: 'is already taken, leave blank to generate automatically' }
 
   scope :displayed, -> { where(display: true) }
+
+  has_many :case_studies, -> { displayed }, dependent: :destroy
 
   def slug_candidates
     [

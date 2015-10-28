@@ -11,10 +11,60 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20151028143410) do
+ActiveRecord::Schema.define(version: 20151028150442) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "article_categories", force: :cascade do |t|
+    t.string   "name",                         null: false
+    t.string   "slug"
+    t.string   "suggested_url"
+    t.boolean  "display",       default: true
+    t.datetime "created_at",                   null: false
+    t.datetime "updated_at",                   null: false
+  end
+
+  create_table "articles", force: :cascade do |t|
+    t.integer  "article_category_id"
+    t.string   "title",                              null: false
+    t.text     "summary"
+    t.string   "image"
+    t.text     "content"
+    t.date     "date"
+    t.string   "slug"
+    t.string   "suggested_url"
+    t.boolean  "display",             default: true
+    t.datetime "created_at",                         null: false
+    t.datetime "updated_at",                         null: false
+  end
+
+  add_index "articles", ["article_category_id"], name: "index_articles_on_article_category_id", using: :btree
+
+  create_table "case_studies", force: :cascade do |t|
+    t.integer  "case_study_category_id"
+    t.string   "title",                                 null: false
+    t.text     "summary",                               null: false
+    t.string   "image"
+    t.text     "content",                               null: false
+    t.string   "date"
+    t.string   "slug"
+    t.string   "suggested_url"
+    t.boolean  "display",                default: true
+    t.datetime "created_at",                            null: false
+    t.datetime "updated_at",                            null: false
+  end
+
+  add_index "case_studies", ["case_study_category_id"], name: "index_case_studies_on_case_study_category_id", using: :btree
+
+  create_table "case_study_categories", force: :cascade do |t|
+    t.string   "name",                         null: false
+    t.string   "slug"
+    t.string   "suggested_url"
+    t.boolean  "display",       default: true
+    t.datetime "created_at",                   null: false
+    t.datetime "updated_at",                   null: false
+  end
 
   create_table "departments", force: :cascade do |t|
     t.string   "name",                         null: false
@@ -176,6 +226,8 @@ ActiveRecord::Schema.define(version: 20151028143410) do
   add_index "services", ["department_id"], name: "index_services_on_department_id", using: :btree
   add_index "services", ["parent_id"], name: "index_services_on_parent_id", using: :btree
 
+  add_foreign_key "articles", "article_categories"
+  add_foreign_key "case_studies", "case_study_categories"
   add_foreign_key "offices", "office_locations"
   add_foreign_key "services", "departments"
 end

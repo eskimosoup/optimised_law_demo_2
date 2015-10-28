@@ -1,10 +1,10 @@
-<%= form_for(@office_location) do |f| %>
-<% if @office_location.errors.any? %>
+<%= form_for(@article_category) do |f| %>
+<% if @article_category.errors.any? %>
   <div id="error_explanation">
-    <h2><%= pluralize(@office_location.errors.count, "error") %> prohibited this office_location from being saved:</h2>
+    <h2><%= pluralize(@article_category.errors.count, "error") %> prohibited this article_category from being saved:</h2>
 
     <ul>
-      <% @office_location.errors.full_messages.each do |message| %>
+      <% @article_category.errors.full_messages.each do |message| %>
       <li><%= message %></li>
       <% end %>
     </ul>

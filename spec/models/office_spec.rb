@@ -6,6 +6,7 @@ RSpec.describe Office, type: :model, office: true do
     # use this for validating images
     # https://github.com/thoughtbot/shoulda/issues/244
     # let(:office) { create(:office) }
+    it { should validate_presence_of(:office_location_id) }
     it { should validate_presence_of(:name) }
     it { should validate_presence_of(:building_number) }
     it { should validate_presence_of(:street) }

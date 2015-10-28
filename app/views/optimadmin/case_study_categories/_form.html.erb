@@ -1,10 +1,10 @@
-<%= form_for(@office_location) do |f| %>
-<% if @office_location.errors.any? %>
+<%= form_for(@case_study_category) do |f| %>
+<% if @case_study_category.errors.any? %>
   <div id="error_explanation">
-    <h2><%= pluralize(@office_location.errors.count, "error") %> prohibited this office_location from being saved:</h2>
+    <h2><%= pluralize(@case_study_category.errors.count, "error") %> prohibited this case_study_category from being saved:</h2>
 
     <ul>
-      <% @office_location.errors.full_messages.each do |message| %>
+      <% @case_study_category.errors.full_messages.each do |message| %>
       <li><%= message %></li>
       <% end %>
     </ul>
@@ -31,15 +31,13 @@
       </div>
 
 
+
           <% end %>
-
-
     <%= field_set_tag nil, id: 'tabs-3' do %>
-
-          <div class="field">
-      <%= f.label :suggested_url %><br>
-      <%= f.text_field :suggested_url %>
-    </div>
+    <div class="field">
+<%= f.label :suggested_url %><br>
+<%= f.text_field :suggested_url %>
+</div>
             <div class="field">
         <%= f.label :display %><br>
         <%= f.check_box :display %>
