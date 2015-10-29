@@ -12,6 +12,8 @@ RSpec.describe CaseStudy, type: :model, case_study: true do
 
   describe 'associations', :association do
     it { should belong_to(:case_study_category) }
+    it { should have_many(:service_case_studies).dependent(:destroy) }
+    it { should have_many(:services).through(:service_case_studies) }
   end
 
   describe 'scopes', :scope do

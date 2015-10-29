@@ -5,6 +5,8 @@ class Article < ActiveRecord::Base
   mount_uploader :image, ArticleUploader
 
   belongs_to :article_category
+  has_many :service_articles, dependent: :destroy
+  has_many :services, through: :service_articles
 
   validates :title, :summary, :content, :article_category_id, presence: true
   validates :suggested_url, allow_blank: true, uniqueness: { case_sensitive: false, message: 'is already taken, leave blank to generate automatically' }

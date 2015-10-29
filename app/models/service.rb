@@ -5,6 +5,8 @@ class Service < ActiveRecord::Base
   mount_uploader :image, ServiceUploader
 
   belongs_to :department
+  has_many :service_articles, dependent: :nullify
+  has_many :articles, through: :service_articles
 
   validates :name, :summary, :content, :department_id, presence: true
   validates :suggested_url, allow_blank: true, uniqueness: { case_sensitive: false, message: 'is already taken, leave blank to generate automatically' }

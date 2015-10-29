@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20151028151636) do
+ActiveRecord::Schema.define(version: 20151029082054) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -101,6 +101,15 @@ ActiveRecord::Schema.define(version: 20151028151636) do
   end
 
   add_index "downloads", ["download_category_id"], name: "index_downloads_on_download_category_id", using: :btree
+
+  create_table "frequently_asked_questions", force: :cascade do |t|
+    t.integer  "position"
+    t.string   "question",                  null: false
+    t.text     "answer",                    null: false
+    t.boolean  "display",    default: true
+    t.datetime "created_at",                null: false
+    t.datetime "updated_at",                null: false
+  end
 
   create_table "friendly_id_slugs", force: :cascade do |t|
     t.string   "slug",                      null: false
@@ -234,6 +243,56 @@ ActiveRecord::Schema.define(version: 20151028151636) do
     t.string "environment"
   end
 
+  create_table "service_articles", force: :cascade do |t|
+    t.integer  "article_id"
+    t.integer  "service_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  add_index "service_articles", ["article_id"], name: "index_service_articles_on_article_id", using: :btree
+  add_index "service_articles", ["service_id"], name: "index_service_articles_on_service_id", using: :btree
+
+  create_table "service_case_studies", force: :cascade do |t|
+    t.integer  "case_study_id"
+    t.integer  "service_id"
+    t.datetime "created_at",    null: false
+    t.datetime "updated_at",    null: false
+  end
+
+  add_index "service_case_studies", ["case_study_id"], name: "index_service_case_studies_on_case_study_id", using: :btree
+  add_index "service_case_studies", ["service_id"], name: "index_service_case_studies_on_service_id", using: :btree
+
+  create_table "service_downloads", force: :cascade do |t|
+    t.integer  "download_id"
+    t.integer  "service_id"
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
+  end
+
+  add_index "service_downloads", ["download_id"], name: "index_service_downloads_on_download_id", using: :btree
+  add_index "service_downloads", ["service_id"], name: "index_service_downloads_on_service_id", using: :btree
+
+  create_table "service_faqs", force: :cascade do |t|
+    t.integer  "frequently_asked_question_id"
+    t.integer  "service_id"
+    t.datetime "created_at",                   null: false
+    t.datetime "updated_at",                   null: false
+  end
+
+  add_index "service_faqs", ["frequently_asked_question_id"], name: "index_service_faqs_on_frequently_asked_question_id", using: :btree
+  add_index "service_faqs", ["service_id"], name: "index_service_faqs_on_service_id", using: :btree
+
+  create_table "service_testimonials", force: :cascade do |t|
+    t.integer  "testimonial_id"
+    t.integer  "service_id"
+    t.datetime "created_at",     null: false
+    t.datetime "updated_at",     null: false
+  end
+
+  add_index "service_testimonials", ["service_id"], name: "index_service_testimonials_on_service_id", using: :btree
+  add_index "service_testimonials", ["testimonial_id"], name: "index_service_testimonials_on_testimonial_id", using: :btree
+
   create_table "services", force: :cascade do |t|
     t.integer  "department_id"
     t.integer  "parent_id"
@@ -251,9 +310,29 @@ ActiveRecord::Schema.define(version: 20151028151636) do
   add_index "services", ["department_id"], name: "index_services_on_department_id", using: :btree
   add_index "services", ["parent_id"], name: "index_services_on_parent_id", using: :btree
 
+  create_table "testimonials", force: :cascade do |t|
+    t.integer  "position"
+    t.string   "author",                        null: false
+    t.string   "author_company"
+    t.text     "recommendation",                null: false
+    t.boolean  "display",        default: true
+    t.datetime "created_at",                    null: false
+    t.datetime "updated_at",                    null: false
+  end
+
   add_foreign_key "articles", "article_categories"
   add_foreign_key "case_studies", "case_study_categories"
   add_foreign_key "downloads", "download_categories"
   add_foreign_key "offices", "office_locations"
+  add_foreign_key "service_articles", "articles"
+  add_foreign_key "service_articles", "services"
+  add_foreign_key "service_case_studies", "case_studies"
+  add_foreign_key "service_case_studies", "services"
+  add_foreign_key "service_downloads", "downloads"
+  add_foreign_key "service_downloads", "services"
+  add_foreign_key "service_faqs", "frequently_asked_questions"
+  add_foreign_key "service_faqs", "services"
+  add_foreign_key "service_testimonials", "services"
+  add_foreign_key "service_testimonials", "testimonials"
   add_foreign_key "services", "departments"
 end
