@@ -229,60 +229,56 @@
     </div>
   </div>
 
-  <div class="row">
+  <div class="row standard-content-box team-members">
     <div class="medium-12 columns">
-      <div class="standard-content-box team-members">
-        <h4 class="text-center">
-          Our Experts In / <strong><%= @presented_service.name %></strong>
-        </h4>
+      <h4 class="text-center">
+        Our Experts In / <strong><%= @presented_service.name %></strong>
+      </h4>
 
-        <div class="row">
-          <div class="medium-4 columns">
-            <% # TODO: Make this dynamic %>
-            <div class="team-member">
-              <%= link_to '#', class: 'left' do %>
-                <%= image_tag 'http://placehold.it/72x72', alt: 'Team member' %>
-              <% end %>
+      <div class="row">
+        <div class="medium-4 columns">
+          <% # TODO: Make this dynamic %>
+          <div class="team-member">
+            <%= link_to '#', class: 'left' do %>
+              <%= image_tag 'http://placehold.it/72x72', alt: 'Team member' %>
+            <% end %>
 
-              <%= link_to '#', class: 'team-member-link' do %>
-                <div class="team-member-name">
-                  Team member name
-                </div>
+            <%= link_to '#', class: 'team-member-link' do %>
+              <div class="team-member-name">
+                Team member name
+              </div>
 
-                <div class="team-member-role">
-                  Role
-                </div>
-              <% end %>
-            </div>
+              <div class="team-member-role">
+                Role
+              </div>
+            <% end %>
           </div>
         </div>
-
-
-        <%= link_to 'View all', '#', class: 'view-all right' %>
       </div>
+
+
+      <%= link_to 'View all', '#', class: 'view-all right' %>
     </div>
   </div>
 
-  <div class="row">
+  <div class="row related-services">
     <div class="medium-12 columns">
-      <div class="related-services">
-        <h5>
-          We can also help with...
-        </h5>
+      <h5>
+        We can also help with...
+      </h5>
 
-        <% # TODO: Make this dynamic %>
-        <ul class="related-services-list">
-          <li>
-            <%= link_to 'Buying or Selling a Home', '#', class: 'related-service-link' %>
-          </li>
-          <li>
-            <%= link_to 'Wills / Tax / Estate Planning', '#', class: 'related-service-link' %>
-          </li>
-          <li>
-            <%= link_to 'Elderly & Vulnerable Client', '#', class: 'related-service-link' %>
-          </li>
-        </ul>
-      </div>
+      <% # TODO: Make this dynamic %>
+      <ul class="related-services-list">
+        <li>
+          <%= link_to 'Buying or Selling a Home', '#', class: 'related-service-link' %>
+        </li>
+        <li>
+          <%= link_to 'Wills / Tax / Estate Planning', '#', class: 'related-service-link' %>
+        </li>
+        <li>
+          <%= link_to 'Elderly & Vulnerable Client', '#', class: 'related-service-link' %>
+        </li>
+      </ul>
     </div>
   </div>
 </div>
