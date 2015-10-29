@@ -35,6 +35,10 @@
         <%= f.label :case_study_category_id %><br>
         <%= f.select :case_study_category_id, CaseStudyCategory.pluck(:name, :id), prompt: 'Please select' %>
       </div>
+      <div class="field">
+        <%= f.label :service_ids, "Services" %><br>
+      <%= f.select :service_ids, grouped_options_for_select(Service.includes(:department).group_by(&:department).map{|x| ["#{x[0].name}", x[1].map{|y| [y.name, y.id]}]}, selected: f.object.services.pluck(:id)), {  }, { multiple: true, class: 'multiple-select' } %>
+    </div>
             <div class="field">
         <%= f.label :summary %><br>
         <%= f.text_area :summary %>

@@ -1,7 +1,7 @@
 module Optimadmin
   class OfficePresenter < Optimadmin::BasePresenter
     presents :office
-    delegate :id, :name, to: :office
+    delegate :building_name, :building_number, :street, :town, :county, :postcode, :id, :name, to: :office
 
     def toggle_title
       inline_detail_toggle_link(name)

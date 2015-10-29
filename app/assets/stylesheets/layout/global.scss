@@ -7,25 +7,3 @@ body {
   font-family: $font-open-sans;
   font-size: 14px;
 }
-
-.internal-content {
-  h1 {
-    color: $deep-purple;
-    font-family: $font-merriweather;
-    font-size: em(20px);
-    font-weight: $open-sans-bold;
-    line-height: 1.25;
-    margin: em(20px, 30px) 0  em(30px, 20px);
-  }
-}
-
-p {
-  color: $shadow-offset-black;
-  font-size: em(13px);
-  line-height: 1.6;
-
-  &.paragraph-highlight {
-    color: $highlight-purple;
-    font-weight: $open-sans-semibold;
-  }
-}

@@ -1,8 +1,13 @@
 Rails.application.routes.draw do
-
   %w( 403 404 422 500 ).each do |code|
     get code, to: 'errors#show', code: code
   end
+
+  resources :services, only: :show
+  resources :articles, only: [:index, :show]
+  resources :departments, only: :show
+  resources :audiences, only: :show
+  resources :case_studies, only: [:index, :show]
 
   get '/divorce', to: 'application#divorce'
 
@@ -14,6 +19,36 @@ Rails.application.routes.draw do
 end
 
 Optimadmin::Engine.routes.draw do
+  resources :audiences, except: [:show] do
+    collection do
+      post 'order'
+    end
+    member do
+      get 'toggle'
+    end
+  end
+  resources :videos, except: [:show] do
+    collection do
+      post 'order'
+    end
+    member do
+      get 'toggle'
+      get 'edit_images'
+      post 'update_image_default'
+      post 'update_image_fill'
+      post 'update_image_fit'
+    end
+  end
+  resources :video_categories, except: [:show] do
+    collection do
+      post 'order'
+    end
+    member do
+      get 'toggle'
+    end
+  end
+  get 'service/show'
+
   resources :frequently_asked_questions, except: [:show] do
     collection do
       post 'order'

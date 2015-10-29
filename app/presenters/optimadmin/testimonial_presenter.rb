@@ -4,7 +4,7 @@ module Optimadmin
     delegate :id, to: :testimonial
 
     def title
-      #testimonial.title
+      "#{testimonial.author} #{testimonial.author_company}"
     end
 
     def toggle_title
@@ -12,7 +12,7 @@ module Optimadmin
     end
 
     def optimadmin_summary
-      #h.simple_format testimonial.summary
+      h.simple_format testimonial.recommendation
     end
   end
 end

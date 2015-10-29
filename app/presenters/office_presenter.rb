@@ -1,6 +1,6 @@
 class OfficePresenter < BasePresenter
   presents :office
-  delegate :name, :phone_number, :fax_number, :dx_number, to: :office
+  delegate :building_name, :building_number, :street, :town, :county, :postcode, :name, :phone_number, :fax_number, :dx_number, to: :office
 
   def address
     [building_number, building_name, street, town, county, postcode].reject{|x| x.blank?}.join(', ')

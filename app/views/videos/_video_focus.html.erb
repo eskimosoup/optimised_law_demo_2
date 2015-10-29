@@ -1,0 +1,34 @@
+<%= content_for :footer do %>
+  <script>
+    $(document).ready(function() {
+      $('.video-colorbox').colorbox({
+        inline: true,
+        href: '#video-embed'
+      });
+    });
+  </script>
+<% end %>
+<div class="row video-focus">
+  <div class="medium-7 columns">
+    <h4>
+      <%= video_presenter.title %>
+    </h4>
+
+    <%= video_presenter.description %>
+  </div>
+
+  <div class="medium-5 columns">
+    <div class="video-wrap">
+      <%= link_to '#video-embed', class: 'video-thumbnail video-colorbox', title: 'Video' do %>
+        <div class="video-play-icon"></div>
+        <%= video_presenter.index_image %>
+      <% end %>
+    </div>
+
+    <div class="hide">
+      <div id="video-embed">
+        <%= video_presenter.embed_code %>
+      </div>
+    </div>
+  </div>
+</div>

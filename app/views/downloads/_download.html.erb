@@ -1,0 +1,17 @@
+<div class="medium-4 columns">
+  <div class="row collapse">
+    <div class="medium-5 columns">
+      <%= download_presenter.linked_image('show') %>
+    </div>
+
+    <div class="medium-7 columns">
+      <%= link_to '#', title: 'Download' do %>
+        <div class="additional-guides-download-title">
+          <%= download_presenter.title %>
+        </div>
+
+        <%= download_presenter.download_button('inline') %>
+      <% end %>
+    </div>
+</div>
+</div>

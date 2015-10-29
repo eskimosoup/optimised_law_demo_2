@@ -8,10 +8,6 @@ RSpec.describe FrequentlyAskedQuestion, type: :model, frequently_asked_question:
   end
 
   describe 'associations', :association do
-    it { should belong_to(:content_blocks) }
-
-    it { should belong_to(:content_blocks).counter_cache }
-
     it { should have_many(:service_faqs).dependent(:destroy) }
     it { should have_many(:services).through(:service_faqs) }
   end

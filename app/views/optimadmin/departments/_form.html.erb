@@ -26,6 +26,10 @@
     </ul>
 
     <%= field_set_tag nil, id: 'tabs-1' do %>
+    <div class="field">
+<%= f.label :audience_id %><br>
+<%= f.select :audience_id, Audience.pluck(:name, :id), prompt: 'Please select' %>
+</div>
             <div class="field">
         <%= f.label :name %><br>
         <%= f.text_field :name %>

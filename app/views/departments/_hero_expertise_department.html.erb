@@ -1,0 +1,9 @@
+<div class="medium-4 columns <%= cycle('sectors', 'personal-services', 'business-services') %>">
+  <div class="hero-banner-expertise-title">
+    <%= department_presenter.name %>
+  </div>
+
+  <ul class="hero-banner-expertise-list">
+    <%= render partial: 'services/hero_expertise_service', collection: BaseCollectionPresenter.new(collection: department_presenter.services, view_template: self, presenter: ServicePresenter), as: :service_presenter %>
+  </ul>
+</div>

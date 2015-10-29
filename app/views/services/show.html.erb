@@ -1,0 +1,288 @@
+<%= content_for :head do %>
+  <script>
+    $(function() {
+      $('.testimonials-slider').on('init', function() {
+        setHeight();
+      });
+
+      $('.testimonials-slider').slick({
+        infinite: true,
+        dots: true,
+        arrows: false
+      });
+    })
+  </script>
+<% end %>
+
+<div class="internal-hero-banner divorce">
+  <h2 class="internal-hero-banner-title">
+    In the most difficult of times, you can rely on us
+  </h2>
+
+  <%= link_to 'Family: Supporting Services', '#', class: 'toggle-class supporting-services-toggle', data: { class: 'hide', container: '.supporting-services', return: 'false' } %>
+</div>
+
+<div class="supporting-services hide">
+  <div class="row">
+    <div class="medium-4 columns">
+      <ul class="supporting-services-list">
+        <li>
+          <%= link_to 'A service name', '#', class: 'supporting-services-link' %>
+        </li>
+        <li>
+          <%= link_to 'A service name', '#', class: 'supporting-services-link' %>
+        </li>
+      </ul>
+    </div>
+
+    <div class="medium-4 columns">
+      <ul class="supporting-services-list">
+        <li>
+          <%= link_to 'A service name', '#', class: 'supporting-services-link' %>
+        </li>
+        <li>
+          <%= link_to 'A service name', '#', class: 'supporting-services-link' %>
+        </li>
+      </ul>
+    </div>
+
+    <div class="medium-4 columns">
+      <ul class="supporting-services-list">
+        <li>
+          <%= link_to 'A service name', '#', class: 'supporting-services-link' %>
+        </li>
+        <li>
+          <%= link_to 'A service name', '#', class: 'supporting-services-link' %>
+        </li>
+      </ul>
+    </div>
+  </div>
+</div>
+
+<div class="service-content">
+  <div class="row">
+    <div class="medium-12 columns">
+      <ul class="breadcrumbs">
+        <li>
+          <%= link_to (image_tag 'components/navigation/small-home.png', alt: 'Home'), root_url, title: 'Home' %>
+        </li>
+        <li>
+          <%= @presented_service.linked_audience %>
+        </li>
+        <li>
+          <%= @presented_service.linked_department %>
+        </li>
+        <li>
+          <%= @presented_service.linked_name %>
+        </li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="medium-7 columns">
+      <div class="internal-content">
+        <h1><%= @presented_service.name %></h1>
+
+        <%= @presented_service.content %>
+      </div>
+    </div>
+
+    <div class="medium-5 columns">
+      <div class="callback-header">
+        <%= image_tag 'components/icons/telephone.png', alt: 'Telephone', class: 'telephone-icon' %>
+
+        <%= global_site_settings['Telephone'] %>
+      </div>
+
+      <div class="callback-form">
+        <h3>Request a call back</h3>
+
+        <p>
+          Simply complete the form below and one of our experts will get back to you.
+        </p>
+
+        <%= form_tag '' do %>
+          <%= text_field_tag :name, params[:name], placeholder: 'Your name', required: true %>
+          <%= text_field_tag :email_address, params[:email_address], placeholder: 'Email address', required: true %>
+          <%= text_field_tag :telephone_number, params[:telephone_number], placeholder: 'Telephone number', required: true %>
+          <%= select_tag :enquiry_type, options_for_select(Service.displayed.pluck(:name), selected: (params[:enquiry_type] || @presented_service.name)), prompt: 'Select enquiry type', required: true %>
+          <div class="callback-form-required-fields">* All fields are required</div>
+          <%= submit_tag 'Submit', class: 'callback-form-submit right' %>
+        <% end %>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="service-resources">
+  <div class="row guides">
+    <div class="small-12 columns">
+      <h4 class="downoad-section">Download our <%= @presented_service.name %> Guides</h4>
+    </div>
+  </div>
+
+  <%= render partial: 'downloads/download_focus', object: @presented_service_downloads[0], as: :download_presenter %>
+
+  <div class="row additional-guides">
+    <div class="medium-12 columns">
+      <div class="row">
+        <%= render partial: 'downloads/download', collection: @presented_service_downloads[1..-1], as: :download_presenter %>
+    </div>
+  </div>
+  </div>
+
+  <%= render partial: 'videos/video_focus', object: @presented_service_video, as: :video_presenter if @presented_service_video.present? %>
+
+  <div class="row updates-wrap">
+    <div class="row">
+      <div class="medium-12 text-center columns">
+        <h4>
+          Insight / <strong><%= @presented_service.name %></strong>
+        </h4>
+
+        <ul class="content-navigation">
+          <li>
+            <%= link_to 'Updates', '#updates', class: 'content-navigation-link active', title: 'Search' %>
+          </li>
+
+          <li>
+            <%= link_to 'FAQs', '#faqs', class: 'content-navigation-link', title: 'Expertise' %>
+          </li>
+
+          <li>
+            <%= link_to 'Case Studies', '#case-studies', class: 'content-navigation-link', title: 'A-Z' %>
+          </li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="articles content-navigation-content" id="updates">
+      <div class="row">
+        <div class="medium-6 columns">
+          <%= render partial: 'articles/article_focus', object: @presented_service_articles[0], as: :article_presenter %>
+        </div>
+
+        <div class="medium-6 columns">
+          <%= render partial: 'articles/article_summary', collection: @presented_service_articles[1..-1], as: :article_presenter %>
+
+          <%= link_to 'View all', '#', class: 'view-all right' %>
+        </div>
+      </div>
+    </div>
+
+    <div class="frequently-asked-questions content-navigation-content hide" id="faqs">
+      <div class="row">
+        <% @service_faqs.in_groups(2, false).each do |group| %>
+          <div class="medium-6 columns">
+            <%= render partial: 'frequently_asked_questions/frequently_asked_question', collection: BaseCollectionPresenter.new(collection: group, view_template: self, presenter: FrequentlyAskedQuestionPresenter), as: :frequently_asked_question_presenter %>
+          </div>
+        <% end %>
+      </div>
+    </div>
+
+    <div class="case-studies content-navigation-content hide" id="case-studies">
+      <div class="row">
+        <div class="medium-6 columns">
+          <%= render partial: 'case_studies/case_study_focus', object: @presented_service_case_studies[0], as: :case_study_presenter %>
+        </div>
+
+        <div class="medium-6 columns">
+          <%= render partial: 'case_studies/case_study_summary', collection: @presented_service_case_studies[1..-1], as: :case_study_presenter %>
+
+          <%= link_to 'View all', '#', class: 'view-all right' %>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="row collapse">
+    <div class="medium-6 columns  match-height">
+      <% # TODO: Make this dynamic %>
+      <div class="specialist-areas standard-content-box">
+        <h4>
+          Specialist Areas Of Expertise
+        </h4>
+
+        <p>
+          Our family law team is one of the most respected and experienced in
+          the UK. We’ve helped thousands of people going through a divorce
+          and have developed particular expertise in a number of complex
+          areas.
+        </p>
+
+        <p>
+          We also have specialists in international family law, so we can
+          help if you or your ex-partner lives abroad or you jointly own
+          assets abroad, such as a second home or business. Find out more
+          about our international family law expertise
+        </p>
+      </div>
+    </div>
+
+    <div class="medium-6 columns  match-height">
+      <div class="testimonials text-center">
+        <div class="testimonials-slider">
+          <%= render partial: 'testimonials/testimonial', collection: @presented_service_testimonials, as: :testimonial_presenter %>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="medium-12 columns">
+      <div class="standard-content-box team-members">
+        <h4 class="text-center">
+          Our Experts In / <strong><%= @presented_service.name %></strong>
+        </h4>
+
+        <div class="row">
+          <div class="medium-4 columns">
+            <% # TODO: Make this dynamic %>
+            <div class="team-member">
+              <%= link_to '#', class: 'left' do %>
+                <%= image_tag 'http://placehold.it/72x72', alt: 'Team member' %>
+              <% end %>
+
+              <%= link_to '#', class: 'team-member-link' do %>
+                <div class="team-member-name">
+                  Team member name
+                </div>
+
+                <div class="team-member-role">
+                  Role
+                </div>
+              <% end %>
+            </div>
+          </div>
+        </div>
+
+
+        <%= link_to 'View all', '#', class: 'view-all right' %>
+      </div>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="medium-12 columns">
+      <div class="related-services">
+        <h5>
+          We can also help with...
+        </h5>
+
+        <% # TODO: Make this dynamic %>
+        <ul class="related-services-list">
+          <li>
+            <%= link_to 'Buying or Selling a Home', '#', class: 'related-service-link' %>
+          </li>
+          <li>
+            <%= link_to 'Wills / Tax / Estate Planning', '#', class: 'related-service-link' %>
+          </li>
+          <li>
+            <%= link_to 'Elderly & Vulnerable Client', '#', class: 'related-service-link' %>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</div>

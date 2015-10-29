@@ -20,6 +20,8 @@ class ApplicationController < ActionController::Base
   end
 
   def index
+    @presented_departments = collection_presenter(Department.displayed, DepartmentPresenter)
+    @presented_offices = collection_presenter(Office.displayed, OfficePresenter)
   end
 
   def divorce

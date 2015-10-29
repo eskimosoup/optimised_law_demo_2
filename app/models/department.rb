@@ -5,10 +5,12 @@ class Department < ActiveRecord::Base
   mount_uploader :image, DepartmentUploader
 
   validates :name, uniqueness: { case_sensitive: false }, presence: true
+  validates :audience_id, presence: true
   validates :suggested_url, allow_blank: true, uniqueness: { case_sensitive: false, message: 'is already taken, leave blank to generate automatically' }
 
   scope :displayed, -> { where(display: true) }
   has_many :services, -> { displayed }, dependent: :nullify
+  belongs_to :audience
 
   def slug_candidates
     [

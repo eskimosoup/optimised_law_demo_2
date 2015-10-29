@@ -24,7 +24,10 @@
       </div>
 
       <ul id="modules" class="content-category-list">
-<%= module_link(model: Frequently Asked Question, path: frequently_asked_questions_path) %>
+<%= module_link(model: Audience, path: audiences_path) %>
+<%= module_link(model: Video, path: videos_path) %>
+<%= module_link(content: "Video Category", model: VideoCategory, path: video_categories_path) %>
+<%= module_link(content: "Frequently Asked Questions", model: FrequentlyAskedQuestion, path: frequently_asked_questions_path) %>
 <%= module_link(model: Testimonial, path: testimonials_path) %>
 <%= module_link(model: Download, path: downloads_path) %>
 <%= module_link(content: "Download Category", model: DownloadCategory, path: download_categories_path) %>

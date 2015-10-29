@@ -19,10 +19,6 @@
 
 
 
-      <% # ADD TWO TO THE TITLE LARGE COLUMN SIZE BELOW TO ACCOUNT FOR NO IMAGE %>
-
-
-
       <%= list_item 'large-7 small-8' do %>
         <%= link_to octicon('chevron-down'), '#', class: 'helper-link index-list-expand-all', data: { this_class: 'octicon-chevron-up octicon-chevron-down' } %>
         Title
@@ -38,8 +34,8 @@
     <%= list_item('large-1 hide-for-medium-down text-center last'){ 'Delete' } %>
   </div>
 
-  <!-- <div class='module-sortable' data-module="Testimonial"> -->
+  <div class='module-sortable' data-module="Testimonial">
   <%= render partial: 'testimonial', collection: @testimonials, as: :testimonial_presenter %>
-  <!-- </div> -->
+  </div>
   <%= paginate @testimonials %>
 </div>

@@ -1,0 +1,38 @@
+<%= render 'optimadmin/shared/header/main_title', title: 'Manage Video Categories' %>
+
+<div class="main-content">
+  <div class="row module-header collapse">
+    <%= render 'optimadmin/shared/module/index/new_item', title: 'Video Category', object: VideoCategory, path: new_video_category_path %>
+    <%= render 'optimadmin/shared/search_form' %>
+    <%= render 'optimadmin/shared/module/index/pagination' %>
+    <!--
+      <%= render 'optimadmin/shared/module/index/order', options: [['Username', 'username']] %>
+    -->
+    <%= render 'optimadmin/shared/module/index/recycle_bin', items: @video_categories.size, path: root_url %>
+  </div>
+
+  <div class="row collapse module-list-index header">
+
+
+
+
+
+      <%= list_item 'large-8 small-8' do %>
+        Name
+      <% end %>
+
+
+
+
+    <%= list_item { 'Display' } %>
+    <%= list_item { 'View' } %>
+    <%= list_item { 'Edit' } %>
+
+    <%= list_item('large-1 hide-for-medium-down text-center last'){ 'Delete' } %>
+  </div>
+
+  <!-- <div class='module-sortable' data-module="VideoCategory"> -->
+  <%= render partial: 'video_category', collection: @video_categories, as: :video_category_presenter %>
+  <!-- </div> -->
+  <%= paginate @video_categories %>
+</div>

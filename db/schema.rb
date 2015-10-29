@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20151029082054) do
+ActiveRecord::Schema.define(version: 20151029143452) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -41,18 +41,27 @@ ActiveRecord::Schema.define(version: 20151029082054) do
 
   add_index "articles", ["article_category_id"], name: "index_articles_on_article_category_id", using: :btree
 
+  create_table "audiences", force: :cascade do |t|
+    t.string   "name"
+    t.string   "slug"
+    t.string   "suggested_url"
+    t.boolean  "display",       default: true
+    t.datetime "created_at",                   null: false
+    t.datetime "updated_at",                   null: false
+  end
+
   create_table "case_studies", force: :cascade do |t|
     t.integer  "case_study_category_id"
     t.string   "title",                                 null: false
     t.text     "summary",                               null: false
     t.string   "image"
     t.text     "content",                               null: false
-    t.string   "date"
     t.string   "slug"
     t.string   "suggested_url"
     t.boolean  "display",                default: true
     t.datetime "created_at",                            null: false
     t.datetime "updated_at",                            null: false
+    t.date     "date"
   end
 
   add_index "case_studies", ["case_study_category_id"], name: "index_case_studies_on_case_study_category_id", using: :btree
@@ -75,7 +84,10 @@ ActiveRecord::Schema.define(version: 20151029082054) do
     t.boolean  "display",       default: true
     t.datetime "created_at",                   null: false
     t.datetime "updated_at",                   null: false
+    t.integer  "audience_id"
   end
+
+  add_index "departments", ["audience_id"], name: "index_departments_on_audience_id", using: :btree
 
   create_table "download_categories", force: :cascade do |t|
     t.string   "name",                         null: false
@@ -98,6 +110,7 @@ ActiveRecord::Schema.define(version: 20151029082054) do
     t.string   "suggested_url"
     t.datetime "created_at",                          null: false
     t.datetime "updated_at",                          null: false
+    t.text     "contents_summary"
   end
 
   add_index "downloads", ["download_category_id"], name: "index_downloads_on_download_category_id", using: :btree
@@ -293,6 +306,16 @@ ActiveRecord::Schema.define(version: 20151029082054) do
   add_index "service_testimonials", ["service_id"], name: "index_service_testimonials_on_service_id", using: :btree
   add_index "service_testimonials", ["testimonial_id"], name: "index_service_testimonials_on_testimonial_id", using: :btree
 
+  create_table "service_videos", force: :cascade do |t|
+    t.integer  "video_id"
+    t.integer  "service_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  add_index "service_videos", ["service_id"], name: "index_service_videos_on_service_id", using: :btree
+  add_index "service_videos", ["video_id"], name: "index_service_videos_on_video_id", using: :btree
+
   create_table "services", force: :cascade do |t|
     t.integer  "department_id"
     t.integer  "parent_id"
@@ -320,8 +343,33 @@ ActiveRecord::Schema.define(version: 20151029082054) do
     t.datetime "updated_at",                    null: false
   end
 
+  create_table "video_categories", force: :cascade do |t|
+    t.string   "name",                         null: false
+    t.string   "slug"
+    t.string   "suggested_url"
+    t.boolean  "display",       default: true
+    t.datetime "created_at",                   null: false
+    t.datetime "updated_at",                   null: false
+  end
+
+  create_table "videos", force: :cascade do |t|
+    t.string   "title",                            null: false
+    t.integer  "video_category_id"
+    t.text     "description"
+    t.string   "image"
+    t.text     "embed_code",                       null: false
+    t.boolean  "display",           default: true
+    t.datetime "created_at",                       null: false
+    t.datetime "updated_at",                       null: false
+    t.string   "slug"
+    t.string   "suggested_url"
+  end
+
+  add_index "videos", ["video_category_id"], name: "index_videos_on_video_category_id", using: :btree
+
   add_foreign_key "articles", "article_categories"
   add_foreign_key "case_studies", "case_study_categories"
+  add_foreign_key "departments", "audiences"
   add_foreign_key "downloads", "download_categories"
   add_foreign_key "offices", "office_locations"
   add_foreign_key "service_articles", "articles"
@@ -334,5 +382,8 @@ ActiveRecord::Schema.define(version: 20151029082054) do
   add_foreign_key "service_faqs", "services"
   add_foreign_key "service_testimonials", "services"
   add_foreign_key "service_testimonials", "testimonials"
+  add_foreign_key "service_videos", "services"
+  add_foreign_key "service_videos", "videos"
   add_foreign_key "services", "departments"
+  add_foreign_key "videos", "video_categories"
 end

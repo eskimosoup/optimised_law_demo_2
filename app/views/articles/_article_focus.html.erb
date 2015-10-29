@@ -1,0 +1,9 @@
+<%= link_to article_presenter.link, title: article_presenter.title, class: 'article-focus' do %>
+  <h5>
+    <%= article_presenter.title %>
+  </h5>
+<% end %>
+
+<%= link_to article_presenter.link, title: article_presenter.title do %>
+  <%= article_presenter.date_block %>
+<% end %>
