@@ -134,7 +134,7 @@
           <%= text_field_tag :name, params[:name], placeholder: 'Your name', required: true %>
           <%= text_field_tag :email_address, params[:email_address], placeholder: 'Email address', required: true %>
           <%= text_field_tag :telephone_number, params[:telephone_number], placeholder: 'Telephone number', required: true %>
-          <%= select_tag :enquiry_type, options_for_select(['Pre-nup', 'Civil Partnership and Same Sex Marriages', 'Financial Settlement'], selected: params[:enquiry_type]), prompt: 'Select enquiry type', required: true %>
+          <%= select_tag :enquiry_type, options_for_select(Service.displayed.pluck(:name), selected: params[:enquiry_type]), prompt: 'Select enquiry type', required: true %>
           <div class="callback-form-required-fields">* All fields are required</div>
           <%= submit_tag 'Submit', class: 'callback-form-submit right' %>
         <% end %>

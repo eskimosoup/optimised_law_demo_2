@@ -6,6 +6,11 @@ RSpec.describe OfficePresenter, type: :presenter, office: true do
 
   describe 'delegations', :delegation do
     it { should delegate_method(:name).to(:office) }
+    it { should delegate_method(:building_name).to(:office) }
+    it { should delegate_method(:building_number).to(:office) }
+    it { should delegate_method(:street).to(:office) }
+    it { should delegate_method(:town).to(:office) }
+    it { should delegate_method(:postcode).to(:office) }
     it { should delegate_method(:phone_number).to(:office) }
     it { should delegate_method(:fax_number).to(:office) }
     it { should delegate_method(:dx_number).to(:office) }

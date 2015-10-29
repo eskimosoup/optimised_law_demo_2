@@ -9,6 +9,18 @@ RSpec.describe ServicePresenter, type: :presenter, service: true do
   end
 
   describe 'standard service' do
+    it 'returns the linked name' do
+      expect(service_presenter.linked_name).to eq(link_to service.name, service)
+    end
+
+    it 'returns the linked department' do
+      expect(service_presenter.linked_department).to eq(link_to service.department.name, service.department)
+    end
+
+    it 'returns the linked audience' do
+      expect(service_presenter.linked_audience).to eq(link_to service.department.audience.name, service.department.audience)
+    end
+
     it 'returns the department name' do
       expect(service_presenter.department_name).to eq(service.department.name)
     end

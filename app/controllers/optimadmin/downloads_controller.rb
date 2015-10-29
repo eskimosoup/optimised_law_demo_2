@@ -2,7 +2,7 @@ module Optimadmin
   class DownloadsController < Optimadmin::ApplicationController
     before_action :set_download, only: [:show, :edit, :update, :destroy]
 
-    edit_images_for Download, [[:image, { show: ['fill', 200, 200], index: ['fill', 200, 200] }]]
+    edit_images_for Download, [[:image, { show: ['fill', 82, 116], focus: ['fill', 168, 263] }]]
 
     def index
       @downloads = Optimadmin::BaseCollectionPresenter.new(collection: Download.where('title ILIKE ?', "%#{params[:search]}%").page(params[:page]).per(params[:per_page] || 15), view_template: view_context, presenter: Optimadmin::DownloadPresenter)
@@ -48,7 +48,7 @@ module Optimadmin
     end
 
     def download_params
-      params.require(:download).permit(:download_category_id, :title, :summary, :content, :image, :file, :suggested_url, :display)
+      params.require(:download).permit(:download_category_id, :title, :summary, :content, :image, :file, :suggested_url, :display, :contents_summary, service_ids: [])
     end
   end
 end

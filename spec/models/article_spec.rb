@@ -12,6 +12,8 @@ RSpec.describe Article, type: :model, article: true do
 
   describe 'associations', :association do
     it { should belong_to(:article_category) }
+    it { should have_many(:service_articles).dependent(:destroy) }
+    it { should have_many(:services).through(:service_articles) }
   end
 
   describe 'scopes', :scope do

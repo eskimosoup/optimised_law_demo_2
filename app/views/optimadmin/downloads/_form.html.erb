@@ -35,6 +35,10 @@
         <%= f.label :download_category_id %><br>
         <%= f.select :download_category_id, DownloadCategory.pluck(:name, :id), prompt: 'Please select'  %>
       </div>
+      <div class="field">
+        <%= f.label :service_ids, "Services" %><br>
+      <%= f.select :service_ids, grouped_options_for_select(Service.includes(:department).group_by(&:department).map{|x| ["#{x[0].name}", x[1].map{|y| [y.name, y.id]}]}, selected: f.object.services.pluck(:id)), {  }, { multiple: true, class: 'multiple-select' } %>
+    </div>
             <div class="field">
         <%= f.label :summary %><br>
         <%= f.text_area :summary %>
@@ -42,6 +46,10 @@
             <div class="field">
         <%= f.label :content %><br>
         <%= f.text_area :content, class: 'tinymce' %>
+      </div>
+            <div class="field">
+        <%= f.label :contents_summary %><br>
+        <%= f.text_area :contents_summary, class: 'tinymce' %>
       </div>
 
           <% end %>

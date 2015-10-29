@@ -5,11 +5,13 @@ class CaseStudy < ActiveRecord::Base
   mount_uploader :image, ArticleUploader
 
   belongs_to :case_study_category
+  has_many :service_case_studies, dependent: :destroy
+  has_many :services, through: :service_case_studies
 
   validates :title, :summary, :content, :case_study_category_id, presence: true
   validates :suggested_url, allow_blank: true, uniqueness: { case_sensitive: false, message: 'is already taken, leave blank to generate automatically' }
 
-  scope :displayed, -> { where("display = ? AND date <= ?", true, Date.today) }
+  scope :displayed, -> { where("display = ? AND date <= ?", true, Date.today).order(date: :desc) }
 
   def slug_candidates
     [

@@ -1,0 +1,7 @@
+<div class="article-summary">
+  <%= link_to article_presenter.link, title: article_presenter.title do %>
+    <%= article_presenter.date_block('right') %>
+  <% end %>
+
+  <%= article_presenter.linked_title(class: 'article-title') %>
+</div>

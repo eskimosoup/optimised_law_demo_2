@@ -12,6 +12,18 @@ RSpec.describe Service, type: :model, service: true do
 
   describe 'associations', :association do
     it { should belong_to(:department) }
+    it { should have_many(:service_articles).dependent(:nullify) }
+    it { should have_many(:articles).through(:service_articles) }
+    it { should have_many(:service_case_studies).dependent(:nullify) }
+    it { should have_many(:case_studies).through(:service_case_studies) }
+    it { should have_many(:service_faqs).dependent(:nullify) }
+    it { should have_many(:frequently_asked_questions).through(:service_faqs) }
+    it { should have_many(:service_downloads).dependent(:nullify) }
+    it { should have_many(:downloads).through(:service_downloads) }
+    it { should have_many(:service_testimonials).dependent(:nullify) }
+    it { should have_many(:testimonials).through(:service_testimonials) }
+    it { should have_many(:service_videos).dependent(:nullify) }
+    it { should have_many(:videos).through(:service_videos) }
   end
 
   describe 'scopes', :scope do

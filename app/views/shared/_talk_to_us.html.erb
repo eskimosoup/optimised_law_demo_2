@@ -26,12 +26,7 @@
     <div class="row">
       <div class="medium-6 columns">
         <ul class="offices-list">
-          <li>
-            Slough Office: <span class="office-telephone">01753 325489</span>
-          </li>
-          <li>
-            Slough Office: <span class="office-telephone">01753 325489</span>
-          </li>
+          <%= render partial: 'offices/modal_office', collection: @presented_offices, as: :office_presenter %>
         </ul>
       </div>
 
@@ -53,7 +48,7 @@
           <%= radio_button_tag :contact_method, 'Phone', class: 'radio-button', checked: false %>
           <%= label_tag :phone %>
 
-          <%= select_tag :enquiry_type, options_for_select(['Pre-nup', 'Civil Partnership and Same Sex Marriages', 'Financial Settlement'], selected: params[:enquiry_type]), prompt: 'Select enquiry type', required: true %>
+          <%= select_tag :enquiry_type, options_for_select(Service.displayed.pluck(:name), selected: params[:enquiry_type]), prompt: 'Select enquiry type', required: true %>
 
           <%= text_area_tag :enquiry, nil, placeholder: 'How can we help?' %>
           <%= submit_tag 'Submit', class: 'callback-form-submit right' %>

@@ -6,6 +6,8 @@ class Download < ActiveRecord::Base
   mount_uploader :file, Optimadmin::DocumentUploader
 
   belongs_to :download_category
+  has_many :service_downloads, dependent: :destroy
+  has_many :services, through: :service_downloads
 
   validates :title, :file, :download_category_id, presence: true
   validates :suggested_url, allow_blank: true, uniqueness: { case_sensitive: false, message: 'is already taken, leave blank to generate automatically' }

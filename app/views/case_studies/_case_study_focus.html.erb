@@ -1,0 +1,9 @@
+<%= link_to case_study_presenter.link, title: case_study_presenter.title, class: 'case-study-focus' do %>
+  <h5>
+    <%= case_study_presenter.title %>
+  </h5>
+<% end %>
+
+<%= link_to case_study_presenter.link, title: case_study_presenter.title do %>
+  <%= case_study_presenter.date_block %>
+<% end %>

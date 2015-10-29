@@ -31,52 +31,13 @@
 
     <div class="hero-banner-expertise content-navigation-content hide" id="hero-banner-expertise">
       <div class="row">
-        <div class="medium-4 columns sectors">
-          <div class="hero-banner-expertise-title">
-            Sectors
-          </div>
-
-          <ul class="hero-banner-expertise-list">
-            <li>
-              <%= link_to 'Aviation', '#', class: 'hero-banner-expertise-link' %>
-              <%= link_to 'Healthcare', '#', class: 'hero-banner-expertise-link' %>
-              <%= link_to 'Hospitality', '#', class: 'hero-banner-expertise-link' %>
-            </li>
-          </ul>
-        </div>
-
-        <div class="medium-4 columns personal-services">
-          <div class="hero-banner-expertise-title">
-            Personal Services
-          </div>
-
-          <ul class="hero-banner-expertise-list">
-            <li>
-              <%= link_to 'Aviation', '#', class: 'hero-banner-expertise-link' %>
-              <%= link_to 'Healthcare', '#', class: 'hero-banner-expertise-link' %>
-              <%= link_to 'Hospitality', '#', class: 'hero-banner-expertise-link' %>
-            </li>
-          </ul>
-        </div>
-
-        <div class="medium-4 columns business-services">
-          <div class="hero-banner-expertise-title">
-            Business Services
-          </div>
-
-          <ul class="hero-banner-expertise-list">
-            <li>
-              <%= link_to 'Aviation', '#', class: 'hero-banner-expertise-link' %>
-              <%= link_to 'Healthcare', '#', class: 'hero-banner-expertise-link' %>
-              <%= link_to 'Hospitality', '#', class: 'hero-banner-expertise-link' %>
-            </li>
-          </ul>
-        </div>
+        <%= render partial: 'departments/hero_expertise_department', collection: @presented_departments, as: :department_presenter %>
       </div>
     </div>
 
     <div class="hero-banner-a-to-z  content-navigation-content hide" id="hero-banner-a-to-z">
       <ul class="hero-banner-letter-list">
+        <% # TODO: Make this work %>
         <li>
           <%= link_to 'a', '#', class: 'active' %>
         </li>
@@ -98,41 +59,7 @@
         <div class="small-12 columns">
           <div class="hero-banner-service-list">
             <div class="row">
-              <div class="medium-4 columns sectors">
-                <div class="hero-banner-service-list-title">
-                  Sector
-                </div>
-
-                <ul class="hero-banner-service-list-services">
-                  <li>
-                    <%= link_to 'Aviation', '#', class: '#' %>
-                  </li>
-                </ul>
-              </div>
-
-              <div class="medium-4 columns personal-services">
-                <div class="hero-banner-service-list-title">
-                  Personal Services
-                </div>
-
-                <ul class="hero-banner-service-list-services">
-                  <li>
-                    <%= link_to 'Aviation', '#', class: '#' %>
-                  </li>
-                </ul>
-              </div>
-
-              <div class="medium-4 columns business-services">
-                <div class="hero-banner-service-list-title">
-                  Business Services
-                </div>
-
-                <ul class="hero-banner-service-list-services">
-                  <li>
-                    <%= link_to 'Aviation', '#', class: '#' %>
-                  </li>
-                </ul>
-              </div>
+              <%= render partial: 'departments/hero_atoz_department', collection: @presented_departments, as: :department_presenter %>
             </div>
           </div>
         </div>

@@ -1,5 +1,6 @@
 FactoryGirl.define do
   factory :department do
+    audience
     name "MyString"
 summary "MyString"
 display true

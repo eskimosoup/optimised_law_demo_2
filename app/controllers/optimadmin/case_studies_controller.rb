@@ -48,7 +48,7 @@ module Optimadmin
     end
 
     def case_study_params
-      params.require(:case_study).permit(:case_study_category_id, :title, :summary, :image, :content, :date, :suggested_url, :display)
+      params.require(:case_study).permit(:case_study_category_id, :title, :summary, :image, :content, :date, :suggested_url, :display, service_ids: [])
     end
   end
 end
