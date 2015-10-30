@@ -1,0 +1,9 @@
+.tooltip {
+  background: $alternative-purple;
+  border: 1px solid darken($alternative-purple, 5%);
+  color: $white;
+  font-size: em(16px);
+  padding: em(5px, 16px);
+  position: absolute;
+  z-index: 9999;
+}

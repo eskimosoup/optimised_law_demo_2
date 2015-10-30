@@ -7,7 +7,7 @@
     <div class="medium-6 columns">
       <%= render partial: 'case_studies/case_study_summary', collection: @presented_service_case_studies[1..-1], as: :case_study_presenter if @presented_service_case_studies[1..-1].present? %>
 
-      <%= link_to 'View all', '#', class: 'view-all right' %>
+      <%= module_link('View all', 'case_studies_path', class: 'view-all right') %>
     </div>
   </div>
 </div>

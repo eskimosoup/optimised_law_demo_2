@@ -32,7 +32,6 @@ $(document).on("click", ".modal-toggle", function(e) {
 var toggleContainer;
 $(document).on('click', '.content-navigation-link', function(e) {
   toggleContainer = $(this).attr('href');
-  console.log(toggleContainer);
   var dataReturn = $(this).attr('data-return');
   $('.active').removeClass('active');
   $(this).addClass('active');
