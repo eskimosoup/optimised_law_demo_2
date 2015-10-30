@@ -24,6 +24,8 @@ RSpec.describe Service, type: :model, service: true do
     it { should have_many(:testimonials).through(:service_testimonials) }
     it { should have_many(:service_videos).dependent(:nullify) }
     it { should have_many(:videos).through(:service_videos) }
+    it { should have_many(:service_team_members).dependent(:nullify) }
+    it { should have_many(:team_members).through(:service_team_members) }
   end
 
   describe 'scopes', :scope do

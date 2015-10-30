@@ -1,0 +1,120 @@
+<%= form_for(@team_member) do |f| %>
+<% if @team_member.errors.any? %>
+  <div id="error_explanation">
+    <h2><%= pluralize(@team_member.errors.count, "error") %> prohibited this team_member from being saved:</h2>
+
+    <ul>
+      <% @team_member.errors.full_messages.each do |message| %>
+      <li><%= message %></li>
+      <% end %>
+    </ul>
+  </div>
+<% end %>
+
+
+
+  <div class="tabs prevent-flash">
+    <ul class="tab-list">
+      <li><a href="#tabs-1">Content</a></li>
+      <li><a href="#tabs-2">Media</a></li>
+      <li><a href="#tabs-3">Settings</a></li>
+      <li>
+        <%= link_to '#', class: 'destroy-tabs right', data: { class: 'tabs' } do %>
+          <%= octicon('chevron-down') %>
+        <% end %>
+      </li>
+    </ul>
+
+    <%= field_set_tag nil, id: 'tabs-1' do %>
+          <div class="field">
+      <%= f.label :team_member_role_id %><br>
+      <%= f.select :team_member_role_id, TeamMemberRole.pluck(:name, :id), prompt: 'Please select' %>
+      </div>
+      <div class="field">
+      <%= f.label :service_ids, "Services" %><br>
+      <%= f.select :service_ids, grouped_options_for_select(Service.includes(:department).group_by(&:department).map{|x| ["#{x[0].name}", x[1].map{|y| [y.name, y.id]}]}, selected: f.object.services.pluck(:id)), {  }, { multiple: true, class: 'multiple-select' } %>
+      </div>
+      <div class="field">
+      <%= f.label :office_ids, "Offices" %><br>
+      <%= f.select :office_ids, grouped_options_for_select(Office.includes(:office_location).group_by(&:office_location).map{|x| ["#{x[0].name}", x[1].map{|y| [y.name, y.id]}]}, selected: f.object.offices.pluck(:id)), {  }, { multiple: true, class: 'multiple-select' } %>
+      </div>
+            <div class="field">
+        <%= f.label :forename %><br>
+        <%= f.text_field :forename %>
+      </div>
+            <div class="field">
+        <%= f.label :surname %><br>
+        <%= f.text_field :surname %>
+      </div>
+            <div class="field">
+        <%= f.label :primary_telephone %><br>
+        <%= f.text_field :primary_telephone %>
+      </div>
+            <div class="field">
+        <%= f.label :secondary_telephone %><br>
+        <%= f.text_field :secondary_telephone %>
+      </div>
+            <div class="field">
+        <%= f.label :email_address %><br>
+        <%= f.text_field :email_address %>
+      </div>
+            <div class="field">
+        <%= f.label :specialisms %><br>
+        <%= f.text_area :specialisms, class: 'tinymce' %>
+      </div>
+            <div class="field">
+        <%= f.label :personal_profile %><br>
+        <%= f.text_area :personal_profile, class: 'tinymce' %>
+      </div>
+            <div class="field">
+        <%= f.label :google_plus_link %><br>
+        <%= f.text_field :google_plus_link %>
+      </div>
+            <div class="field">
+        <%= f.label :twitter_link %><br>
+        <%= f.text_field :twitter_link %>
+      </div>
+            <div class="field">
+        <%= f.label :linkedin_link %><br>
+        <%= f.text_field :linkedin_link %>
+      </div>
+            <div class="field">
+        <%= f.label :mobile_number %><br>
+        <%= f.text_field :mobile_number %>
+      </div>
+            <div class="field">
+        <%= f.label :dx_number %><br>
+        <%= f.text_field :dx_number %>
+      </div>
+
+
+              <%= f.datetimepicker_field :display_from %>
+              <%= f.datetimepicker_field :display_until %>
+          <% end %>
+
+    <%= field_set_tag nil, id: 'tabs-2' do %>
+            <%= f.image_field :image %>
+
+          <% end %>
+
+    <%= field_set_tag nil, id: 'tabs-3' do %>
+
+          <div class="field">
+      <%= f.label :suggested_url %><br>
+      <%= f.text_field :suggested_url %>
+    </div>
+            <div class="field">
+        <%= f.label :display %><br>
+        <%= f.check_box :display %>
+      </div>
+            <div class="field">
+        <%= f.label :has_vcard_download %><br>
+        <%= f.check_box :has_vcard_download %>
+      </div>
+          <% end %>
+  </div>
+
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

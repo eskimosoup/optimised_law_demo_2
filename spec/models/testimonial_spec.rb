@@ -8,6 +8,7 @@ RSpec.describe Testimonial, type: :model, testimonial: true do
   end
 
   describe 'associations', :association do
+    it { should belong_to(:team_member) }
     it { should have_many(:service_testimonials).dependent(:destroy) }
     it { should have_many(:services).through(:service_testimonials) }
   end

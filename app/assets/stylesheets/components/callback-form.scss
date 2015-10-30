@@ -3,7 +3,11 @@
   color: $white;
   font-family: $font-merriweather;
   font-size: em(26px);
-  padding: em(25px, 26px) em(58px, 26px);
+  padding: em(12px, 26px) em(25px, 26px);
+
+  @include media('>tablet') {
+    padding: em(25px, 26px) em(58px, 26px);
+  }
 
   .telephone-icon {
     margin-right: em(13px);
@@ -54,7 +58,10 @@
 
   .contact-method-select {
     display: inline-block;
-    margin: em(11px) em(15px) em(19px);
+
+    @include media('>=desktop') {
+      margin: em(11px) em(15px) em(19px);
+    }
   }
 
   .radio-button {

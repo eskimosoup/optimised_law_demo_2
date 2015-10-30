@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20151029143452) do
+ActiveRecord::Schema.define(version: 20151030105311) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -37,9 +37,11 @@ ActiveRecord::Schema.define(version: 20151029143452) do
     t.boolean  "display",             default: true
     t.datetime "created_at",                         null: false
     t.datetime "updated_at",                         null: false
+    t.integer  "team_member_id"
   end
 
   add_index "articles", ["article_category_id"], name: "index_articles_on_article_category_id", using: :btree
+  add_index "articles", ["team_member_id"], name: "index_articles_on_team_member_id", using: :btree
 
   create_table "audiences", force: :cascade do |t|
     t.string   "name"
@@ -296,6 +298,25 @@ ActiveRecord::Schema.define(version: 20151029143452) do
   add_index "service_faqs", ["frequently_asked_question_id"], name: "index_service_faqs_on_frequently_asked_question_id", using: :btree
   add_index "service_faqs", ["service_id"], name: "index_service_faqs_on_service_id", using: :btree
 
+  create_table "service_hierarchies", id: false, force: :cascade do |t|
+    t.integer "ancestor_id",   null: false
+    t.integer "descendant_id", null: false
+    t.integer "generations",   null: false
+  end
+
+  add_index "service_hierarchies", ["ancestor_id", "descendant_id", "generations"], name: "service_anc_desc_idx", unique: true, using: :btree
+  add_index "service_hierarchies", ["descendant_id"], name: "service_desc_idx", using: :btree
+
+  create_table "service_team_members", force: :cascade do |t|
+    t.integer  "service_id"
+    t.integer  "team_member_id"
+    t.datetime "created_at",     null: false
+    t.datetime "updated_at",     null: false
+  end
+
+  add_index "service_team_members", ["service_id"], name: "index_service_team_members_on_service_id", using: :btree
+  add_index "service_team_members", ["team_member_id"], name: "index_service_team_members_on_team_member_id", using: :btree
+
   create_table "service_testimonials", force: :cascade do |t|
     t.integer  "testimonial_id"
     t.integer  "service_id"
@@ -328,10 +349,57 @@ ActiveRecord::Schema.define(version: 20151029143452) do
     t.boolean  "display",       default: true
     t.datetime "created_at",                   null: false
     t.datetime "updated_at",                   null: false
+    t.text     "specialisms"
   end
 
   add_index "services", ["department_id"], name: "index_services_on_department_id", using: :btree
   add_index "services", ["parent_id"], name: "index_services_on_parent_id", using: :btree
+
+  create_table "team_member_offices", force: :cascade do |t|
+    t.integer  "team_member_id"
+    t.integer  "office_id"
+    t.datetime "created_at",     null: false
+    t.datetime "updated_at",     null: false
+  end
+
+  add_index "team_member_offices", ["office_id"], name: "index_team_member_offices_on_office_id", using: :btree
+  add_index "team_member_offices", ["team_member_id"], name: "index_team_member_offices_on_team_member_id", using: :btree
+
+  create_table "team_member_roles", force: :cascade do |t|
+    t.string   "name",                      null: false
+    t.boolean  "display",    default: true
+    t.datetime "created_at",                null: false
+    t.datetime "updated_at",                null: false
+    t.integer  "position"
+  end
+
+  create_table "team_members", force: :cascade do |t|
+    t.integer  "position"
+    t.string   "forename",                           null: false
+    t.string   "surname",                            null: false
+    t.integer  "team_member_role_id"
+    t.string   "image"
+    t.string   "primary_telephone"
+    t.string   "secondary_telephone"
+    t.string   "email_address"
+    t.datetime "display_from"
+    t.datetime "display_until"
+    t.boolean  "display",             default: true
+    t.text     "specialisms"
+    t.boolean  "has_vcard_download"
+    t.text     "personal_profile"
+    t.string   "google_plus_link"
+    t.string   "twitter_link"
+    t.string   "linkedin_link"
+    t.string   "mobile_number"
+    t.string   "dx_number"
+    t.string   "suggested_url"
+    t.string   "slug"
+    t.datetime "created_at",                         null: false
+    t.datetime "updated_at",                         null: false
+  end
+
+  add_index "team_members", ["team_member_role_id"], name: "index_team_members_on_team_member_role_id", using: :btree
 
   create_table "testimonials", force: :cascade do |t|
     t.integer  "position"
@@ -341,7 +409,10 @@ ActiveRecord::Schema.define(version: 20151029143452) do
     t.boolean  "display",        default: true
     t.datetime "created_at",                    null: false
     t.datetime "updated_at",                    null: false
+    t.integer  "team_member_id"
   end
+
+  add_index "testimonials", ["team_member_id"], name: "index_testimonials_on_team_member_id", using: :btree
 
   create_table "video_categories", force: :cascade do |t|
     t.string   "name",                         null: false
@@ -368,6 +439,7 @@ ActiveRecord::Schema.define(version: 20151029143452) do
   add_index "videos", ["video_category_id"], name: "index_videos_on_video_category_id", using: :btree
 
   add_foreign_key "articles", "article_categories"
+  add_foreign_key "articles", "team_members"
   add_foreign_key "case_studies", "case_study_categories"
   add_foreign_key "departments", "audiences"
   add_foreign_key "downloads", "download_categories"
@@ -380,10 +452,16 @@ ActiveRecord::Schema.define(version: 20151029143452) do
   add_foreign_key "service_downloads", "services"
   add_foreign_key "service_faqs", "frequently_asked_questions"
   add_foreign_key "service_faqs", "services"
+  add_foreign_key "service_team_members", "services"
+  add_foreign_key "service_team_members", "team_members"
   add_foreign_key "service_testimonials", "services"
   add_foreign_key "service_testimonials", "testimonials"
   add_foreign_key "service_videos", "services"
   add_foreign_key "service_videos", "videos"
   add_foreign_key "services", "departments"
+  add_foreign_key "team_member_offices", "offices"
+  add_foreign_key "team_member_offices", "team_members"
+  add_foreign_key "team_members", "team_member_roles"
+  add_foreign_key "testimonials", "team_members"
   add_foreign_key "videos", "video_categories"
 end

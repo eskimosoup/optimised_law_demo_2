@@ -1,7 +1,15 @@
 .related-services {
   background: $highlight-purple;
-  padding: em(60px) em(43px);
+  padding: em(20px) em(15px);
   text-align: center;
+
+  @include media('>phone', '<desktop') {
+    padding: em(25px) em(10px) em(45px);
+  }
+
+  @include media('>tablet') {
+    padding: em(60px) em(43px);
+  }
 
   h5 {
     color: $white;
@@ -28,10 +36,19 @@
   display: inline-block;
   font-family: $font-droid-serif;
   letter-spacing: 1px;
-  margin: 0 em(9px);
-  padding: em(9px) em(23px);
+  margin: 0 0 em(14px);
+  padding: em(9px);
   text-align: center;
   text-decoration: none;
+
+  @include media('>tablet') {
+    margin: 0 em(9px);
+    padding: em(9px) em(23px);
+  }
+
+  @include media('>phone', '<desktop') {
+    margin: 0 em(3px);
+  }
 
   &:hover {
     background: $turquoise;

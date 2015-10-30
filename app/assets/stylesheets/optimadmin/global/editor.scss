@@ -1,5 +1,6 @@
 @import 'lib/mixins', 'lib/variables';
 @import 'optimadmin/global/additional_reset';
+@import 'vendor/include-media';
 
 .image-left {
   float: left;
@@ -17,10 +18,18 @@
   h1 {
     color: $deep-purple;
     font-family: $font-merriweather;
-    font-size: em(20px);
     font-weight: $open-sans-bold;
     line-height: 1.25;
-    margin: em(20px, 30px) 0  em(30px, 20px);
+
+    @include media('<=phone') {
+      font-size: em(16px);
+      margin: em(5px, 30px) 0  em(15px, 20px);
+    }
+
+    @include media('>phone') {
+      font-size: em(20px);
+      margin: em(20px, 30px) 0  em(30px, 20px);
+    }
   }
 }
 

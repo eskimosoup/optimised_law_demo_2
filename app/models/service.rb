@@ -1,8 +1,11 @@
 class Service < ActiveRecord::Base
+  include NullifyBlanks
   extend FriendlyId
   friendly_id :slug_candidates, use: [:slugged, :history]
 
   mount_uploader :image, ServiceUploader
+
+  has_closure_tree
 
   belongs_to :department
   has_many :service_articles, dependent: :nullify
@@ -17,6 +20,10 @@ class Service < ActiveRecord::Base
   has_many :testimonials, -> { displayed }, through: :service_testimonials
   has_many :service_videos, dependent: :nullify
   has_many :videos, -> { displayed }, through: :service_videos
+  has_many :service_videos, dependent: :nullify
+  has_many :videos, -> { displayed }, through: :service_videos
+  has_many :service_team_members, dependent: :nullify
+  has_many :team_members, -> { displayed }, through: :service_team_members
 
   validates :name, :summary, :content, :department_id, presence: true
   validates :suggested_url, allow_blank: true, uniqueness: { case_sensitive: false, message: 'is already taken, leave blank to generate automatically' }

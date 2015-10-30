@@ -1,10 +1,19 @@
 .pre-footer-section {
   margin: em(30px) 0;
   text-align: center;
+  font-size: em(13px);
+
+  @include media('>phone') {
+    font-size: em(14px);
+  }
 
   a {
     text-decoration: none;
-    padding: 0 em(5px) 0 em(22px);
+
+    @include media('>phone') {
+      font-size: em(14px);
+      padding: 0 em(5px) 0 em(22px);
+    }
   }
 }
 
@@ -43,21 +52,41 @@
 
 .sticky-tab {
   @include links($offset-black, $offset-black, $offset-black, $offset-black);
+
   background-color: $offset-white;
   box-shadow: rgba($shadow-offset-black, 0.2) 0 0 25px 0;
-  bottom: -1px;
-  font-weight: $open-sans-bold;
-  display: inline-block;
   position: fixed;
-  right: 15px;
+  bottom: 0;
+  width: 100%;
   text-align: center;
-  z-index: 200;
+
+  @include media('>phone') {
+    background-color: $offset-white;
+    box-shadow: rgba($shadow-offset-black, 0.2) 0 0 25px 0;
+    bottom: -1px;
+    font-weight: $open-sans-bold;
+    display: inline-block;
+    right: 15px;
+    z-index: 200;
+    width: auto;
+  }
+
+  img {
+    width: 16px;
+  }
 
   a {
     background-color: $offset-white;
     display: block;
-    padding: em(19px);
+    font-weight: $open-sans-bold;
     text-decoration: none;
+    font-size: em(12px);
+
+    @include media('>phone') {
+      font-size: em(14px);
+      font-weight: 400;
+      padding: em(19px);
+    }
 
     &:hover {
       background: $turquoise;
@@ -67,5 +96,10 @@
   .text {
     line-height: 1.42;
     margin: em(10px) 0;
+    display: inline-block;
+
+    @include media('>phone') {
+      display: block;
+    }
   }
 }

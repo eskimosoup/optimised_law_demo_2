@@ -24,24 +24,62 @@
       </div>
 
       <ul id="modules" class="content-category-list">
-<%= module_link(model: Audience, path: audiences_path) %>
-<%= module_link(model: Video, path: videos_path) %>
-<%= module_link(content: "Video Category", model: VideoCategory, path: video_categories_path) %>
-<%= module_link(content: "Frequently Asked Questions", model: FrequentlyAskedQuestion, path: frequently_asked_questions_path) %>
-<%= module_link(model: Testimonial, path: testimonials_path) %>
-<%= module_link(model: Download, path: downloads_path) %>
-<%= module_link(content: "Download Category", model: DownloadCategory, path: download_categories_path) %>
-<%= module_link(content: "Case Studies", model: CaseStudy, path: case_studies_path) %>
-<%= module_link(content: "Case Study Categories", model: CaseStudyCategory, path: case_study_categories_path) %>
-<%= module_link(model: Article, path: articles_path) %>
-<%= module_link(content: "Article Categories", model: ArticleCategory, path: article_categories_path) %>
-<%= module_link(model: Office, path: offices_path) %>
-<%= module_link(content: "Office Locations", model: OfficeLocation, path: office_locations_path) %>
-<%= module_link(model: Service, path: services_path) %>
-<%= module_link(model: Department, path: departments_path) %>
+        <%= module_link(content: "Frequently Asked Questions", model: FrequentlyAskedQuestion, path: frequently_asked_questions_path) %>
+        <%= module_link(model: Testimonial, path: testimonials_path) %>
+
         <% if can? :manage, Optimadmin::MenuItem %>
           <li><%= link_to 'Site Navigation', menu_items_path %></li>
         <% end %>
+      </ul>
+
+      <div class="content-category-type">
+        Resources
+      </div>
+
+      <ul class="content-category-list">
+        <%= module_link(model: Video, path: videos_path) %>
+        <%= module_link(content: "Video Category", model: VideoCategory, path: video_categories_path) %>
+        <%= module_link(model: Download, path: downloads_path) %>
+        <%= module_link(content: "Download Category", model: DownloadCategory, path: download_categories_path) %>
+      </ul>
+
+      <div class="content-category-type">
+        Team Members
+      </div>
+
+      <ul class="content-category-list">
+        <%= module_link(content: "Team Member Roles", model: TeamMemberRole, path: team_member_roles_path) %>
+        <%= module_link(content: "Team Members", model: TeamMember, path: team_members_path) %>
+      </ul>
+
+      <div class="content-category-type">
+        Updates
+      </div>
+
+      <ul class="content-category-list">
+        <%= module_link(content: "Case Studies", model: CaseStudy, path: case_studies_path) %>
+        <%= module_link(content: "Case Study Categories", model: CaseStudyCategory, path: case_study_categories_path) %>
+        <%= module_link(model: Article, path: articles_path) %>
+        <%= module_link(content: "Article Categories", model: ArticleCategory, path: article_categories_path) %>
+      </ul>
+
+      <div class="content-category-type">
+        Offices
+      </div>
+
+      <ul class="content-category-list">
+        <%= module_link(model: Office, path: offices_path) %>
+        <%= module_link(content: "Office Locations", model: OfficeLocation, path: office_locations_path) %>
+      </ul>      
+
+      <div class="content-category-type">
+        Services
+      </div>
+
+      <ul class="content-category-list">
+        <%= module_link(model: Service, path: services_path) %>
+        <%= module_link(model: Department, path: departments_path) %>
+        <%= module_link(model: Audience, path: audiences_path) %>
       </ul>
     </div>
   </div>

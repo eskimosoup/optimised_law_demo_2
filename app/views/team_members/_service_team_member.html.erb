@@ -1,0 +1,15 @@
+<div class="team-member">
+  <%= link_to team_member_presenter.link, class: 'left modal-toggle', data: { container: ".team-member-#{team_member_presenter.id}", return: 'false' } do %>
+    <%= team_member_presenter.index_image(alt: team_member_presenter.full_name) %>
+  <% end %>
+
+  <%= link_to team_member_presenter.link, class: 'team-member-link modal-toggle', data: { container: ".team-member-#{team_member_presenter.id}", return: 'false' } do %>
+    <div class="team-member-name">
+      <%= team_member_presenter.full_name %>
+    </div>
+
+    <div class="team-member-role">
+      <%= team_member_presenter.role %>
+    </div>
+  <% end %>
+</div>

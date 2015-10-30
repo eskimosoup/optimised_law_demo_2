@@ -21,7 +21,8 @@ class ApplicationController < ActionController::Base
 
   def index
     @presented_departments = collection_presenter(Department.displayed, DepartmentPresenter)
-    @presented_offices = collection_presenter(Office.displayed, OfficePresenter)
+    @presented_a_to_z = collection_presenter(Department.joins(:services).displayed.where('LOWER(services.name) LIKE ?', 'A%').uniq, ServicePresenter)
+    @presented_a_to_z_group = Service.displayed.group_by{|service| service.name.downcase.first}
   end
 
   def divorce
@@ -30,6 +31,7 @@ class ApplicationController < ActionController::Base
   private
 
     def load_objects
+      @presented_offices = collection_presenter(Office.displayed, OfficePresenter)
       @header_menu = Optimadmin::Menu.new(name: "header")
       @header_aside_menu = Optimadmin::Menu.new(name: "aside_header")
       @footer_menu = Optimadmin::Menu.new(name: "footer")

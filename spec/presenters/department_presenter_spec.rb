@@ -5,6 +5,7 @@ RSpec.describe DepartmentPresenter, type: :presenter, department: true do
   subject(:department_presenter) { DepartmentPresenter.new(object: department, view_template: view) }
 
   describe 'delegations', :delegation do
+    it { should delegate_method(:id).to(:department) }
     it { should delegate_method(:name).to(:department) }
   end
 

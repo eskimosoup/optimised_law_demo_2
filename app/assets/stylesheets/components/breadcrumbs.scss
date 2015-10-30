@@ -1,11 +1,20 @@
 .breadcrumbs {
   @extend %clearfix;
   @include links($light-purple, $light-purple, $light-purple, $light-purple);
-  font-size: em(12px);
   line-height: 1.1;
   list-style: none;
-  padding: em(4px, 12px);
-  margin: 0 0 em(26px, 12px);
+
+  @include media('<=phone') {
+    font-size: em(10px);
+    margin: 0 0 em(14px, 10px);
+  }
+
+  @include media('>phone') {
+    font-size: em(12px);
+    padding: em(4px, 12px);
+    margin: 0 0 em(26px, 12px);
+  }
+
 
   li {
     float: left;

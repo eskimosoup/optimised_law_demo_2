@@ -1,0 +1,13 @@
+<div class="articles content-navigation-content" id="updates">
+  <div class="row">
+    <div class="medium-6 columns">
+      <%= render partial: 'articles/article_focus', object: @presented_service_articles[0], as: :article_presenter if @presented_service_articles[0].present? %>
+    </div>
+
+    <div class="medium-6 columns">
+      <%= render partial: 'articles/article_summary', collection: @presented_service_articles[1..-1], as: :article_presenter if @presented_service_articles[1..-1].present? %>
+
+      <%= link_to 'View all', '#', class: 'view-all right' %>
+    </div>
+  </div>
+</div>

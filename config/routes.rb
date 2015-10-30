@@ -3,7 +3,11 @@ Rails.application.routes.draw do
     get code, to: 'errors#show', code: code
   end
 
-  resources :services, only: :show
+  resources :services, only: :show do
+    collection do
+      get 'update-alphabetical-list', to: 'services#a_to_z', as: 'alpabetical_list'
+    end
+  end
   resources :articles, only: [:index, :show]
   resources :departments, only: :show
   resources :audiences, only: :show
@@ -19,6 +23,26 @@ Rails.application.routes.draw do
 end
 
 Optimadmin::Engine.routes.draw do
+  resources :team_member_roles, except: [:show] do
+    collection do
+      post 'order'
+    end
+    member do
+      get 'toggle'
+    end
+  end
+  resources :team_members, except: [:show] do
+    collection do
+      post 'order'
+    end
+    member do
+      get 'toggle'
+      get 'edit_images'
+      post 'update_image_default'
+      post 'update_image_fill'
+      post 'update_image_fit'
+    end
+  end
   resources :audiences, except: [:show] do
     collection do
       post 'order'

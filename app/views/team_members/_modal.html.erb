@@ -1,0 +1,67 @@
+<div class="team-member-<%= team_member_presenter.id %> modal hide">
+  <%= link_to image_tag('components/icons/close-icon.png'), '#', class: 'close-modal modal-toggle', title: 'Close', data: { container: ".team-member-#{team_member_presenter.id}", return: 'false' } %>
+
+  <div class="modal-content team-member-modal">
+    <div class="text-center">
+      <h4>
+        Our Experts in / <strong><%= @presented_service.name %></strong>
+      </h4>
+    </div>
+
+    <div class="row">
+      <div class="medium-3 columns">
+        <%= team_member_presenter.show_image(alt: team_member_presenter.full_name, class: 'team-member-modal-image') %>
+        <%= team_member_presenter.vcard(class: 'team-member-modal-vcard-download') %>
+      </div>
+
+      <div class="medium-6 columns">
+        <div class="team-member-modal-name">
+          <%= team_member_presenter.full_name %>
+        </div>
+
+        <div class="team-member-modal-role">
+          <%= team_member_presenter.role %>
+        </div>
+
+        <div class="team-member-modal-title">
+          Offices
+        </div>
+
+        <%= team_member_presenter.offices_list %>
+
+        <div class="team-member-modal-title">
+          Direct Dial
+        </div>
+
+        <div class="team-member-modal-direct-dial">
+          <%= team_member_presenter.primary_telephone %>
+        </div>
+
+        <div class="team-member-modal-title">
+          Email
+        </div>
+
+        <div class="team-member-modal-email-address">
+          <%= team_member_presenter.linked_email_address %>
+        </div>
+
+        <div class="team-member-modal-title">
+          Professional Profile
+        </div>
+
+        <strong class="specialisms-title">What do you specialise in?</strong>
+
+        <%= team_member_presenter.specialisms %>
+      </div>
+
+      <div class="medium-3 columns">
+        <%= team_member_presenter.linked_twitter((image_tag 'components/icons/twitter.png'), class: 'team-member-modal-social-link') %>
+        <%= team_member_presenter.linked_linkedin((image_tag 'components/icons/linkedin.png'), class: 'team-member-modal-social-link') %>
+
+        <blockquote class="team-member-modal-testimonial">
+          <%= team_member_presenter.random_testimonial_recommendation %>
+        </blockquote>
+      </div>
+    </div>
+  </div>
+</div>

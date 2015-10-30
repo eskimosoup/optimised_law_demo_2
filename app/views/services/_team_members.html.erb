@@ -1,0 +1,23 @@
+<div class="row standard-content-box team-members">
+  <div class="medium-12 columns">
+    <h4 class="text-center">
+      Our Experts In / <strong><%= @presented_service.name %></strong>
+    </h4>
+
+    <% @service_team_members.in_groups_of(3, false).each do |group| %>
+      <div class="row">
+        <% group.each do |team_member| %>
+          <div class="medium-4 columns<%= ' end' if team_member == @service_team_members.last %>">
+            <%= render partial: 'team_members/service_team_member', object: TeamMemberPresenter.new(object: team_member, view_template: self), as: :team_member_presenter %>
+          </div>
+        <% end %>
+      </div>
+    <% end %>
+
+    <%= link_to 'View all', '#', class: 'view-all right' %>
+  </div>
+</div>
+
+<%= content_for :footer do %>
+  <%= render partial: 'team_members/modal', collection: BaseCollectionPresenter.new(collection: @service_team_members, view_template: self, presenter: TeamMemberPresenter), as: :team_member_presenter %>
+<% end %>

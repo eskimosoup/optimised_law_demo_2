@@ -1,0 +1,17 @@
+<div class="row guides">
+  <div class="small-12 columns">
+    <h4 class="downoad-section">Download our <%= @presented_service.name %> Guides</h4>
+  </div>
+</div>
+
+<%= render partial: 'downloads/download_focus', object: @presented_service_downloads[0], as: :download_presenter if @presented_service_downloads[0].present? %>
+
+<% if @presented_service_downloads[1..-1].present? %>
+  <div class="row additional-guides">
+    <div class="medium-12 columns">
+      <div class="row">
+        <%= render partial: 'downloads/download', collection: @presented_service_downloads[1..-1], as: :download_presenter %>
+    </div>
+    </div>
+  </div>
+<% end %>

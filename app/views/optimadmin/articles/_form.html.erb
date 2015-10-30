@@ -35,6 +35,10 @@
         <%= f.label :article_category_id %><br>
         <%= f.select :article_category_id, ArticleCategory.pluck(:name, :id), prompt: 'Please select' %>
       </div>
+            <div class="field">
+        <%= f.label :team_member_id %><br>
+        <%= f.select :team_member_id, TeamMember.all.map{|x| ["#{x.forename} #{x.surname}", x.id]}, prompt: 'Please select' %>
+      </div>
       <div class="field">
         <%= f.label :service_ids, "Services" %><br>
       <%= f.select :service_ids, grouped_options_for_select(Service.includes(:department).group_by(&:department).map{|x| ["#{x[0].name}", x[1].map{|y| [y.name, y.id]}]}, selected: f.object.services.pluck(:id)), {  }, { multiple: true, class: 'multiple-select' } %>

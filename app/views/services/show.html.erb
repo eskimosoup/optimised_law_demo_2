@@ -19,43 +19,18 @@
     In the most difficult of times, you can rely on us
   </h2>
 
-  <%= link_to 'Family: Supporting Services', '#', class: 'toggle-class supporting-services-toggle', data: { class: 'hide', container: '.supporting-services', return: 'false' } %>
+  <%= link_to "#{@presented_service.name}: Supporting Services", '#', class: 'toggle-class supporting-services-toggle', data: { class: 'hide', container: '.supporting-services', return: 'false' } %>
 </div>
 
 <div class="supporting-services hide">
   <div class="row">
-    <div class="medium-4 columns">
-      <ul class="supporting-services-list">
-        <li>
-          <%= link_to 'A service name', '#', class: 'supporting-services-link' %>
-        </li>
-        <li>
-          <%= link_to 'A service name', '#', class: 'supporting-services-link' %>
-        </li>
-      </ul>
-    </div>
-
-    <div class="medium-4 columns">
-      <ul class="supporting-services-list">
-        <li>
-          <%= link_to 'A service name', '#', class: 'supporting-services-link' %>
-        </li>
-        <li>
-          <%= link_to 'A service name', '#', class: 'supporting-services-link' %>
-        </li>
-      </ul>
-    </div>
-
-    <div class="medium-4 columns">
-      <ul class="supporting-services-list">
-        <li>
-          <%= link_to 'A service name', '#', class: 'supporting-services-link' %>
-        </li>
-        <li>
-          <%= link_to 'A service name', '#', class: 'supporting-services-link' %>
-        </li>
-      </ul>
-    </div>
+    <% @presented_service.department.services.in_groups(3, false).each do |group| %>
+      <div class="medium-4 columns">
+        <ul class="supporting-services-list">
+          <%= render partial: 'services/supporting_service', collection: BaseCollectionPresenter.new(collection: group, view_template: self, presenter: ServicePresenter), as: :service_presenter %>
+        </ul>
+      </div>
+    <% end %>
   </div>
 </div>
 
@@ -116,21 +91,7 @@
 </div>
 
 <div class="service-resources">
-  <div class="row guides">
-    <div class="small-12 columns">
-      <h4 class="downoad-section">Download our <%= @presented_service.name %> Guides</h4>
-    </div>
-  </div>
-
-  <%= render partial: 'downloads/download_focus', object: @presented_service_downloads[0], as: :download_presenter %>
-
-  <div class="row additional-guides">
-    <div class="medium-12 columns">
-      <div class="row">
-        <%= render partial: 'downloads/download', collection: @presented_service_downloads[1..-1], as: :download_presenter %>
-    </div>
-  </div>
-  </div>
+  <%= render 'services/downloads' if @presented_service_downloads.present? %>
 
   <%= render partial: 'videos/video_focus', object: @presented_service_video, as: :video_presenter if @presented_service_video.present? %>
 
@@ -143,123 +104,52 @@
 
         <ul class="content-navigation">
           <li>
-            <%= link_to 'Updates', '#updates', class: 'content-navigation-link active', title: 'Search' %>
+            <%= link_to 'Updates', '#updates', class: 'content-navigation-link active', title: 'Search' if @presented_service_articles.present? %>
           </li>
 
           <li>
-            <%= link_to 'FAQs', '#faqs', class: 'content-navigation-link', title: 'Expertise' %>
+            <%= link_to 'FAQs', '#faqs', class: 'content-navigation-link', title: 'Expertise' if @service_faqs.present? %>
           </li>
 
           <li>
-            <%= link_to 'Case Studies', '#case-studies', class: 'content-navigation-link', title: 'A-Z' %>
+            <%= link_to 'Case Studies', '#case-studies', class: 'content-navigation-link', title: 'A-Z' if @presented_service_case_studies.present? %>
           </li>
         </ul>
       </div>
     </div>
 
-    <div class="articles content-navigation-content" id="updates">
-      <div class="row">
-        <div class="medium-6 columns">
-          <%= render partial: 'articles/article_focus', object: @presented_service_articles[0], as: :article_presenter %>
-        </div>
+    <%= render 'services/articles' if @presented_service_articles.present? %>
 
-        <div class="medium-6 columns">
-          <%= render partial: 'articles/article_summary', collection: @presented_service_articles[1..-1], as: :article_presenter %>
-
-          <%= link_to 'View all', '#', class: 'view-all right' %>
-        </div>
-      </div>
-    </div>
-
-    <div class="frequently-asked-questions content-navigation-content hide" id="faqs">
-      <div class="row">
-        <% @service_faqs.in_groups(2, false).each do |group| %>
-          <div class="medium-6 columns">
-            <%= render partial: 'frequently_asked_questions/frequently_asked_question', collection: BaseCollectionPresenter.new(collection: group, view_template: self, presenter: FrequentlyAskedQuestionPresenter), as: :frequently_asked_question_presenter %>
-          </div>
-        <% end %>
-      </div>
-    </div>
-
-    <div class="case-studies content-navigation-content hide" id="case-studies">
-      <div class="row">
-        <div class="medium-6 columns">
-          <%= render partial: 'case_studies/case_study_focus', object: @presented_service_case_studies[0], as: :case_study_presenter %>
-        </div>
-
-        <div class="medium-6 columns">
-          <%= render partial: 'case_studies/case_study_summary', collection: @presented_service_case_studies[1..-1], as: :case_study_presenter %>
-
-          <%= link_to 'View all', '#', class: 'view-all right' %>
+    <% if @service_faqs.present? %>
+      <div class="frequently-asked-questions content-navigation-content hide" id="faqs">
+        <div class="row">
+          <% @service_faqs.in_groups(2, false).each do |group| %>
+            <div class="medium-6 columns">
+              <%= render partial: 'frequently_asked_questions/frequently_asked_question', collection: BaseCollectionPresenter.new(collection: group, view_template: self, presenter: FrequentlyAskedQuestionPresenter), as: :frequently_asked_question_presenter %>
+            </div>
+          <% end %>
         </div>
       </div>
-    </div>
+    <% end %>
+
+    <%= render 'services/case_studies' if @presented_service_case_studies.present? %>
   </div>
 
   <div class="row collapse">
-    <div class="medium-6 columns  match-height">
-      <% # TODO: Make this dynamic %>
-      <div class="specialist-areas standard-content-box">
-        <h4>
-          Specialist Areas Of Expertise
-        </h4>
+    <%= render 'services/specialisms', service_presenter: @presented_service if @presented_service.specialisms.present? %>
 
-        <p>
-          Our family law team is one of the most respected and experienced in
-          the UK. We’ve helped thousands of people going through a divorce
-          and have developed particular expertise in a number of complex
-          areas.
-        </p>
-
-        <p>
-          We also have specialists in international family law, so we can
-          help if you or your ex-partner lives abroad or you jointly own
-          assets abroad, such as a second home or business. Find out more
-          about our international family law expertise
-        </p>
-      </div>
-    </div>
-
-    <div class="medium-6 columns  match-height">
-      <div class="testimonials text-center">
-        <div class="testimonials-slider">
-          <%= render partial: 'testimonials/testimonial', collection: @presented_service_testimonials, as: :testimonial_presenter %>
-        </div>
-      </div>
-    </div>
-  </div>
-
-  <div class="row standard-content-box team-members">
-    <div class="medium-12 columns">
-      <h4 class="text-center">
-        Our Experts In / <strong><%= @presented_service.name %></strong>
-      </h4>
-
-      <div class="row">
-        <div class="medium-4 columns">
-          <% # TODO: Make this dynamic %>
-          <div class="team-member">
-            <%= link_to '#', class: 'left' do %>
-              <%= image_tag 'http://placehold.it/72x72', alt: 'Team member' %>
-            <% end %>
-
-            <%= link_to '#', class: 'team-member-link' do %>
-              <div class="team-member-name">
-                Team member name
-              </div>
-
-              <div class="team-member-role">
-                Role
-              </div>
-            <% end %>
+    <% if @presented_service_testimonials.present? %>
+      <div class="medium-<%= @presented_service.specialisms.present? ? '6' : '12' %> columns  match-height">
+        <div class="testimonials text-center">
+          <div class="testimonials-slider">
+            <%= render partial: 'testimonials/testimonial', collection: @presented_service_testimonials, as: :testimonial_presenter %>
           </div>
         </div>
       </div>
-
-
-      <%= link_to 'View all', '#', class: 'view-all right' %>
-    </div>
+    <% end %>
   </div>
+
+  <%= render 'services/team_members' if @service_team_members.present? %>
 
   <div class="row related-services">
     <div class="medium-12 columns">

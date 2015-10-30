@@ -1,4 +1,21 @@
+.primary-header {
+  @extend %clearfix;
+}
+
 .logo {
   float: left;
-  margin: em(25px) 0 0 em(26px);
+
+  @include media('>tablet') {
+    margin: em(25px) 0 0 em(26px);
+  }
+
+  @include media('<=tablet') {
+    display: block;
+    padding: em(25px) em(12px);
+    width: 50%;
+  }
+}
+
+.mobile-menu-toggle {
+  margin: em(25px);
 }

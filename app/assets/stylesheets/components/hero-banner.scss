@@ -13,11 +13,23 @@
 .hero-banner-text {
   display: block;
   font-family: $font-merriweather;
-  font-size: em(49px);
+  font-size: em(21px);
   font-weight: 400;
   line-height: 1.16;
-  margin: 0 auto em(40px, 49px);
-  padding: em(125px, 49px) 0 0;
+  margin: 0 auto em(23px, 21px);
+  padding: em(85px, 21px) 0 0;
+
+  @include media('>phone', '<desktop') {
+    font-size: em(36px);
+    margin: 0 auto em(40px, 36px);
+    padding: em(85px, 36px) 0 0;
+  }
+
+  @include media('>=desktop') {
+    font-size: em(49px);
+    margin: 0 auto em(40px, 49px);
+    padding: em(125px, 49px) 0 0;
+  }
 }
 
 .hero-banner-tagline {
@@ -31,6 +43,10 @@
 .hero-banner-search {
   margin-bottom: em(50px);
 
+  form {
+    position: relative;
+  }
+
   input[type='text'] {
     @include border-radius(10px);
     border: 1px solid $inactive-offset-grey;
@@ -40,34 +56,62 @@
     line-height: 1.4;
     margin: 0 0 em(10px);
     max-width: 700px;
-    padding: em(30px) em(65px) em(30px) em(30px);
     vertical-align: middle;
     width: 90%;
+
+    @include media('>phone') {
+      padding: em(30px) em(65px) em(30px) em(30px);
+    }
   }
 
   input[type='submit'] {
     @include border-radius(10px);
     background: $purple image-url('components/icons/search.png') no-repeat center;
     border: 0;
-    height: 49px;
-    left: -56px;
+    height: 38px;
     outline: 0;
-    position: relative;
+    position: absolute;
+    right: 10px;
     text-indent: -9999px;
-    top: -4px;
+    top: 0;
     width: 47px;
+
+    @include media('>phone') {
+      height: 49px;
+      left: -56px;
+      position: relative;
+      top: -4px;
+    }
   }
 }
 
-.hero-banner-expertise .columns {
-  min-height: 600px;
+.hero-banner-expertise {
+  width: 80%;
+  margin: 0 auto;
+
+  @include media('>phone', '<desktop') {
+    padding: 0 em(15px);
+  }
+
+  @include media('>phone') {
+    width: auto;
+  }
 }
 
-.hero-banner-expertise-title {
+@include media('>phone') {
+  .hero-banner-expertise .columns {
+    min-height: 600px;
+  }
+}
+
+.hero-banner-expertise-title a {
   border-bottom: 1px solid rgba($white, .5);
+  color: $white;
+  display: block;
   font-family: $font-droid-serif;
   font-size: em(20px);
   margin: em(20px, 20px) 0 em(30px, 20px);
+  text-decoration: none;
 }
 
 .hero-banner-expertise-list {
@@ -108,8 +152,11 @@
 }
 
 .hero-banner-letter-list {
-  background-color: $offset-white;
   display: inline-block;
+
+  @include media('>phone') {
+    background-color: $offset-white;
+  }
 
   li {
     display: inline-block;
@@ -120,9 +167,13 @@
     color: $offset-black;
     cursor: pointer;
     display: block;
-    padding: em(9px);
+    padding: em(4px) em(8px);
     text-align: left;
     text-decoration: none;
+
+    @include media('>phone') {
+      padding: em(9px);
+    }
 
     &:hover {
       background: $turquoise;
@@ -155,7 +206,11 @@
 .hero-banner-service-list {
   background: $white;
   border-top: 7px solid $purple;
-  padding: em(70px);
+  padding: em(20px);
+
+  @include media('>phone') {
+    padding: em(70px);
+  }
 
   .sectors {
     color: $purple;
