@@ -18,6 +18,8 @@ RSpec.describe Office, type: :model, office: true do
 
   describe 'associations', :association do
     it { should belong_to(:office_location) }
+    it { should have_many(:team_member_offices).dependent(:nullify) }
+    it { should have_many(:team_members).through(:team_member_offices) }
   end
 
   describe 'scopes', :scope do

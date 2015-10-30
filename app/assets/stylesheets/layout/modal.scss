@@ -11,18 +11,29 @@
 }
 
 .modal-content {
-  padding: em(110px) 0 0;
+  padding: em(40px) 0 0;
+  overflow: scroll;
+  height: 100%;
+
+  @include media('>=desktop') {
+    padding: em(110px) 0 0;
+    overflow: visible;
+  }
 }
 
 .close-modal {
   @include border-radius(25px);
   background: $secondary-purple;
   display: inline-block;
-  padding: em(27px);
+  padding: em(8px);
   position: fixed;
   right: 16px;
   top: 15px;
   z-index: 999;
+
+  @include media('>=desktop') {
+    padding: em(27px);
+  }
 }
 
 .contact-us-title {
@@ -31,9 +42,13 @@
   font-size: em(22px);
   font-weight: $droid-serif-bold;
   letter-spacing: 1px;
-  margin: em(37px, 22px) 0 em(78px, 22px);
+  margin: em(7px, 22px) 0 em(39px, 22px);
   padding: 0;
   text-align: center;
+
+  @include media('>=desktop') {
+    margin: em(37px, 22px) 0 em(78px, 22px);
+  }
 }
 
 .contact-us-prompt {

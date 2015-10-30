@@ -9,11 +9,12 @@ class ServicesController < ApplicationController
     @presented_service_case_studies = collection_presenter(@service.case_studies.limit(5), CaseStudyPresenter) if @service.case_studies.present?
     @presented_service_testimonials = collection_presenter(@service.testimonials.limit(10), TestimonialPresenter) if @service.testimonials.present?
     @presented_service_video = presenter(@service.videos.first, VideoPresenter) if @service.videos.present?
+    @service_team_members = @service.team_members if @service.team_members.present?
     @service_faqs = @service.frequently_asked_questions if @service.frequently_asked_questions.present?
   end
 
   def a_to_z
-    @presented_a_to_z = collection_presenter(Department.joins(:services).displayed.where("LOWER(services.name) LIKE ?", "#{params[:letter]}%"), DepartmentPresenter)
+    @presented_a_to_z = collection_presenter(Department.joins(:services).displayed.where("LOWER(services.name) LIKE ?", "#{params[:letter]}%").uniq, DepartmentPresenter)
 
     respond_to do |format|
       format.js

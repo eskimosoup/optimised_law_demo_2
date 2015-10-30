@@ -1,26 +1,57 @@
 .internal-hero-banner {
   background-color: $turquoise;
-  min-height: 340px;
+  min-height: 163px;
   position: relative;
+
+  @include media('>phone', '<desktop') {
+    min-height: 250px;
+  }
+
+  @include media('>tablet') {
+    min-height: 340px;
+  }
 
   &.divorce {
     background-attachment: scroll, scroll;
     background-image: image-url('layout/service/hero-banner.png'), image-url('placeholders/divorce.jpg');
-    background-position: 0 50%, 100% 50%;
+    background-position: -115px 50%, 117% 50%;
     background-repeat: no-repeat, no-repeat;
-    background-size: 60%, 50%;
+    background-size: cover, contain;
+
+    @include media('>=tablet', '<desktop') {
+      background-size: 60%, 50%;
+    }
+
+    @include media('>tablet') {
+      background-position: 0 50%, 100% 50%;
+      background-size: 60%, 50%;
+    }
   }
 }
 
 .internal-hero-banner-title {
   color: $white;
   font-family: $font-droid-serif;
-  font-size: em(34px);
+  font-size: em(16px);
   font-weight: 400;
   line-height: 1.02;
-  margin: 0 0 0 15%;
-  padding: em(135px, 34px) em(130px, 34px) em(28px, 34px) 0;
-  width: 35%;
+  margin: 0 0 0 3%;
+  padding: em(20px, 16px) 0;
+  width: 50%;
+
+  @include media('>=tablet', '<desktop') {
+    font-size: em(27px);
+    margin: 0 0 0 3%;
+    padding: em(90px, 27px) 0 em(80px, 27px) 0;
+    width: 48%;
+  }
+
+  @include media('>tablet') {
+    font-size: em(34px);
+    margin: 0 0 0 15%;
+    padding: em(135px, 34px) em(130px, 34px) em(28px, 34px) 0;
+    width: 35%;
+  }
 }
 
 .supporting-services-toggle {
@@ -29,12 +60,22 @@
     background: $white image-url('components/icons/dropdown.png') 94% 50% no-repeat;
     bottom: 0;
     color: $deep-purple;
-    display: inline-block;
+    display: block;
     font-weight: $open-sans-semibold;
     padding: em(9px) em(36px) em(9px) em(25px);
     position: absolute;
-    right: 17%;
     text-decoration: none;
+    width: 100%;
+
+    @include media('>=tablet') {
+      display: inline-block;
+      right: 2%;
+      width: auto;
+    }
+
+    @include media('>tablet') {
+      right: 17%;
+    }
   }
 
   &:hover {
@@ -83,7 +124,15 @@
 
 .standard-content-box {
   background: $white;
-  padding: em(60px);
+  padding: em(20px) em(15px);
+
+  @include media('>phone', '<desktop') {
+    padding: em(25px);
+  }
+
+  @include media('>tablet') {
+    padding: em(60px);
+  }
 }
 
 .specialist-areas {

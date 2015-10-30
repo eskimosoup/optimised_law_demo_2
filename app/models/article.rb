@@ -5,6 +5,7 @@ class Article < ActiveRecord::Base
   mount_uploader :image, ArticleUploader
 
   belongs_to :article_category
+  belongs_to :team_member
   has_many :service_articles, dependent: :destroy
   has_many :services, through: :service_articles
 

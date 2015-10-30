@@ -17,11 +17,12 @@ $(document).on("click", ".toggle-class", function(e) {
   }
 });
 
-$(document).on("click", ".fade-toggle", function(e) {
+$(document).on("click", ".modal-toggle", function(e) {
   var toggleContainer = $(this).attr('data-container');
   var dataReturn      = $(this).attr('data-return');
 
   $(toggleContainer).fadeToggle(250);
+  $('html').toggleClass('disable-overflow');
 
   if (dataReturn === 'false') {
     e.preventDefault();

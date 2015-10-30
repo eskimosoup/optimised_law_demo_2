@@ -5,6 +5,8 @@ class Office < ActiveRecord::Base
   mount_uploader :image, OfficeUploader
 
   belongs_to :office_location
+  has_many :team_member_offices, dependent: :nullify
+  has_many :team_members, -> { displayed }, through: :team_member_offices
 
   validates :name, :office_location_id, :building_number, :street, :town, :postcode, :phone_number, presence: true
   validates :suggested_url, allow_blank: true, uniqueness: { case_sensitive: false, message: 'is already taken, leave blank to generate automatically' }

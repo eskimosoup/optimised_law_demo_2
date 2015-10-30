@@ -1,6 +1,6 @@
 class DepartmentPresenter < BasePresenter
   presents :department
-  delegate :name, to: :department
+  delegate :id, :name, to: :department
 
   def pluralized_name
     name.possessive
@@ -11,6 +11,6 @@ class DepartmentPresenter < BasePresenter
   end
 
   def summary
-    h.simple_format department.summary 
+    h.simple_format department.summary
   end
 end

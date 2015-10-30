@@ -3,13 +3,15 @@
     <%= image_tag 'layout/header/logo.png', alt: global_site_settings['Name'] %>
   <% end %>
 
+
   <div class="right">
-    <ul class="aside-navigation">
+    <%= link_to (image_tag 'components/icons/menu.jpg', alt: 'Toggle Menu'), '#', class: 'mobile-menu-toggle toggle-class show-for-medium-down', data: { container: '.header-navigation', class: 'hide-for-medium-down', retun: 'false' } %>
+    <ul class="aside-navigation hide-for-medium-down">
       <%= nested_menu_items(menu_items: @header_aside_menu.menu_items) %>
     </ul>
   </div>
 
-  <nav class="header-navigation row">
+  <nav class="header-navigation hide-for-medium-down row">
     <div class="small-12 medium-10 medium-offset-2 columns">
       <ul class="header-navigation-links">
         <li>

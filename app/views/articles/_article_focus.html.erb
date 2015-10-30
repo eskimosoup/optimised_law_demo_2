@@ -4,6 +4,6 @@
   </h5>
 <% end %>
 
-<%= link_to article_presenter.link, title: article_presenter.title do %>
+<%= link_to article_presenter.link, title: article_presenter.title, class: 'article-focus-date' do %>
   <%= article_presenter.date_block %>
 <% end %>

@@ -1,8 +1,16 @@
 .testimonials {
   background: $light-purple;
   color: $white;
-  padding: em(60px);
+  padding: em(20px) em(15px);
   height: 100%;
+
+  @include media('>phone', '<desktop') {
+    padding: em(25px);
+  }
+
+  @include media('>tablet') {
+    padding: em(60px);
+  }
 
   h4,
   p {

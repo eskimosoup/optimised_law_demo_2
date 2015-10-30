@@ -1,7 +1,14 @@
 .updates-wrap {
   background: $white;
   margin: 0 auto em(20px);
-  padding: em(60px);
+  
+  @include media('>phone', '<desktop') {
+    padding: em(25px);
+  }
+
+  @include media('>tablet') {
+    padding: em(60px);
+  }
 }
 
 .article-focus {
@@ -26,6 +33,13 @@
     line-height: 1.4;
     margin: em(10px) 0 0;
     padding: em(59px) 0 em(59px) em(22px);
+  }
+}
+
+@include media('<=phone') {
+  .article-focus-date {
+    display: block;
+    margin-bottom: em(16px);
   }
 }
 

@@ -23,14 +23,91 @@
   }
 
   .team-member-name {
+    color: $deep-purple;
     font-family: $font-droid-serif;
     font-size: em(13px, 13px);
-    color: $deep-purple;
     line-height: .9;
     margin: 0;
   }
 
   .team-member-role {
     font-size: em(12px, 13px);
+  }
+}
+
+.team-member-modal {
+  h4 {
+    color: $deep-purple;
+    font-family: $font-droid-serif;
+    font-size: em(16px);
+    font-weight: 400;
+    margin: em(33px, 16px) 0 em(18px, 16px);
+  }
+
+  .specialisms-title {
+    color: $highlight-purple;
+    font-family: $font-droid-serif;
+    font-size: em(13px);
+    font-weight: $droid-serif-bold;
+    margin: 0 0 em(8px, 13px);
+  }
+}
+
+.team-member-modal-direct-dial {
+  color: $highlight-purple;
+  font-family: $font-merriweather;
+  font-size: em(20px);
+}
+
+.team-member-modal-email-address a {
+  color: $highlight-purple;
+  font-size: em(13px);
+  font-weight: $open-sans-bold;
+  text-decoration: none;
+}
+
+.team-member-modal-image {
+  border-bottom: 11px solid $turquoise;
+  margin: em(17px) 0 em(18px);
+}
+
+.team-member-modal-vcard-download {
+  color: $purple;
+  display: block;
+  font-weight: $open-sans-bold;
+  text-align: center;
+  text-decoration: none;
+}
+
+.team-member-modal-name {
+  color: $deep-purple;
+  font-family: $font-droid-serif;
+  font-size: em(17px);
+  line-height: .9;
+  margin: em(20px, 17px) 0 0;
+}
+
+.team-member-modal-title {
+  border-bottom: 2px dotted $highlight-purple;
+  color: $turquoise;
+  font-size: em(13px);
+  font-weight: $open-sans-bold;
+  margin: em(14px, 13px) 0 em(17px, 13px);
+}
+
+.team-member-modal-social-link {
+  margin: 0 em(5px) 0 em(22px);
+}
+
+.team-member-modal-testimonial {
+  border-left: 5px solid $modal-grey;
+  margin: em(32px) 0;
+  padding: em(10px) em(20px);
+
+  p {
+    color: $secondary-purple;
+    font-family: $font-droid-serif;
+    font-size: em(14px);
+    line-height: 1.57;
   }
 }

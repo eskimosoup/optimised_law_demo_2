@@ -37,7 +37,15 @@
   }
 
   li {
-    display: inline-block;
+    display: block;
+
+    @include media('<=tablet') {
+      background: $light-grey;
+    }
+
+    @include media('>tablet') {
+      display: inline-block;
+    }
   }
 
   a {
@@ -48,9 +56,14 @@
     display: block;
     font-family: $font-merriweather;
     font-size: em(12px);
-    margin: 0 em(10px, 12px);
-    padding: em(20px, 12px);
+    margin: 0 em(5px, 12px);
+    padding: em(10px, 12px);
     text-decoration: none;
+
+    @include media('>tablet') {
+      margin: 0 em(10px, 12px);
+      padding: em(20px, 12px);
+    }
 
     &:visited {
       color: $offset-black;
@@ -86,11 +99,15 @@
     font-family: $font-merriweather;
     font-size: em(12px);
     margin: 0 em(5px, 12px);
-    padding: em(11px, 12px) em(20px, 12px);
+    padding: em(11px, 12px);
     text-align: center;
     text-decoration: none;
     transform: translate(-5px, 0);
     transition: transform 550ms ease-in-out;
+
+    @include media('>phone') {
+      padding: em(11px, 12px) em(20px, 12px);
+    }
   }
 
   .active {
