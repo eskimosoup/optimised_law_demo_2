@@ -1,8 +1,11 @@
 class Service < ActiveRecord::Base
+  include NullifyBlanks
   extend FriendlyId
   friendly_id :slug_candidates, use: [:slugged, :history]
 
   mount_uploader :image, ServiceUploader
+
+  has_closure_tree
 
   belongs_to :department
   has_many :service_articles, dependent: :nullify

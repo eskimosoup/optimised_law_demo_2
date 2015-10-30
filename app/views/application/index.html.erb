@@ -1,3 +1,11 @@
+<%= content_for :head do %>
+  <script>
+    $(document).on('click', '.hero-banner-a-to-z-toggle', function() {
+      $('.hero-banner-a-to-z-toggle').removeClass('active');
+      $(this).addClass('active');
+    });
+  </script>
+<% end %>
 <div class="hero-banner">
   <h1 class="hero-banner-text">
     Together for life's ups and downs
@@ -37,29 +45,16 @@
 
     <div class="hero-banner-a-to-z  content-navigation-content hide" id="hero-banner-a-to-z">
       <ul class="hero-banner-letter-list">
-        <% # TODO: Make this work %>
-        <li>
-          <%= link_to 'a', '#', class: 'active' %>
-        </li>
-        <li>
-          <%= link_to 'b', '#', class: 'inactive' %>
-        </li>
-        <li>
-          <%= link_to 'c', '#' %>
-        </li>
-        <li>
-          <%= link_to 'd', '#' %>
-        </li>
-        <li>
-          <%= link_to 'e', '#' %>
-        </li>
+        <% ('a'..'z').each do |letter| %>
+          <li><%= link_to letter, alpabetical_list_services_path(letter: letter), remote: true, class: "hero-banner-a-to-z-toggle #{'inactive' unless @presented_a_to_z_group[letter].present?}" %>
+        <% end %>
       </ul>
 
       <div class="row">
         <div class="small-12 columns">
           <div class="hero-banner-service-list">
-            <div class="row">
-              <%= render partial: 'departments/hero_atoz_department', collection: @presented_departments, as: :department_presenter %>
+            <div class="row" id="hero-banner-service-list-content">
+              <%= render partial: 'departments/hero_atoz_department', collection: @presented_a_to_z, as: :department_presenter %>
             </div>
           </div>
         </div>
@@ -103,7 +98,7 @@
         Talk to us
       </div>
 
-      <%= link_to '#', class: 'fade-toggle', title: 'Talk to us', data: { container: '.modal', return: 'false' } do %>
+      <%= link_to '#', class: 'fade-toggle', title: 'Talk to us', data: { container: '.talk-to-us-modal', return: 'false' } do %>
         <%= image_tag 'components/icons/talk-icon.png', alt: 'Talk to us' %>
       <% end %>
     </div>

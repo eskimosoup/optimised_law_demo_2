@@ -21,6 +21,8 @@ class ApplicationController < ActionController::Base
 
   def index
     @presented_departments = collection_presenter(Department.displayed, DepartmentPresenter)
+    @presented_a_to_z = collection_presenter(Department.joins(:services).displayed.where('LOWER(services.name) LIKE ?', 'A%'), ServicePresenter)
+    @presented_a_to_z_group = Service.displayed.group_by{|service| service.name.downcase.first}
     @presented_offices = collection_presenter(Office.displayed, OfficePresenter)
   end
 

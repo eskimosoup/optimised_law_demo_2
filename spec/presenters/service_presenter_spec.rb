@@ -17,6 +17,10 @@ RSpec.describe ServicePresenter, type: :presenter, service: true do
       expect(service_presenter.linked_department).to eq(link_to service.department.name, service.department)
     end
 
+    it 'returns the department' do
+      expect(service_presenter.department).to eq(service.department)
+    end
+
     it 'returns the linked audience' do
       expect(service_presenter.linked_audience).to eq(link_to service.department.audience.name, service.department.audience)
     end
@@ -31,6 +35,10 @@ RSpec.describe ServicePresenter, type: :presenter, service: true do
 
     it 'returns the content html' do
       expect(service_presenter.content).to eq(raw service.content)
+    end
+
+    it 'returns the specialisms html' do
+      expect(service_presenter.specialisms).to eq(raw service.specialisms)
     end
   end
 

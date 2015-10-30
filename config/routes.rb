@@ -3,7 +3,11 @@ Rails.application.routes.draw do
     get code, to: 'errors#show', code: code
   end
 
-  resources :services, only: :show
+  resources :services, only: :show do
+    collection do
+      get 'update-alphabetical-list', to: 'services#a_to_z', as: 'alpabetical_list'
+    end
+  end
   resources :articles, only: [:index, :show]
   resources :departments, only: :show
   resources :audiences, only: :show

@@ -43,6 +43,16 @@
           <li><%= link_to 'Site Navigation', menu_items_path %></li>
         <% end %>
       </ul>
+
+      <div class="content-category-type">
+        Services
+      </div>
+
+      <ul id="modules" class="content-category-list">
+        <%= module_link(model: Service, path: services_path) %>
+        <%= module_link(model: Department, path: departments_path) %>
+        <%= module_link(model: Audience, path: audiences_path) %>
+      </ul>
     </div>
   </div>
 </div>

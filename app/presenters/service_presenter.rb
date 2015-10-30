@@ -2,6 +2,10 @@ class ServicePresenter < BasePresenter
   presents :service
   delegate :name, to: :service
 
+  def department
+    service.department
+  end
+
   def department_name
     service.department.name
   end
@@ -36,5 +40,9 @@ class ServicePresenter < BasePresenter
 
   def content
     h.raw service.content
+  end
+
+  def specialisms
+    h.raw service.specialisms
   end
 end
