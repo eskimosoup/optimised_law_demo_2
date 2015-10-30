@@ -4,7 +4,7 @@ class AudiencePresenter < BasePresenter
 
   def linked_name(options = {})
     begin
-      h.link_to name, audience, options
+      h.link_to name, audience_path(audience), options
     rescue
       h.link_to name, '#invalid-link', options
     end

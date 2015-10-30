@@ -3,11 +3,7 @@ class CaseStudyPresenter < BasePresenter
   delegate :title, to: :case_study
 
   def linked_title(options = {})
-    begin
-      h.link_to title, case_study, options
-    rescue
-      h.link_to title, '#invalid-link', options
-    end
+    h.link_to title, link, options
   end
 
   def link

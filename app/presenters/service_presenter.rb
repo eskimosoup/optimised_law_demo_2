@@ -12,7 +12,7 @@ class ServicePresenter < BasePresenter
 
   def linked_name(options = {})
     begin
-      h.link_to name, service, options
+      h.link_to name, service_path(service), options
     rescue
       h.link_to name, '#invalid-link', options
     end
@@ -20,7 +20,7 @@ class ServicePresenter < BasePresenter
 
   def linked_department(options = {})
     begin
-      h.link_to department_name, service.department, options
+      h.link_to department_name, department_path(service.department), options
     rescue
       h.link_to department_name, '#invalid-link', options
     end
@@ -28,7 +28,7 @@ class ServicePresenter < BasePresenter
 
   def linked_audience(options = {})
     begin
-      h.link_to service.department.audience.name, service.department.audience, options
+      h.link_to service.department.audience.name, audience_path(service.department.audience), options
     rescue
       h.link_to service.department.audience.name, '#invalid-link', options
     end

@@ -3,11 +3,7 @@ class ArticlePresenter < BasePresenter
   delegate :title, to: :article
 
   def linked_title(options = {})
-    begin
-      h.link_to title, article, options
-    rescue
-      h.link_to title, '#invalid-link', options
-    end
+    h.link_to title, link, options
   end
 
   def link

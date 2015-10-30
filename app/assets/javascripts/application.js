@@ -14,6 +14,7 @@
 //= require jquery_ujs
 //= require slick.js/slick.js
 //= require colorbox/jquery.colorbox.js
+//= require components/tooltips
 //= require vendor/foundation/libraries/fastclick
 //= require vendor/foundation/libraries/jquery.cookie
 //= require vendor/foundation/libraries/modernizr
