@@ -1,9 +1,9 @@
 <div class="medium-4 columns <%= cycle('sectors', 'personal-services', 'business-services') %>">
   <div class="hero-banner-service-list-title">
-    <%= department_presenter.name %>
+    <%= audience_presenter.name %>
   </div>
 
   <ul class="hero-banner-service-list-services">
-    <%= render partial: 'services/hero_atoz_service', collection: BaseCollectionPresenter.new(collection: department_presenter.services, view_template: self, presenter: ServicePresenter), as: :service_presenter %>
+    <%= render partial: 'services/hero_atoz_service', collection: BaseCollectionPresenter.new(collection: audience_presenter.services, view_template: self, presenter: ServicePresenter), as: :service_presenter %>
   </ul>
 </div>

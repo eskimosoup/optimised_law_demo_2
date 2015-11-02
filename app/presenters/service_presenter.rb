@@ -12,7 +12,7 @@ class ServicePresenter < BasePresenter
 
   def linked_name(options = {})
     begin
-      h.link_to name, service_path(service), options
+      h.link_to name, h.service_path(service), options
     rescue
       h.link_to name, '#invalid-link', options
     end
