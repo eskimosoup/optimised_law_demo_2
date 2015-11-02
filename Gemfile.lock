@@ -124,6 +124,9 @@ GEM
     ffi (1.9.10)
     flamegraph (0.1.0)
       fast_stack
+    flip (1.0.1)
+      activesupport (>= 3.0, < 5)
+      i18n
     formatador (0.2.5)
     friendly_id (5.1.0)
       activerecord (>= 4.0.0)
@@ -356,6 +359,7 @@ DEPENDENCIES
   database_cleaner (~> 1.5.0)
   factory_girl_rails (~> 4.5.0)
   flamegraph (~> 0.1.0)
+  flip
   friendly_id (~> 5.1.0)
   guard-rspec (~> 4.6.4)
   jbuilder (~> 2.0)

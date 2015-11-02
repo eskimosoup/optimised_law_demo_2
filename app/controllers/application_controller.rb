@@ -20,8 +20,9 @@ class ApplicationController < ActionController::Base
   end
 
   def index
+    @presented_tour_entries = collection_presenter(TourEntry.where(page: 'Home').positioned.displayed, TourEntryPresenter)
     @presented_departments = collection_presenter(Department.displayed, DepartmentPresenter)
-    @presented_a_to_z = collection_presenter(Department.joins(:services).displayed.where('LOWER(services.name) LIKE ?', 'A%').uniq, ServicePresenter)
+    @presented_a_to_z = collection_presenter(Department.eager_load(:services).displayed.where("LOWER(services.name) LIKE ?", "a%").uniq, DepartmentPresenter)
     @presented_a_to_z_group = Service.displayed.group_by{|service| service.name.downcase.first}
   end
 

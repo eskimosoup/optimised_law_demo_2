@@ -31,31 +31,31 @@ class TeamMemberPresenter < BasePresenter
   end
 
   def linked_google_plus(text = 'Google+', options = {})
-    h.link_to text, team_member.google_plus_link, options
+    h.link_to text, team_member.google_plus_link, options if Flip.team_member_google_plus_link?
   end
 
   def linked_twitter(text = 'Follow me on Twitter', options = {})
-    h.link_to text, team_member.twitter_link, options
+    h.link_to text, team_member.twitter_link, options if Flip.team_member_twitter_link?
   end
 
   def linked_linkedin(text = 'Connect with me on LinkedIn', options = {})
-    h.link_to text, team_member.linkedin_link, options
+    h.link_to text, team_member.linkedin_link, options if Flip.team_member_linkedin_link?
   end
 
   def personal_profile
-    h.raw team_member.personal_profile
+    h.raw team_member.personal_profile if Flip.team_member_personal_profile?
   end
 
   def vcard(options = {})
-    h.link_to 'Download vCard', '#', options if team_member.has_vcard_download?
+    h.link_to 'Download vCard', '#', options if Flip.team_member_vcard_download?
   end
 
   def mobile_number
-    team_member.mobile_number
+    team_member.mobile_number if Flip.team_member_mobile_number?
   end
 
   def dx_number
-    team_member.dx_number
+    team_member.dx_number if Flip.team_member_dx_number?
   end
 
   def random_testimonial_recommendation

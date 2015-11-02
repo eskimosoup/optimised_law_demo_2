@@ -20,7 +20,7 @@
   </div>
 </footer>
 
-<div class="sticky-tab">
+<div class="sticky-tab" id="fixed-talk-to-us">
   <%= link_to '#', class: 'modal-toggle', title: 'Talk to us', data: { container: '.talk-to-us-modal', return: 'false' } do %>
     <%= image_tag 'components/icons/talk-icon.png', alt: 'Talk to us' %>
     <div class="text">Talk to us</div>
@@ -28,3 +28,25 @@
 </div>
 
 <%= render 'shared/talk_to_us' %>
+
+<% if @presented_tour_entries.present? %>
+  <ol class="joyride-list" data-joyride>
+    <%= render partial: 'tour_entries/tour_entry', collection: @presented_tour_entries, as: :tour_entry_presenter %>
+  </ol>
+
+  <div class="tour-prompt hide">
+    <div class="inner">
+      <% # TODO: Make this dynamic %>
+      <div class="title">Take a tour?</div>
+      Would you like to take a tour?
+
+      <div>
+        <%= link_to 'Take a tour now', '#', class: 'tour-button' %>
+      </div>
+
+      <%= link_to 'Close', '#', class: 'dismiss-tour right' %>
+    </div>
+  </div>
+<% end %>
+
+<%= javascript_include_tag 'components/tour.js' %>

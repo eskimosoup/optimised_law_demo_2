@@ -1,0 +1,76 @@
+.joyride-modal-bg {
+  background: transparent;
+}
+
+%tour-button {
+  @include border-radius(2px);
+  background: $turquoise;
+  color: $white;
+  display: inline-block;
+  padding: em(4px) em(6px);
+}
+
+.joyride-content-wrapper {
+  @extend %clearfix;
+
+  .button {
+    @extend %tour-button;
+
+    &.disabled {
+      display: none;
+    }
+  }
+
+  .joyride-next-tip {
+    float: right;
+  }
+
+  p {
+    color: $light-grey;
+    font-size: em(14px);
+    margin: em(8px) 0;
+  }
+}
+
+
+.tour-prompt {
+	// http://codepen.io/gschier/pen/HCoqh
+	background: rgba(0, 0, 0, 0.9);
+	height: 100%;
+	left: 0;
+	position: fixed;
+	top: 0;
+	width: 100%;
+	z-index: 999;
+  text-align: center;
+
+  .inner {
+    @include border-radius(2px);
+    top: 50%;
+    left: 50%;
+    width: 40%;
+    height: auto;
+    padding: em(20px);
+    margin: -10% 0 0 -20%;
+    position: absolute;
+    background-color: rgba($light-grey, 0.95);
+
+    .title {
+      color: $turquoise;
+      font-size: em(24px);
+      font-weight: bold;
+      line-height: 1;
+    }
+
+    p {
+      font-size: em(14px);
+    }
+  }
+
+  .tour-button {
+    @extend %tour-button;
+    display: inline-blockblock;
+    margin: em(10px, 16px) auto;
+    font-size: em(16px);
+  }
+}

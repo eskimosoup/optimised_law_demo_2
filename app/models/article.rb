@@ -12,7 +12,7 @@ class Article < ActiveRecord::Base
   validates :title, :summary, :content, :article_category_id, presence: true
   validates :suggested_url, allow_blank: true, uniqueness: { case_sensitive: false, message: 'is already taken, leave blank to generate automatically' }
 
-  scope :displayed, -> { where("display = ? AND date <= ?", true, Date.today).order(date: :desc) }
+  scope :displayed, -> { joins(:article_category).where("articles.display = ? AND date <= ?", true, Date.today).order(date: :desc).merge(ArticleCategory.displayed) }
 
   def slug_candidates
     [

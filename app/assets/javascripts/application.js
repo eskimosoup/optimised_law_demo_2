@@ -16,10 +16,11 @@
 //= require colorbox/jquery.colorbox.js
 //= require components/tooltips
 //= require vendor/foundation/libraries/fastclick
-//= require vendor/foundation/libraries/jquery.cookie
 //= require vendor/foundation/libraries/modernizr
 //= require vendor/foundation/libraries/placeholder
 //= require vendor/foundation/foundation
+//= require vendor/foundation/foundation.joyride
+//= require vendor/foundation/libraries/jquery.cookie
 //= require vendor/match-height
 //= require components/toggle-class
 

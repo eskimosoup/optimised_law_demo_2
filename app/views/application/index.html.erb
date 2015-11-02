@@ -1,8 +1,14 @@
 <%= content_for :head do %>
   <script>
+    $(document).ready(function() {
+      $('.hero-banner-a-to-z-toggle.inactive').attr('href','#').removeAttr('data-remote');
+    })
     $(document).on('click', '.hero-banner-a-to-z-toggle', function() {
-      $('.hero-banner-a-to-z-toggle').removeClass('active');
-      $(this).addClass('active');
+      if(!$(this).hasClass('inactive')) {
+        $('.hero-banner-a-to-z-toggle').removeClass('active');
+        $('#hero-banner-service-list-content').html("<%= j image_tag 'ajax-loader.gif', alt: 'Loading...' %>");
+        $(this).addClass('active');
+      }
     });
   </script>
 <% end %>
@@ -17,23 +23,23 @@
 
   <div class="hero-banner-widget">
     <ul class="content-navigation">
-      <li>
+      <li id="search-tab">
         <%= link_to 'Search', '#hero-banner-search', class: 'content-navigation-link active', title: 'Search' %>
       </li>
 
-      <li>
+      <li id="expertise-tab">
         <%= link_to 'Expertise', '#hero-banner-expertise', class: 'content-navigation-link', title: 'Expertise' %>
       </li>
 
-      <li>
+      <li id="a-to-z-tab">
         <%= link_to 'A-Z', '#hero-banner-a-to-z', class: 'content-navigation-link', title: 'A-Z' %>
       </li>
     </ul>
 
     <div class="hero-banner-search content-navigation-content" id="hero-banner-search">
-      <%= form_tag '', method: :get do %>
+      <%= form_tag '', method: :get, id: 'search-box' do %>
         <%= text_field_tag :search, nil, placeholder: 'Search here...', class: 'hero-banner-search-text' %>
-        <%= submit_tag 'Search' %>
+        <%= submit_tag 'Search', class: 'invalid-link' %>
       <% end %>
     </div>
 

@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20151030105311) do
+ActiveRecord::Schema.define(version: 20151102113914) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -116,6 +116,13 @@ ActiveRecord::Schema.define(version: 20151030105311) do
   end
 
   add_index "downloads", ["download_category_id"], name: "index_downloads_on_download_category_id", using: :btree
+
+  create_table "features", force: :cascade do |t|
+    t.string   "key",                        null: false
+    t.boolean  "enabled",    default: false, null: false
+    t.datetime "created_at",                 null: false
+    t.datetime "updated_at",                 null: false
+  end
 
   create_table "frequently_asked_questions", force: :cascade do |t|
     t.integer  "position"
@@ -307,6 +314,17 @@ ActiveRecord::Schema.define(version: 20151030105311) do
   add_index "service_hierarchies", ["ancestor_id", "descendant_id", "generations"], name: "service_anc_desc_idx", unique: true, using: :btree
   add_index "service_hierarchies", ["descendant_id"], name: "service_desc_idx", using: :btree
 
+  create_table "service_related_services", force: :cascade do |t|
+    t.integer  "service_id"
+    t.integer  "related_service_id"
+    t.integer  "position"
+    t.datetime "created_at",         null: false
+    t.datetime "updated_at",         null: false
+  end
+
+  add_index "service_related_services", ["related_service_id"], name: "index_service_related_services_on_related_service_id", using: :btree
+  add_index "service_related_services", ["service_id"], name: "index_service_related_services_on_service_id", using: :btree
+
   create_table "service_team_members", force: :cascade do |t|
     t.integer  "service_id"
     t.integer  "team_member_id"
@@ -414,6 +432,19 @@ ActiveRecord::Schema.define(version: 20151030105311) do
 
   add_index "testimonials", ["team_member_id"], name: "index_testimonials_on_team_member_id", using: :btree
 
+  create_table "tour_entries", force: :cascade do |t|
+    t.integer  "position"
+    t.string   "page"
+    t.string   "page_area"
+    t.string   "title"
+    t.text     "content"
+    t.string   "joyride_options"
+    t.boolean  "display",         default: true
+    t.string   "next_page"
+    t.datetime "created_at",                     null: false
+    t.datetime "updated_at",                     null: false
+  end
+
   create_table "video_categories", force: :cascade do |t|
     t.string   "name",                         null: false
     t.string   "slug"
@@ -452,6 +483,8 @@ ActiveRecord::Schema.define(version: 20151030105311) do
   add_foreign_key "service_downloads", "services"
   add_foreign_key "service_faqs", "frequently_asked_questions"
   add_foreign_key "service_faqs", "services"
+  add_foreign_key "service_related_services", "services"
+  add_foreign_key "service_related_services", "services", column: "related_service_id"
   add_foreign_key "service_team_members", "services"
   add_foreign_key "service_team_members", "team_members"
   add_foreign_key "service_testimonials", "services"

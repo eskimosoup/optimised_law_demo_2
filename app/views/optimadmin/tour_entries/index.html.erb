@@ -1,0 +1,58 @@
+<%= render 'optimadmin/shared/header/main_title', title: 'Manage Tour Entries' %>
+
+<div class="main-content">
+  <div class="row module-header collapse">
+    <%= render 'optimadmin/shared/module/index/new_item', title: 'Tour Entry', object: TourEntry, path: new_tour_entry_path %>
+    <%= render 'optimadmin/shared/search_form' %>
+    <%= form_tag '', method: :get do %>
+      <%= hidden_field_tag :per_page, params[:per_page] %>
+      <%= hidden_field_tag :order, params[:order] %>
+      <%= hidden_field_tag :search, params[:search] %>
+      <%= select_tag :area, options_for_select(['Home'] +
+                          ['DEPARTMENT'] +
+                          Department.select(:name, :id).map{|x| ["- #{x.name}", "Department_#{x.id}"]} +
+                          ['SERVICE'] +
+                          Service.select(:name, :id).map{|x| ["- #{x.name}", "Service_#{x.id}"]}, selected: params[:area]),
+      class: 'submit-on-change', prompt: 'Page filter' %>
+    <% end %>
+
+    <p>A tour entry with a link to another page is in <strong>bold</strong>.</p>
+  </div>
+
+  <div class="row collapse module-list-index header">
+
+      <%= list_item 'large-1 hide-for-medium-down' do %>
+        <%= link_to octicon('settings') %>
+      <% end %>
+
+
+
+      <%= list_item 'large-3 small-8' do %>
+        <%= link_to octicon('chevron-down'), '#', class: 'helper-link index-list-expand-all', data: { this_class: 'octicon-chevron-up octicon-chevron-down' } %>
+        Title
+      <% end %>
+
+
+      <%= list_item 'large-2 small-8' do %>
+        Page
+      <% end %>
+
+      <%= list_item 'large-2 small-8' do %>
+        Page Area
+      <% end %>
+
+
+
+
+    <%= list_item { 'Display' } %>
+    <%= list_item { 'View' } %>
+    <%= list_item { 'Edit' } %>
+
+    <%= list_item 'large-1 hide-for-medium-down text-center last' do 'Delete' end %>
+  </div>
+
+  <div class='module-sortable' data-module="TourEntry">
+  <%= render partial: 'tour_entry', collection: @tour_entries, as: :tour_entry_presenter %>
+  </div>
+  <%= paginate @tour_entries %>
+</div>

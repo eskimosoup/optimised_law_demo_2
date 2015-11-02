@@ -5,7 +5,7 @@ class DownloadCategory < ActiveRecord::Base
   validates :name, presence: true
   validates :suggested_url, allow_blank: true, uniqueness: { case_sensitive: false, message: 'is already taken, leave blank to generate automatically' }
 
-  scope :displayed, -> { where(display: true) }
+  scope :displayed, -> { where("download_categories.display = ?", true) }
 
   has_many :downloads, -> { displayed }, dependent: :destroy
 
