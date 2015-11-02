@@ -1,6 +1,6 @@
 class AudiencePresenter < BasePresenter
   presents :audience
-  delegate :name, to: :audience
+  delegate :id, :name, to: :audience
 
   def linked_name(options = {})
     begin
@@ -8,5 +8,9 @@ class AudiencePresenter < BasePresenter
     rescue
       h.link_to name, '#invalid-link', options
     end
+  end
+
+  def services
+    audience.services
   end
 end

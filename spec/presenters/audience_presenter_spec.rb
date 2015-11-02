@@ -12,5 +12,9 @@ RSpec.describe AudiencePresenter, type: :presenter, audience: true do
     it 'returns the linked name' do
       expect(audience_presenter.linked_name).to eq(link_to audience.name, audience)
     end
+
+    it 'returns the services' do
+      expect(audience_presenter.services).to eq(audience.services)
+    end
   end
 end

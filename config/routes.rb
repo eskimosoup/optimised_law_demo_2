@@ -15,11 +15,12 @@ Rails.application.routes.draw do
 
   get '/divorce', to: 'application#divorce'
 
+  mount Optimadmin::Engine => "/admin"
+  mount Flip::Engine => "/admin/features"
+
   # This has to be the last route in your list
   match "*path", to: "errors#show", via: :all, code: 404 unless Rails.application.config.consider_all_requests_local
 
-  mount Optimadmin::Engine => "/admin"
-  mount Flip::Engine => "/admin/features"
   root to: 'application#index'
 end
 

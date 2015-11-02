@@ -1,10 +1,10 @@
 <div class="medium-4 columns <%= cycle('sectors', 'personal-services', 'business-services') %>">
   <div class="hero-banner-expertise-title">
-    <%= link_to department_presenter.name, '#', class: 'toggle-class', data: { class: 'hide-for-small', container: ".department-#{department_presenter.id}", return: 'false' } %>
+    <%= link_to audience_presenter.name, '#', class: 'toggle-class', data: { class: 'hide-for-small', container: ".department-#{audience_presenter.id}", return: 'false' } %>
   </div>
 
 
-  <ul class="hero-banner-expertise-list hide-for-small department-<%= department_presenter.id %>">
-    <%= render partial: 'services/hero_expertise_service', collection: BaseCollectionPresenter.new(collection: department_presenter.services, view_template: self, presenter: ServicePresenter), as: :service_presenter %>
+  <ul class="hero-banner-expertise-list hide-for-small department-<%= audience_presenter.id %>">
+    <%= render partial: 'services/hero_expertise_service', collection: BaseCollectionPresenter.new(collection: audience_presenter.services, view_template: self, presenter: ServicePresenter), as: :service_presenter %>
   </ul>
 </div>
