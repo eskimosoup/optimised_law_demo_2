@@ -19,7 +19,7 @@
     In the most difficult of times, you can rely on us
   </h2>
 
-  <%= link_to "#{@presented_service.name}: Supporting Services", '#', class: 'toggle-class supporting-services-toggle', data: { class: 'hide', container: '.supporting-services', return: 'false' } %>
+  <%= link_to "#{@presented_service.name}: Supporting Services", '#', class: 'toggle-class supporting-services-toggle', data: { class: 'hide', container: '.supporting-services', return: 'false' }, id: 'supporting-services' %>
 </div>
 
 <div class="supporting-services hide">
@@ -77,7 +77,7 @@
           Simply complete the form below and one of our experts will get back to you.
         </p>
 
-        <%= form_tag '' do %>
+        <%= form_tag '', id: 'callback-form' do %>
           <%= text_field_tag :name, params[:name], placeholder: 'Your name', required: true %>
           <%= text_field_tag :email_address, params[:email_address], placeholder: 'Email address', required: true %>
           <%= text_field_tag :telephone_number, params[:telephone_number], placeholder: 'Telephone number', required: true %>
@@ -103,15 +103,15 @@
         </h4>
 
         <ul class="content-navigation">
-          <li>
+          <li id="updates-tab">
             <%= link_to 'Updates', '#updates', class: 'content-navigation-link active', title: 'Search' if @presented_service_articles.present? %>
           </li>
 
-          <li>
+          <li id="faqs-tab">
             <%= link_to 'FAQs', '#faqs', class: 'content-navigation-link', title: 'Expertise' if @service_faqs.present? %>
           </li>
 
-          <li>
+          <li id="case-studies-tab">
             <%= link_to 'Case Studies', '#case-studies', class: 'content-navigation-link', title: 'A-Z' if @presented_service_case_studies.present? %>
           </li>
         </ul>
@@ -140,7 +140,7 @@
 
     <% if @presented_service_testimonials.present? %>
       <div class="medium-<%= @presented_service.specialisms.present? ? '6' : '12' %> columns  match-height">
-        <div class="testimonials text-center">
+        <div class="testimonials text-center" id="testimonials">
           <div class="testimonials-slider">
             <%= render partial: 'testimonials/testimonial', collection: @presented_service_testimonials, as: :testimonial_presenter %>
           </div>
@@ -157,7 +157,7 @@
         We can also help with...
       </h5>
 
-      <ul class="related-services-list">
+      <ul class="related-services-list" id="related-services">
         <%= render partial: 'services/related_service', collection: @presented_related_services, as: :service_presenter if @presented_related_services.present? %>
       </ul>
     </div>

@@ -3,6 +3,7 @@ class ServicesController < ApplicationController
 
   def show
     return redirect_to @service, status: :moved_permanently if request.path != service_path(@service)
+    @presented_tour_entries = collection_presenter(TourEntry.where(page: "#{controller_name.classify}_#{@service.id}").positioned.displayed, TourEntryPresenter)
     @presented_service = presenter(@service, ServicePresenter)
     @presented_service_downloads = collection_presenter(@service.downloads.limit(4), DownloadPresenter) if @service.downloads.present?
     @presented_service_articles = collection_presenter(@service.articles.limit(5), ArticlePresenter) if @service.articles.present?

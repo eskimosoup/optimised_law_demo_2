@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20151102080929) do
+ActiveRecord::Schema.define(version: 20151102113914) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -116,6 +116,13 @@ ActiveRecord::Schema.define(version: 20151102080929) do
   end
 
   add_index "downloads", ["download_category_id"], name: "index_downloads_on_download_category_id", using: :btree
+
+  create_table "features", force: :cascade do |t|
+    t.string   "key",                        null: false
+    t.boolean  "enabled",    default: false, null: false
+    t.datetime "created_at",                 null: false
+    t.datetime "updated_at",                 null: false
+  end
 
   create_table "frequently_asked_questions", force: :cascade do |t|
     t.integer  "position"
@@ -424,6 +431,19 @@ ActiveRecord::Schema.define(version: 20151102080929) do
   end
 
   add_index "testimonials", ["team_member_id"], name: "index_testimonials_on_team_member_id", using: :btree
+
+  create_table "tour_entries", force: :cascade do |t|
+    t.integer  "position"
+    t.string   "page"
+    t.string   "page_area"
+    t.string   "title"
+    t.text     "content"
+    t.string   "joyride_options"
+    t.boolean  "display",         default: true
+    t.string   "next_page"
+    t.datetime "created_at",                     null: false
+    t.datetime "updated_at",                     null: false
+  end
 
   create_table "video_categories", force: :cascade do |t|
     t.string   "name",                         null: false

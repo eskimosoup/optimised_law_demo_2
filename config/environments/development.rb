@@ -1,5 +1,6 @@
 Rails.application.configure do
-    Rails.application.routes.default_url_options[:host] = 'localhost:3000'
+  config.web_console.whitelisted_ips = '192.168.0.0/16'
+  Rails.application.routes.default_url_options[:host] = 'localhost:3000'
 
   config.action_mailer.delivery_method = :smtp
   config.action_mailer.smtp_settings = {

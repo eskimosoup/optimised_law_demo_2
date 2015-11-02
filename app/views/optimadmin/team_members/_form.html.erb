@@ -62,30 +62,47 @@
         <%= f.label :specialisms %><br>
         <%= f.text_area :specialisms, class: 'tinymce' %>
       </div>
-            <div class="field">
-        <%= f.label :personal_profile %><br>
-        <%= f.text_area :personal_profile, class: 'tinymce' %>
-      </div>
-            <div class="field">
-        <%= f.label :google_plus_link %><br>
-        <%= f.text_field :google_plus_link %>
-      </div>
-            <div class="field">
-        <%= f.label :twitter_link %><br>
-        <%= f.text_field :twitter_link %>
-      </div>
-            <div class="field">
+      <% if Flip.team_member_personal_profile? %>
+  <div class="field">
+    <%= f.label :personal_profile %><br>
+    <%= f.text_area :personal_profile, class: 'tinymce' %>
+  </div>
+<% end %>
+
+<% if Flip.team_member_google_plus_link? %>
+  <div class="field">
+    <%= f.label :google_plus_link %><br>
+    <%= f.text_field :google_plus_link %>
+  </div>
+<% end %>
+
+<% if Flip.team_member_twitter_link? %>
+  <div class="field">
+    <%= f.label :twitter_link %><br>
+    <%= f.text_field :twitter_link %>
+  </div>
+<% end %>
+<% if Flip.team_member_linkedin_link? %>
+        <div class="field">
         <%= f.label :linkedin_link %><br>
         <%= f.text_field :linkedin_link %>
       </div>
-            <div class="field">
-        <%= f.label :mobile_number %><br>
-        <%= f.text_field :mobile_number %>
-      </div>
-            <div class="field">
-        <%= f.label :dx_number %><br>
-        <%= f.text_field :dx_number %>
-      </div>
+      <% end %>
+
+
+<% if Flip.team_member_mobile_number? %>
+  <div class="field">
+    <%= f.label :mobile_number %><br>
+    <%= f.text_field :mobile_number %>
+  </div>
+<% end %>
+
+<% if Flip.team_member_dx_number? %>
+  <div class="field">
+    <%= f.label :dx_number %><br>
+    <%= f.text_field :dx_number %>
+  </div>
+<% end %>
 
 
               <%= f.datetimepicker_field :display_from %>
@@ -107,10 +124,12 @@
         <%= f.label :display %><br>
         <%= f.check_box :display %>
       </div>
-            <div class="field">
-        <%= f.label :has_vcard_download %><br>
-        <%= f.check_box :has_vcard_download %>
-      </div>
+      <% if Flip.team_member_vcard_download? %>
+  <div class="field">
+    <%= f.label :has_vcard_download %><br>
+    <%= f.check_box :has_vcard_download %>
+  </div>
+<% end %>
           <% end %>
   </div>
 

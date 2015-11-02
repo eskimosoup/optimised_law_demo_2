@@ -19,8 +19,7 @@ function hideTooltip() {
 }
 
 $(function() {
-  $('a[href="#invalid-link"]').addClass('invalid-link');
-  $('input[type=submit]').addClass('invalid-link').attr('disabled');
+  $('a[href="#invalid-link"], .callback-form-submit').addClass('invalid-link');
   $('<div class="tooltip hide">This is not active because this website is a demo.</div>').appendTo('body');
 });
 

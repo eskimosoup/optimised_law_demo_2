@@ -1,0 +1,74 @@
+<%= form_for(tour_entry) do |f| %>
+<% if tour_entry.errors.any? %>
+  <div id="error_explanation">
+    <h2><%= pluralize(tour_entry.errors.count, "error") %> prohibited this tour_entry from being saved:</h2>
+
+    <ul>
+      <% tour_entry.errors.full_messages.each do |message| %>
+      <li><%= message %></li>
+      <% end %>
+    </ul>
+  </div>
+<% end %>
+
+  <div class="field">
+    <%= f.label :title %><br />
+    <%= f.text_field :title %>
+  </div>
+
+
+  <div class="tabs prevent-flash">
+    <ul class="tab-list">
+      <li><a href="#tabs-1">Content</a></li>
+      <!-- <li><a href="#tabs-2">Media</a></li> -->
+      <li><a href="#tabs-3">Settings</a></li>
+      <li>
+        <%= link_to '#', class: 'destroy-tabs right', data: { class: 'tabs' } do %>
+          <%= octicon('chevron-down') %>
+        <% end %>
+      </li>
+    </ul>
+
+    <%= field_set_tag nil, id: 'tabs-1' do %>
+            <div class="field">
+        <%= f.label :page %><br>
+        <%= f.select :page, options_for_select(['Home'] +
+                            ['DEPARTMENT'] +
+                            Department.select(:name, :id).map{|x| ["- #{x.name}", "Department_#{x.id}"]} +
+                            ['SERVICE'] +
+                            Service.select(:name, :id).map{|x| ["- #{x.name}", "Service_#{x.id}"]}, selected: tour_entry.page), prompt: 'Please select' %>
+      </div>
+            <div class="field">
+        <%= f.label :page_area %> <%= module_tooltip('unique to the page', 'Please note that if the page area is not present, the tour will not show the content.') %><br>
+        <%= f.select :page_area, grouped_options_for_select(TourEntry::PAGE_AREA, selected: tour_entry.page_area), prompt: 'Please select' %>
+      </div>
+            <div class="field">
+        <%= f.label :content %><br>
+        <%= f.text_area :content, class: 'tinymce' %>
+      </div>
+            <div class="field">
+        <%= f.label :joyride_options %> <%= module_tooltip('advanced options', "Please see the Joyride section of the Foundation website, e.g.: 'tip_location: top; prev_button: false'") %> <%= link_to 'Joyride options', 'http://foundation.zurb.com/docs/components/joyride.html', target: '_blank' %><br>
+        <%= f.text_field :joyride_options %>
+      </div>
+          <% end %>
+
+    <%#= field_set_tag nil, id: 'tabs-2' do %>
+
+          <%# end %>
+
+    <%= field_set_tag nil, id: 'tabs-3' do %>
+    <div class="field">
+      <%= f.label :next_page %> <%= module_tooltip('Next page link', 'You may enter something such as "/services/a-family-law-service", it will only work if this is the last tour entry for the page.') %><br />
+      <%= f.text_field :next_page %>
+    </div>
+            <div class="field">
+        <%= f.label :display %><br>
+        <%= f.check_box :display %>
+      </div>
+          <% end %>
+  </div>
+
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

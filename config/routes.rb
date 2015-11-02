@@ -19,10 +19,20 @@ Rails.application.routes.draw do
   match "*path", to: "errors#show", via: :all, code: 404 unless Rails.application.config.consider_all_requests_local
 
   mount Optimadmin::Engine => "/admin"
+  mount Flip::Engine => "/admin/features"
   root to: 'application#index'
 end
 
 Optimadmin::Engine.routes.draw do
+  mount Flip::Engine => "/flip"
+  resources :tour_entries, except: [:show] do
+    collection do
+      post 'order'
+    end
+    member do
+      get 'toggle'
+    end
+  end
   resources :team_member_roles, except: [:show] do
     collection do
       post 'order'
