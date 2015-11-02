@@ -20,7 +20,7 @@ class ServicePresenter < BasePresenter
 
   def linked_department(options = {})
     begin
-      h.link_to department_name, department_path(service.department), options
+      h.link_to department_name, h.department_path(service.department), options
     rescue
       h.link_to department_name, '#invalid-link', options
     end

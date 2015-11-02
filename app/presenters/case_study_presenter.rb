@@ -8,7 +8,7 @@ class CaseStudyPresenter < BasePresenter
 
   def link
     begin
-      case_study_path(case_study)
+      h.case_study_path(case_study)
     rescue
       '#invalid-link'
     end

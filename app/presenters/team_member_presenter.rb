@@ -4,7 +4,7 @@ class TeamMemberPresenter < BasePresenter
 
   def link
     begin
-      team_member_path(team_member)
+      h.team_member_path(team_member)
     rescue
       '#invalid-link'
     end
