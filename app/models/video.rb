@@ -7,7 +7,7 @@ class Video < ActiveRecord::Base
   validates :title, :embed_code, :video_category_id, presence: true
   validates :suggested_url, allow_blank: true, uniqueness: { case_sensitive: false, message: 'is already taken, leave blank to generate automatically' }
 
-  scope :displayed, -> { where(display: true) }
+  scope :displayed, -> { joins(:video_category).where(display: true).merge(VideoCategory.displayed) }
 
   belongs_to :video_category
   has_many :service_videos, dependent: :destroy

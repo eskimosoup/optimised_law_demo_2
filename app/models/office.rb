@@ -11,7 +11,7 @@ class Office < ActiveRecord::Base
   validates :name, :office_location_id, :building_number, :street, :town, :postcode, :phone_number, presence: true
   validates :suggested_url, allow_blank: true, uniqueness: { case_sensitive: false, message: 'is already taken, leave blank to generate automatically' }
 
-  scope :displayed, -> { where(display: true) }
+  scope :displayed, -> { joins(:office_location).where(display: true).merge(OfficeLocation.displayed) }
 
   def slug_candidates
     [

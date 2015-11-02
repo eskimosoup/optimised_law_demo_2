@@ -26,6 +26,10 @@ RSpec.describe Service, type: :model, service: true do
     it { should have_many(:videos).through(:service_videos) }
     it { should have_many(:service_team_members).dependent(:nullify) }
     it { should have_many(:team_members).through(:service_team_members) }
+    it { should have_many(:service_related_services).dependent(:destroy) }
+    it { should have_many(:related_services).through(:service_related_services) }
+    it { should have_many(:inverse_service_related_services).class_name("ServiceRelatedService").with_foreign_key(:related_service_id).dependent(:destroy) }
+    it { should have_many(:inverse_related_services).through(:inverse_service_related_services).source(:service) }
   end
 
   describe 'scopes', :scope do

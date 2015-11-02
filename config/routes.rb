@@ -170,6 +170,7 @@ Optimadmin::Engine.routes.draw do
     end
   end
   resources :services, except: [:show] do
+    resources :related_services, only: [:index, :destroy]
     collection do
       post 'order'
     end

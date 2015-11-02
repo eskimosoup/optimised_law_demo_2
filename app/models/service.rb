@@ -25,6 +25,12 @@ class Service < ActiveRecord::Base
   has_many :service_team_members, dependent: :nullify
   has_many :team_members, -> { displayed }, through: :service_team_members
 
+  has_many :service_related_services, dependent: :destroy
+  has_many :related_services, through: :service_related_services
+  has_many :displayed_related_services, -> { displayed }, through: :service_related_services
+  has_many :inverse_service_related_services, class_name: 'ServiceRelatedService', foreign_key: :related_service_id, dependent: :destroy
+  has_many :inverse_related_services, through: :inverse_service_related_services, source: :service
+
   validates :name, :summary, :content, :department_id, presence: true
   validates :suggested_url, allow_blank: true, uniqueness: { case_sensitive: false, message: 'is already taken, leave blank to generate automatically' }
 

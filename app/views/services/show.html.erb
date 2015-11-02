@@ -157,17 +157,8 @@
         We can also help with...
       </h5>
 
-      <% # TODO: Make this dynamic %>
       <ul class="related-services-list">
-        <li>
-          <%= link_to 'Buying or Selling a Home', '#', class: 'related-service-link' %>
-        </li>
-        <li>
-          <%= link_to 'Wills / Tax / Estate Planning', '#', class: 'related-service-link' %>
-        </li>
-        <li>
-          <%= link_to 'Elderly & Vulnerable Client', '#', class: 'related-service-link' %>
-        </li>
+        <%= render partial: 'services/related_service', collection: @presented_related_services, as: :service_presenter if @presented_related_services.present? %>
       </ul>
     </div>
   </div>

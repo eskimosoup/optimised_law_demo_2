@@ -11,7 +11,7 @@ class CaseStudy < ActiveRecord::Base
   validates :title, :summary, :content, :case_study_category_id, presence: true
   validates :suggested_url, allow_blank: true, uniqueness: { case_sensitive: false, message: 'is already taken, leave blank to generate automatically' }
 
-  scope :displayed, -> { where("display = ? AND date <= ?", true, Date.today).order(date: :desc) }
+  scope :displayed, -> { joins(:case_study_category).where("case_studies.display = ? AND date <= ?", true, Date.today).order(date: :desc).merge(CaseStudyCategory.displayed) }
 
   def slug_candidates
     [

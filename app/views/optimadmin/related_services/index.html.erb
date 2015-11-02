@@ -1,0 +1,18 @@
+<%= render 'optimadmin/shared/header/main_title', title: "Reorder #{ @service.name } related services" %>
+
+<div class="main-content">
+  <div class="row collapse module-list-index header">
+    <%= list_item 'large-1 hide-for-medium-down' do %>
+      <%= link_to octicon('settings') %>
+    <% end %>
+
+    <%= list_item('large-10 small-12'){ 'Name' } %>
+
+    <%= list_item('large-1 hide-for-medium-down text-center last'){ 'Delete' } %>
+  </div>
+
+  <div class='module-sortable' data-module="ServiceRelatedService">
+    <%= render partial: 'related_service', collection: @related_services, as: :related_service_presenter %>
+  </div>
+
+</div>

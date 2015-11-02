@@ -8,7 +8,7 @@ class TeamMember < ActiveRecord::Base
   validates :suggested_url, allow_blank: true, uniqueness: { case_sensitive: false, message: 'is already taken, leave blank to generate automatically' }
 
   scope :positioned, -> { order(:position) }
-  scope :displayed, -> { where("(display_from <= :today OR display_from IS NULL) AND (display_until >= :today OR display_until IS NULL) AND (display = :true)", today: Time.now, true: true).positioned }
+  scope :displayed, -> { joins(:team_member_role).where("(display_from <= :today OR display_from IS NULL) AND (display_until >= :today OR display_until IS NULL) AND (team_members.display = :true)", today: Time.now, true: true).positioned.merge(TeamMemberRole.displayed) }
   # http://stackoverflow.com/a/11219778
   scope :name_search, ->(keywords) { where("coalesce(forename, '') || ' ' || coalesce(surname, '') ilike '%' || ? || '%'", keywords).displayed.positioned if keywords }
 

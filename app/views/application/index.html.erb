@@ -1,8 +1,14 @@
 <%= content_for :head do %>
   <script>
+    $(document).ready(function() {
+      $('.hero-banner-a-to-z-toggle.inactive').attr('href','#').removeAttr('data-remote');
+    })
     $(document).on('click', '.hero-banner-a-to-z-toggle', function() {
-      $('.hero-banner-a-to-z-toggle').removeClass('active');
-      $(this).addClass('active');
+      if(!$(this).hasClass('inactive')) {
+        $('.hero-banner-a-to-z-toggle').removeClass('active');
+        $('#hero-banner-service-list-content').html("<%= j image_tag 'ajax-loader.gif', alt: 'Loading...' %>");
+        $(this).addClass('active');
+      }
     });
   </script>
 <% end %>
