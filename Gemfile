@@ -55,9 +55,11 @@ end
 group :test do
   gem 'database_cleaner', '~> 1.5.0'
   gem 'capybara', '~> 2.5.0'
+  gem 'capybara-screenshot'
   gem 'launchy', '~> 2.4.3'
   gem 'selenium-webdriver'
   gem 'poltergeist'
+  gem 'simplecov', require: false
 end
 
 group :development do

@@ -1,0 +1,39 @@
+.error-banner {
+  background-attachment: scroll;
+  background-color: $turquoise;
+  background-image: image-url('layout/service/hero-banner.png');
+  background-position: -115px 50%;
+  background-repeat: no-repeat;
+  background-size: cover;
+  min-height: 163px;
+  position: relative;
+
+  @include media('>=tablet', '<desktop') {
+    background-size: 60%;
+  }
+
+  @include media('>tablet') {
+    background-position: 0 50%;
+    background-size: 60%;
+  }
+}
+
+.error-banner-title {
+  color: $white;
+  font-family: $font-droid-serif;
+  font-size: em(16px);
+  font-weight: 400;
+  line-height: 1.02;
+  padding: em(20px, 16px) 0;
+  text-align: center;
+
+  @include media('>=tablet', '<desktop') {
+    font-size: em(27px);
+    padding: em(90px, 27px) 0 em(80px, 27px) 0;
+  }
+
+  @include media('>tablet') {
+    font-size: em(34px);
+    padding: em(135px, 34px) 0 em(28px, 34px) 0;
+  }
+}
