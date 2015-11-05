@@ -8,13 +8,10 @@
           <%= image_tag 'components/icons/talk-icon.png', alt: 'Talk to us' %>
 
           <h6 class="contact-us-title">
-            Talk to our Lawyers Local to you
+            <%= @presented_contact_modal.title %>
           </h6>
 
-          <p>
-            Our normal office hours are Monday - Friday: 9am-5pm. Phone lines are open Monday - Friday : 8am - 6pm.<br />
-            If outside of office hours, a message will be taken and your call will be returned on the next working day.
-          </p>
+          <%= @presented_contact_modal.content %>
 
           <p class="contact-us-prompt">
             To contact us please call one of our offices or email us using the form below.

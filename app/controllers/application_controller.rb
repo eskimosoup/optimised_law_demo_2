@@ -33,6 +33,7 @@ class ApplicationController < ActionController::Base
   private
 
     def load_objects
+      @presented_contact_modal = presenter(AdditionalContent.displayed.find_by(area: 'Modal Popup'), TourEntryPresenter)
       @presented_offices = collection_presenter(Office.displayed, OfficePresenter)
       @header_menu = Optimadmin::Menu.new(name: "header")
       @header_aside_menu = Optimadmin::Menu.new(name: "aside_header")
