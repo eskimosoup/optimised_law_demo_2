@@ -13,7 +13,10 @@ module Optimadmin
     end
 
     def toggle_title
-      inline_detail_toggle_link(title)
+      h.content_tag :div do
+        h.concat inline_detail_toggle_link(title)
+        h.concat h.content_tag :div, service.department.name, style: 'font-size: 12px;'
+      end
     end
 
     def optimadmin_summary

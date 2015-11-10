@@ -23,7 +23,9 @@ class ApplicationController < ActionController::Base
     @presented_tour_prompt = presenter(AdditionalContent.displayed.find_by(area: 'Tour Prompt'), TourEntryPresenter)
     @presented_tour_entries = collection_presenter(TourEntry.where(page: 'Home').positioned.displayed, TourEntryPresenter)
     @presented_audiences = collection_presenter(Audience.displayed, DepartmentPresenter)
-    @presented_a_to_z = collection_presenter(Audience.eager_load(:departments, :services).displayed.where("LOWER(services.name) LIKE ?", "a%").uniq, AudiencePresenter)
+    @presented_a_to_z = collection_presenter(Audience.eager_load(:departments, :services).displayed, AudiencePresenter)
+    # FIXME
+    @letter = 'a'
     @presented_a_to_z_group = Service.displayed.group_by{|service| service.name.downcase.first}
   end
 

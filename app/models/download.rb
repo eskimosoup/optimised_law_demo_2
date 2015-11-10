@@ -12,7 +12,7 @@ class Download < ActiveRecord::Base
   validates :title, :file, :download_category_id, presence: true
   validates :suggested_url, allow_blank: true, uniqueness: { case_sensitive: false, message: 'is already taken, leave blank to generate automatically' }
 
-  scope :displayed, -> { joins(:download_category).where(display: true).merge(DownloadCategory.displayed) }
+  scope :displayed, -> { joins(:download_category).where(display: true).order(:title).merge(DownloadCategory.displayed) }
 
   def slug_candidates
     [

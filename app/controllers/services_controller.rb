@@ -16,7 +16,9 @@ class ServicesController < ApplicationController
   end
 
   def a_to_z
-    @presented_a_to_z = collection_presenter(Audience.eager_load(:departments, :services).displayed.where("LOWER(services.name) LIKE ?", "#{params[:letter]}%").uniq, AudiencePresenter)
+    @presented_a_to_z = collection_presenter(Audience.eager_load(:departments, :services).displayed, AudiencePresenter)
+    # FIXME
+    @letter = params[:letter]
 
     respond_to do |format|
       format.js
