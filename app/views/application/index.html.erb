@@ -2,6 +2,7 @@
   <script>
     $(document).ready(function() {
       $('.hero-banner-a-to-z-toggle.inactive').attr('href','#').removeAttr('data-remote');
+      setHeight();
     })
     $(document).on('click', '.hero-banner-a-to-z-toggle', function() {
       if(!$(this).hasClass('inactive')) {

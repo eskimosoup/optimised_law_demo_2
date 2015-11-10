@@ -34,7 +34,7 @@ class Service < ActiveRecord::Base
   validates :name, :summary, :content, :department_id, presence: true
   validates :suggested_url, allow_blank: true, uniqueness: { case_sensitive: false, message: 'is already taken, leave blank to generate automatically' }
 
-  scope :displayed, -> { where(display: true) }
+  scope :displayed, -> { where(display: true).order(:name) }
 
 
   def slug_candidates

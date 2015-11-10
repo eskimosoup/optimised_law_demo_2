@@ -62,7 +62,7 @@
     <%= field_set_tag nil, id: 'tabs-3' do %>
     <div class="field">
             <%= f.label :related_service_ids, "Related services" %><br>
-            <%= f.select :related_service_ids, Service.where.not(id: @service).pluck(:name, :id), { }, { multiple: true, class: 'multiple-select' } %>
+            <%= f.select :related_service_ids, Service.where.not(id: @service).order(:department_id).map{|x| ["#{x.name} (#{x.department.name})", x.id]}, { }, { multiple: true, class: 'multiple-select' } %>
           </div>
           <div class="field">
       <%= f.label :suggested_url %><br>
