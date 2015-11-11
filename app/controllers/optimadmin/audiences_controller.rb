@@ -3,7 +3,7 @@ module Optimadmin
     before_action :set_audience, only: [:show, :edit, :update, :destroy]
 
     def index
-      @audiences = Optimadmin::BaseCollectionPresenter.new(collection: Audience.where('name ILIKE ?', "%#{params[:search]}%").page(params[:page]).per(params[:per_page] || 15), view_template: view_context, presenter: Optimadmin::AudiencePresenter)
+      @audiences = Optimadmin::BaseCollectionPresenter.new(collection: Audience.positioned.where('name ILIKE ?', "%#{params[:search]}%").page(params[:page]).per(params[:per_page] || 15), view_template: view_context, presenter: Optimadmin::AudiencePresenter)
     end
 
     def show

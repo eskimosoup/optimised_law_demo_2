@@ -14,14 +14,13 @@
   <div class="row collapse module-list-index header">
 
 
-    
+    <%= list_item 'large-1 hide-for-medium-down' do %>
+      <%= link_to octicon('settings') %>
+    <% end %>
 
-      <%= list_item 'large-8 small-8' do %>
-        Name
-      <% end %>
-
-
-
+    <%= list_item 'large-7 small-8' do %>
+      Name
+    <% end %>
 
     <%= list_item { 'Display' } %>
     <%= list_item { 'View' } %>
@@ -30,8 +29,8 @@
     <%= list_item('large-1 hide-for-medium-down text-center last'){ 'Delete' } %>
   </div>
 
-  <!-- <div class='module-sortable' data-module="Audience"> -->
-  <%= render partial: 'audience', collection: @audiences, as: :audience_presenter %>
-  <!-- </div> -->
+  <div class='module-sortable' data-module="Audience">
+    <%= render partial: 'audience', collection: @audiences, as: :audience_presenter %>
+  </div>
   <%= paginate @audiences %>
 </div>

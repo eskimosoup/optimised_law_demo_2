@@ -11,7 +11,8 @@ Rails.application.routes.draw do
   resources :articles, only: [:index, :show]
   resources :departments, only: :show
   resources :audiences, only: :show
-  resources :case_studies, only: [:index, :show]
+  # resources :case_studies, only: [:index, :show]
+  # resources :team_members, only: [:index, :show]
 
   get '/divorce', to: 'application#divorce'
 

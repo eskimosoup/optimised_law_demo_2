@@ -33,6 +33,10 @@
   <%= f.label :team_member_id %><br>
   <%= f.select :team_member_id, TeamMember.all.map{|x| ["#{x.forename} #{x.surname}", x.id]}, prompt: 'Please select' %>
   </div>
+  <div class="field">
+  <%= f.label :testimonial_type %><br>
+  <%= f.select :testimonial_type, Testimonial::TYPES.map{|x| [x.humanize, x]} %>
+  </div>
             <div class="field">
         <%= f.label :author %><br>
         <%= f.text_field :author %>
