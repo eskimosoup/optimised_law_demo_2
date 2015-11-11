@@ -18,7 +18,7 @@ RSpec.describe TeamMemberPresenter, type: :presenter, team_member: true do
     end
 
     it 'returns the link' do
-      expect(team_member_presenter.link).to eq(team_member)
+      expect(team_member_presenter.link).to eq(team_member_path(team_member))
     end
 
     it 'returns a random testimonial' do

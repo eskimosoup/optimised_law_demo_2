@@ -5,7 +5,8 @@ class Audience < ActiveRecord::Base
   validates :name, presence: true
   validates :suggested_url, allow_blank: true, uniqueness: { case_sensitive: false, message: 'is already taken, leave blank to generate automatically' }
 
-  scope :displayed, -> { where(display: true) }
+  scope :positioned, -> { order(:position) }
+  scope :displayed, -> { where(display: true).positioned }
 
   has_many :departments, -> { displayed }, dependent: :destroy
   has_many :services, -> { displayed }, through: :departments

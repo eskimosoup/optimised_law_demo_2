@@ -1,5 +1,5 @@
 class Testimonial < ActiveRecord::Base
-  validates :author, :recommendation, presence: true
+  validates :testimonial_type, :author, :recommendation, presence: true
 
   belongs_to :team_member
   has_many :service_testimonials, dependent: :destroy
@@ -7,4 +7,8 @@ class Testimonial < ActiveRecord::Base
 
   scope :positioned, -> { order(:position) }
   scope :displayed, -> { where(display: true).positioned }
+
+  TYPES = %w( client expert )
+
+  validates :testimonial_type, inclusion: TYPES
 end

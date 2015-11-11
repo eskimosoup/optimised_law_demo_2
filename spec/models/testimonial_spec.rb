@@ -3,6 +3,8 @@ require 'rails_helper'
 RSpec.describe Testimonial, type: :model, testimonial: true do
   describe 'validations', :validation do
     subject(:testimonial) { build(:testimonial) }
+    it { should validate_presence_of(:testimonial_type) }
+    it { should validate_inclusion_of(:testimonial_type).in_array(TESTIMONIAL::TYPES) }
     it { should validate_presence_of(:author) }
     it { should validate_presence_of(:recommendation) }
   end

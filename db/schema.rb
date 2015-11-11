@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20151102151031) do
+ActiveRecord::Schema.define(version: 20151111121657) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -59,6 +59,7 @@ ActiveRecord::Schema.define(version: 20151102151031) do
     t.boolean  "display",       default: true
     t.datetime "created_at",                   null: false
     t.datetime "updated_at",                   null: false
+    t.integer  "position"
   end
 
   create_table "case_studies", force: :cascade do |t|
@@ -122,6 +123,7 @@ ActiveRecord::Schema.define(version: 20151102151031) do
     t.datetime "created_at",                          null: false
     t.datetime "updated_at",                          null: false
     t.text     "contents_summary"
+    t.boolean  "highlight"
   end
 
   add_index "downloads", ["download_category_id"], name: "index_downloads_on_download_category_id", using: :btree
@@ -430,13 +432,14 @@ ActiveRecord::Schema.define(version: 20151102151031) do
 
   create_table "testimonials", force: :cascade do |t|
     t.integer  "position"
-    t.string   "author",                        null: false
+    t.string   "author",                              null: false
     t.string   "author_company"
-    t.text     "recommendation",                null: false
-    t.boolean  "display",        default: true
-    t.datetime "created_at",                    null: false
-    t.datetime "updated_at",                    null: false
+    t.text     "recommendation",                      null: false
+    t.boolean  "display",          default: true
+    t.datetime "created_at",                          null: false
+    t.datetime "updated_at",                          null: false
     t.integer  "team_member_id"
+    t.string   "testimonial_type", default: "client"
   end
 
   add_index "testimonials", ["team_member_id"], name: "index_testimonials_on_team_member_id", using: :btree
