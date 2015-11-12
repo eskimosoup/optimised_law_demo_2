@@ -5,6 +5,6 @@
 
 
   <ul class="hero-banner-expertise-list hide-for-small department-<%= audience_presenter.id %>">
-    <%= render partial: 'services/hero_expertise_service', collection: BaseCollectionPresenter.new(collection: audience_presenter.services, view_template: self, presenter: ServicePresenter), as: :service_presenter %>
+    <%= render partial: 'services/hero_expertise_service', collection: BaseCollectionPresenter.new(collection: audience_presenter.services, view_template: self, presenter: ServicePresenter), as: :service_presenter if audience_presenter.services.present? %>
   </ul>
 </div>

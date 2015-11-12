@@ -4,7 +4,6 @@
   </div>
 
   <ul class="hero-banner-service-list-services">
-    <% # FIXME %>
-    <%= render partial: 'services/hero_atoz_service', collection: BaseCollectionPresenter.new(collection: audience_presenter.services.where("LOWER(services.name) LIKE ?", "#{@letter}%").uniq, view_template: self, presenter: ServicePresenter), as: :service_presenter %>
+    <%= render partial: 'services/hero_atoz_service', collection: BaseCollectionPresenter.new(collection: audience_presenter.services_for_letter(@letter), view_template: self, presenter: ServicePresenter), as: :service_presenter if audience_presenter.services.present? %>
   </ul>
 </div>

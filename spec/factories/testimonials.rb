@@ -4,7 +4,7 @@ FactoryGirl.define do
     author "MyString"
     author_company "MyString"
     recommendation "<p>MyText</p>"
-    type "client"
+    testimonial_type "client"
     display true
   end
 

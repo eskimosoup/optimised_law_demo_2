@@ -7,11 +7,9 @@ class ArticlePresenter < BasePresenter
   end
 
   def link
-    begin
-      h.article_path(article)
-    rescue
-      '#invalid-link'
-    end
+    h.article_path(article)
+  rescue
+    '#invalid-link'
   end
 
   def summary

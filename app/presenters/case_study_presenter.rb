@@ -7,11 +7,9 @@ class CaseStudyPresenter < BasePresenter
   end
 
   def link
-    begin
-      h.case_study_path(case_study)
-    rescue
-      '#invalid-link'
-    end
+    h.case_study_path(case_study)
+  rescue
+    '#invalid-link'
   end
 
   def summary
