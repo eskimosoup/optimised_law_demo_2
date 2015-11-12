@@ -24,7 +24,7 @@ RSpec.describe TestimonialPresenter, type: :presenter, testimonial: true do
   end
 
   describe 'standard testimonial' do
-    let(:testimonial) { build(:testimonial, type: 'expert') }
+    let(:testimonial) { build(:testimonial, testimonial_type: 'expert') }
     subject(:testimonial_presenter) { TestimonialPresenter.new(object: testimonial, view_template: view) }
 
     it 'returns the type header' do

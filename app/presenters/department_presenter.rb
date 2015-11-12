@@ -7,7 +7,7 @@ class DepartmentPresenter < BasePresenter
   end
 
   def services
-    department.services
+    department.services if department.services.present?
   end
 
   def summary

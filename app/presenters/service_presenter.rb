@@ -22,16 +22,34 @@ class ServicePresenter < BasePresenter
     department.name if department?
   end
 
+  def link
+    h.service_path(service)
+  rescue
+    '#invalid-link'
+  end
+
+  def department_link
+    h.department_path(department)
+  rescue
+    '#invalid-link'
+  end
+
+  def audience_link
+    h.audience_path(audience)
+  rescue
+    '#invalid-link'
+  end
+
   def linked_name(options = {})
-    h.link_to name, h.service_path(service), options
+    h.link_to name, link, options
   end
 
   def linked_department(options = {})
-    h.link_to department_name, h.department_path(department), options if department?
+    h.link_to department_name, department_link, options if department?
   end
 
   def linked_audience(options = {})
-    h.link_to service.department.audience.name, h.audience_path(audience), options if audience?
+    h.link_to service.department.audience.name, audience_link, options if audience?
   end
 
   def summary
