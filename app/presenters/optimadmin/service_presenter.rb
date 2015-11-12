@@ -15,12 +15,19 @@ module Optimadmin
     def toggle_title
       h.content_tag :div do
         h.concat inline_detail_toggle_link(title)
-        h.concat h.content_tag :div, service.department.name, style: 'font-size: 12px;'
+        h.concat h.content_tag :div, service.department.name, style: 'font-size: 12px;' if department.present?
       end
     end
 
     def optimadmin_summary
       h.simple_format service.summary
+    end
+
+    private
+
+    def department
+      return @department if defined? @department
+      @department = service.department
     end
   end
 end
