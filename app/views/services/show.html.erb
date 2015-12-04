@@ -23,15 +23,17 @@
 </div>
 
 <div class="supporting-services hide">
-  <div class="row">
-    <% @presented_service.department.services.in_groups(3, false).each do |group| %>
-      <div class="medium-4 columns">
-        <ul class="supporting-services-list">
-          <%= render partial: 'services/supporting_service', collection: BaseCollectionPresenter.new(collection: group, view_template: self, presenter: ServicePresenter), as: :service_presenter %>
-        </ul>
-      </div>
-    <% end %>
-  </div>
+  <% if @presented_service.department.present? %>
+    <div class="row">
+      <% @presented_service.department.services.in_groups(3, false).each do |group| %>
+        <div class="medium-4 columns">
+          <ul class="supporting-services-list">
+            <%= render partial: 'services/supporting_service', collection: BaseCollectionPresenter.new(collection: group, view_template: self, presenter: ServicePresenter), as: :service_presenter %>
+          </ul>
+        </div>
+      <% end %>
+    </div>
+  <% end %>
 </div>
 
 <div class="service-content">
